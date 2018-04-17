@@ -1,0 +1,8 @@
+# Windows
+Thumbs.db
+ehthumbs.db
+*.lnk
+
+# Mac
+.DS_Store
+._*
