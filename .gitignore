@@ -2,6 +2,9 @@
 Thumbs.db
 ehthumbs.db
 *.lnk
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
 
 # Mac
 .DS_Store
