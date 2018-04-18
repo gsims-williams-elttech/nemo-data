@@ -45,15 +45,40 @@
             adapt?) …
           </p> 
           <p>
-            <a class="btn" data-toggle="collapse" href="#" aria-expanded="false" aria-controls="collapseExample">Overview</a>
-            <a class="btn" data-toggle="collapse" data-target="#myScores" aria-expanded="false" aria-controls="myScores">My Scores</a>
+            <a class="btn btn-light" data-toggle="collapse" data-target="#myScores" aria-expanded="false" aria-controls="collapseExample">Overview</a>
+            <a class="btn btn-light" data-toggle="collapse" data-target="#myScores" aria-expanded="false" aria-controls="myScores">My Scores</a>
           </p>
         </div>
       </div>
     </div>
 
-  </body>
-  <script src="lib/popper.min.js"></script>
-  <script src="lib/jquery.min.js"></script>
-  <script src="lib/bootstrap.bundle.min.js"></script>
-</html>
+    <div class="container-fluid">
+      <div class="collapse" id="myScores">
+        <div class="card card-body">
+          <div class="row">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><img src="assets/unit1.png"></a>
+              </li>
+              <li class="nav-item">
+
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><img src="assets/unit2.png"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false"><img src="assets/unit3.png"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false"> <img src="assets/unit4.png"></a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        </body>
+      <script src="lib/popper.min.js"></script>
+      <script src="lib/jquery.min.js"></script>
+      <script src="lib/bootstrap.bundle.min.js"></script>
+      </html>
