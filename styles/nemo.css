@@ -1,0 +1,10 @@
+.navbar {
+    background-color: #673ab7;
+    border-color: #E7E7E7;
+	
+}
+
+.navbar-nav > li{
+  padding-left:40px;
+  padding-right:40px;
+}
