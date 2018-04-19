@@ -12,18 +12,18 @@
 				assert(Array.isArray(students));
 				eq(students[0], 'student1');
 			},
-			
+
 			// nautilus.getAllResults(studentId)
 			'it should return an array': function() {
 				const results = nautilus.getAllResults('student1');
 				assert(Array.isArray(results));
 			},
-			
+
 			'it should return an array containing one object per LO in the entire product': function() {
 				const results = nautilus.getAllResults('student1');
 				eq(results.length, 288)
 			},
-			
+
 			'each LO object should contain values for LO ID, status, best score, first score, attempts, time': function() {
 				const results = nautilus.getAllResults('student1');
 				const lo = results[0];
@@ -34,7 +34,7 @@
 				eq(typeof lo.attempts, 'number');
 				eq(typeof lo.active_time, 'number');
 			},
-			
+
 			'status should be "above target" if best score is 70 or higher, and "below target" if best score is lower than 70': function () {
 				const results = nautilus.getAllResults('student1');
 				for (let i = 0; i < results.length; i++) {
@@ -45,11 +45,44 @@
 					}
 				}
 			},
-			
-			'it should additionally contain a value for the LO name': function () {
+
+			'each LO object should additionally contain a value for the LO name': function () {
 				const results = nautilus.getAllResults('student1');
 				const lo = results[200];
 				eq(typeof lo.LO_name, 'string');
+			},
+			
+			// nautilus.getUnitNames()
+			
+			// nautilus.getUnitResults(studentId, unitName)
+			'it should return an array containing one object per LO in the entire specified unit': function() {
+				const unitOne = nautilus.getUnitResults('student1', 'Unit 1');
+				const unitFive = nautilus.getUnitResults('student1', 'Unit 5');
+				assert(Array.isArray(unitOne));
+				eq(unitOne.length, 24)
+				assert(Array.isArray(unitFive));
+				eq(unitFive.length, 24)
+			},
+			
+			'each LO object should contain values for LO ID, status, best score, first score, attempts, time, LO name': function() {
+				const unitOne = nautilus.getUnitResults('student1', 'Unit 1');
+				const lo = unitOne[0];
+				eq(typeof lo.LO_id, 'string');
+				eq(typeof lo.status, 'string');
+				eq(typeof lo.first_score, 'number' || 'string');
+				eq(typeof lo.best_score, 'number' || 'string');
+				eq(typeof lo.attempts, 'number');
+				eq(typeof lo.active_time, 'number');
+				eq(typeof lo.LO_name, 'string');
+			},
+
+			'it should not return any LOs which are not in the specified unit': function() {
+				const unitTwelve = nautilus.getUnitResults('student1', 'Unit 12');
+				let i = 0,
+						len = unitTwelve.length;
+				for (i; i < len; i++) {
+					assert(unitTwelve[i].unit_name === 'Unit 12');
+				}
 			}
 
 		});

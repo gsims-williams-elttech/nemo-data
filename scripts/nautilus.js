@@ -76,7 +76,12 @@ Handles logic for you, e.g. aggregating scores and progress.
 	//map course structure details onto student's LO scores
 	function __mapLODetails(results) {
 		if (results[0].LO_name === undefined) {
-			results.map( x => x.LO_name = __courseStructure[x.LO_id].LO_name );
+			results.map( (x) => {
+				x.LO_name = __courseStructure[x.LO_id].LO_name;
+				x.lesson_name = __courseStructure[x.LO_id].lesson_name;
+				x.unit_name = __courseStructure[x.LO_id].unit_name;
+				return x;
+			});
 		}
 	}
 
@@ -132,6 +137,12 @@ Handles logic for you, e.g. aggregating scores and progress.
 		__mapLODetails(__results[studentId]);
 		return __results[studentId];
 	};
+	
+	//returns the student's results against all LOs in specified unit
+	nautilus.getUnitResults = function (studentId, unitName) {
+		__mapLODetails(__results[studentId]);
+		return __results[studentId].filter( el => el.unit_name === unitName);
+	}
 
 	/*----------------------------------------*/
 	// DECLARE MODULE ON GLOBAL/WINDOW OBJECT //
