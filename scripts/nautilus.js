@@ -89,7 +89,9 @@ Handles logic for you, e.g. aggregating scores and progress.
 			counter = __studentIDs.length;
 			//for each student, load their results...
 			for (let i = 0; i < __studentIDs.length; i++) {
-				__fetchCSV(`../data/students/${__studentIDs[i]}.csv`, finalCallback(res, i));
+				__fetchCSV(`../data/students/${__studentIDs[i]}.csv`, (res) => {
+					finalCallback(res, i);
+				});
 			}
 		});
 	};
