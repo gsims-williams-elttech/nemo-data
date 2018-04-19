@@ -18,9 +18,10 @@ Handles logic for you, e.g. aggregating scores and progress.
 	// PRIVATE VARIABLES & HELPERS //
 	/*-----------------------------*/
 
+	const __courseStructure = {}; //structure of Evolve with unit, level, LO names etc.
 	let __studentIDs = []; //array of student IDs (get from JSON file)
 	let __results = {}; //student results against each LO in course
-	const __courseStructure = {}; //structure of Evolve with unit, level, LO names etc.
+	let __courseStructureArray = []; //the course structure as an array
 
 	// fetch CSV file via XMLHttpRequest
 	function __fetchCSV(path, callback) {
@@ -108,6 +109,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 			let data = __parseCSV(res),
 					i = 0,
 					len = data.length;
+			__courseStructureArray = data;
 			for (i; i < len; i++) {
 				__courseStructure[data[i].LO_id] = data[i];
 			}
@@ -142,7 +144,19 @@ Handles logic for you, e.g. aggregating scores and progress.
 	nautilus.getUnitResults = function (studentId, unitName) {
 		__mapLODetails(__results[studentId]);
 		return __results[studentId].filter( el => el.unit_name === unitName);
-	}
+	};
+	
+	//returns an array of all unit names in the product
+	nautilus.getUnitNames = function () {
+		const names = [];
+		//count unique unit names
+		__courseStructureArray.forEach( el => {
+			if (!names.includes(el.unit_name)) {
+				names.push(el.unit_name);
+			}
+		})
+		return names;
+	};
 
 	/*----------------------------------------*/
 	// DECLARE MODULE ON GLOBAL/WINDOW OBJECT //
