@@ -18,7 +18,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 	// PRIVATE VARIABLES & HELPERS //
 	/*-----------------------------*/
 
-	const __courseStructure = {}; //structure of Evolve with unit, level, LO names etc.
+	const __courseStructure = {}; //structure of Evolve with unit, level, LO names etc. LO ids as keys
 	let __studentIDs = []; //array of student IDs (get from JSON file)
 	let __results = {}; //student results against each LO in course
 	let __courseStructureArray = []; //the course structure as an array
@@ -146,15 +146,32 @@ Handles logic for you, e.g. aggregating scores and progress.
 		return __results[studentId].filter( el => el.unit_name === unitName);
 	};
 	
+	//returns the student's results against all LOs in specified unit + lesson
+	nautilus.getLessonResults = function (studentId, unitName, lessonName) {
+		__mapLODetails(__results[studentId]);
+		return __results[studentId].filter( el => el.unit_name === unitName && el.lesson_name === lessonName);
+	};
+	
 	//returns an array of all unit names in the product
 	nautilus.getUnitNames = function () {
 		const names = [];
-		//count unique unit names
 		__courseStructureArray.forEach( el => {
 			if (!names.includes(el.unit_name)) {
 				names.push(el.unit_name);
 			}
-		})
+		});
+		return names;
+	};
+	
+	//returns an array of all lesson names in the unit
+	nautilus.getLessonNames = function (unitName) {
+		const names = [],
+					los = __courseStructureArray.filter( el => el.unit_name === unitName);
+		los.forEach( el => {
+			if (!names.includes(el.lesson_name)) {
+				names.push(el.lesson_name);
+			}
+		});
 		return names;
 	};
 

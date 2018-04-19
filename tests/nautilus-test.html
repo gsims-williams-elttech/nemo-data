@@ -91,6 +91,15 @@
 				const unitNames = nautilus.getUnitNames();
 				eq(unitNames.length, 12);
 				eq(unitNames[3], 'Unit 4');
+			},
+			
+			// nautilus.getLessonNames()
+			'it should return an array with the names of each lesson in the specified unit': function() {
+				const unitNames = nautilus.getUnitNames(),
+							u1 = unitNames[0],
+							lessons = nautilus.getLessonNames(u1);
+				eq(lessons.length, 5);
+				eq(lessons[0], 'Lesson 1.1');
 			}
 
 		});
