@@ -65,11 +65,23 @@ Handles logic for you, e.g. aggregating scores and progress.
 	//loads & assigns student/course data to private variables. Accepts optional callback to run after after load is complete.
 	nautilus.init = function (callback) {
 		let counter = 0;
+		
+		let finalCallback = function (res, i) {
+			let parsedData = __parseCSV(res);
+			counter -= 1;
+			__results[__studentIDs[i]] = parsedData;
+			//once all student results have loaded, run the user-defined callback if one is supplied
+			if (!counter && callback) {
+				callback();
+			}
+		};
+		
 		//load the course structure CSV
 		__fetchCSV('../data/structure.csv', (res) => {
 			let parsedData = __parseCSV(res);
 			__courseStructure = parsedData;
 		});
+		
 		//meanwhile, fetch student IDs from the JSON
 		__fetchCSV('../data/studentIDs.json', (res) => {
 			let parsedData = JSON.parse(res);
@@ -77,15 +89,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 			counter = __studentIDs.length;
 			//for each student, load their results...
 			for (let i = 0; i < __studentIDs.length; i++) {
-				__fetchCSV(`../data/students/${__studentIDs[i]}.csv`, (res) => {
-					let parsedData = __parseCSV(res);
-					counter -= 1;
-					__results[__studentIDs[i]] = parsedData;
-					//once all student results have loaded, run the user-defined callback if one is supplied
-					if (!counter && callback) {
-						callback();
-					}
-				});
+				__fetchCSV(`../data/students/${__studentIDs[i]}.csv`, finalCallback(res, i));
 			}
 		});
 	};
