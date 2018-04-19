@@ -6,12 +6,10 @@
 
 		tests({
 
-			'just an example which passes': function() {
-				eq(1, 1);
-			},
-
-			'just an example which fails': function() {
-				fail();
+			'it should return an array of all available student IDs': function() {
+				const students = nautilus.getStudentIds();
+				assert(Array.isArray(students));
+				eq(students[0], 'student1');
 			}
 
 		});

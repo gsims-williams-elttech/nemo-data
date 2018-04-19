@@ -96,11 +96,9 @@ Handles logic for you, e.g. aggregating scores and progress.
 		});
 	};
 
-	//test only
-	nautilus.exposeAll = function () {
-		console.log(__courseStructure);
-		console.log(__studentIDs);
-		console.log(__results);
+	//returns an array of all student IDs (from studentIDs.JSON)
+	nautilus.getStudentIds = function () {
+		return __studentIDs;
 	};
 
 	/*----------------------------------------*/
