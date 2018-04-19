@@ -1,0 +1,21 @@
+<script src="tinytest.js"></script>
+<script src="../scripts/nautilus.js"></script>
+<script>
+
+	nautilus.init(() => {
+
+		tests({
+
+			'just an example which passes': function() {
+				eq(1, 1);
+			},
+
+			'just an example which fails': function() {
+				fail();
+			}
+
+		});
+
+	});
+
+</script>
