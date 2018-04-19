@@ -20,7 +20,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 
 	let __studentIDs = []; //array of student IDs (get from JSON file)
 	let __results = {}; //student results against each LO in course
-	let __courseStructure = ''; //structure of Evolve with unit, level, LO names etc.
+	const __courseStructure = {}; //structure of Evolve with unit, level, LO names etc.
 
 	// fetch CSV file via XMLHttpRequest
 	function __fetchCSV(path, callback) {
@@ -49,13 +49,35 @@ Handles logic for you, e.g. aggregating scores and progress.
 		for (i = 1; i < lines.length; i++) {
 			obj = {};
 			currentline=lines[i].split(",");
-			for (j = 0; j < headers.length; j++) {
-				let asNum = parseInt(currentline[j]);
-				obj[headers[j]] = isNaN(asNum) ? currentline[j] : asNum;
+			//skip empty lines
+			if (currentline[0] !== '') {
+				for (j = 0; j < headers.length; j++) {
+					let asNum = parseInt(currentline[j]);
+					obj[headers[j].trim()] = isNaN(asNum) ? currentline[j].trim() : asNum;
+				}
+				result.push(obj);
 			}
-			result.push(obj);
 		}
 		return result;
+	}
+	
+	// calculate each LO's status (above/below target) based on score
+	function __calculateStatus(res) {
+		let i = 0,
+				len = res.length;
+		for (i; i < len; i++) {
+			if (res[i].status === 'completed') {
+				res[i].status = res[i].best_score >= 70 ? 'aboveTarget' : 'belowTarget';
+			}
+		}
+		return res;
+	}
+	
+	//map course structure details onto student's LO scores
+	function __mapLODetails(results) {
+		if (results[0].LO_name === undefined) {
+			results.map( x => x.LO_name = __courseStructure[x.LO_id].LO_name );
+		}
 	}
 
 	/*----------------*/
@@ -68,8 +90,8 @@ Handles logic for you, e.g. aggregating scores and progress.
 		
 		let finalCallback = function (res, i) {
 			let parsedData = __parseCSV(res);
+			__results[__studentIDs[i]] = __calculateStatus(parsedData);
 			counter -= 1;
-			__results[__studentIDs[i]] = parsedData;
 			//once all student results have loaded, run the user-defined callback if one is supplied
 			if (!counter && callback) {
 				callback();
@@ -78,8 +100,12 @@ Handles logic for you, e.g. aggregating scores and progress.
 		
 		//load the course structure CSV
 		__fetchCSV('../data/structure.csv', (res) => {
-			let parsedData = __parseCSV(res);
-			__courseStructure = parsedData;
+			let data = __parseCSV(res),
+					i = 0,
+					len = data.length;
+			for (i; i < len; i++) {
+				__courseStructure[data[i].LO_id] = data[i];
+			}
 		});
 		
 		//meanwhile, fetch student IDs from the JSON
@@ -96,9 +122,15 @@ Handles logic for you, e.g. aggregating scores and progress.
 		});
 	};
 
-	//returns an array of all student IDs (from studentIDs.JSON)
+	//returns an array of all student IDs
 	nautilus.getStudentIds = function () {
 		return __studentIDs;
+	};
+	
+	//returns the student's result against all LOs in product
+	nautilus.getAllResults = function (studentId) {
+		__mapLODetails(__results[studentId]);
+		return __results[studentId];
 	};
 
 	/*----------------------------------------*/
