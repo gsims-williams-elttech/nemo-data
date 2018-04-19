@@ -13,8 +13,11 @@
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-
+}
   .unit-card {
     display: inline-block;
   }
+
+#u1Table_filter { 
+  display: none;
 }
