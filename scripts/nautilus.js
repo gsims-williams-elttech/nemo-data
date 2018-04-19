@@ -17,20 +17,23 @@
 	// PRIVATE VARIABLES & HELPERS //
 	/*-----------------------------*/
 
-	let __currentCSV = "";
+	let __studentIDs = []; //array of student IDs (get from JSON file)
+	let __results = {}; //student results against each LO in course
+	let __courseStructure = ''; //structure of Evolve with unit, level, LO names etc.
 
-	//get CSV via XMLHttpRequest and parse into JSON
+	// fetch CSV file via XMLHttpRequest
 	function __fetchCSV(path, callback) {
-		let output = 0;
-
 		const request = new XMLHttpRequest();
 		request.onerror = function () {
 			console.error(`Could not reach ${path}.`);
 		};
 		request.onload = function () {
 			if (this.status == 200) {
-				let parsedData = __parseCSV(request.responseText);
-				callback(parsedData);
+				callback(request.responseText);
+				//call the callback, with the unparsed data as argument
+				//for course structure CSV, the callback just assigns the data to a private variable
+				//for studentIDs, this pushes the IDs to the __studentIDs array, then starts a for loop which calls __fetchCSV on each studentID
+				//and passes in another callback which pushes the outcome to __results, decrements the counter, and checks whether it should proceed with the final, user-set callback (if it exists)
 			} else {
 				console.error(`No file at ${path}.`);
 			}
@@ -39,7 +42,7 @@
 		request.send();
 	}
 
-	// takes a csv and returns a JS object
+	// accepts a CSV and returns a JS object
 	function __parseCSV(csv) {
 		const lines = csv.split("\n"),
 					result = [],
@@ -63,9 +66,39 @@
 
 	const nautilus = {};
 
-	//gives you all of a student's data to use in your callback
-	nautilus.allStudentData = function (studentID, callback) {
-		__fetchCSV(`../data/students/${studentID}.csv`, callback);
+	//loads & assigns student/course data to private variables. Accepts optional callback to run after after load is complete.
+	nautilus.init = function (callback) {
+		let counter = 0;
+		//load the course structure CSV
+		__fetchCSV('../data/structure.csv', (res) => {
+			let parsedData = __parseCSV(res);
+			__courseStructure = parsedData;
+		});
+		//meanwhile, fetch student IDs from the JSON
+		__fetchCSV('../data/studentIDs.json', (res) => {
+			let parsedData = JSON.parse(res);
+			__studentIDs = parsedData.studentIDs.ids;
+			counter = __studentIDs.length;
+			//for each student, load their results...
+			for (let i = 0; i < __studentIDs.length; i++) {
+				__fetchCSV(`../data/students/${__studentIDs[i]}.csv`, (res) => {
+					let parsedData = __parseCSV(res);
+					counter -= 1;
+					__results[__studentIDs[i]] = parsedData;
+					//once all student results have loaded, run the user-defined callback if one is supplied
+					if (!counter && callback) {
+						callback();
+					}
+				});
+			}
+		});
+	};
+
+	//test only
+	nautilus.exposeAll = function () {
+		console.log(__courseStructure);
+		console.log(__studentIDs);
+		console.log(__results);
 	};
 
 	/*----------------------------------------*/
