@@ -1,11 +1,10 @@
-// Nautilus plunges into the depths to return student data for Nemo!
-// Gets and parses data from CSV files in the 'data' directory
-// Handles logic e.g. aggregating scores and progress
+/*----------------------------------------------------------------------
+Nautilus plunges into the depths to return student data for Nemo!
+Gets and parses data from CSV files in the 'data' directory.
+Handles logic for you, e.g. aggregating scores and progress.
+-----------------------------------------------------------------------*/
 
 // TODO: set up tiny-test.js and blank test html page
-// write basic function for getting and parsing entire student1 CSV and returning it as an object
-// TODO: stop this madness, why not just have a function which pre-loads all the CSVs as variables? Then have some kind of nautilus.init in the main page with all the other code wrapped inside its callback (or just nautilus.init() and hope everything loads before it's required!)
-// TODO: check out this method for XHR in for-loop: https://stackoverflow.com/questions/25220486/xmlhttprequest-in-for-loop
 // TODO: cache the parsed CSV data to save time
 
 
@@ -13,6 +12,8 @@
 
 (function (root) {
 
+	const nautilus = {};
+	
 	/*-----------------------------*/
 	// PRIVATE VARIABLES & HELPERS //
 	/*-----------------------------*/
@@ -30,10 +31,6 @@
 		request.onload = function () {
 			if (this.status == 200) {
 				callback(request.responseText);
-				//call the callback, with the unparsed data as argument
-				//for course structure CSV, the callback just assigns the data to a private variable
-				//for studentIDs, this pushes the IDs to the __studentIDs array, then starts a for loop which calls __fetchCSV on each studentID
-				//and passes in another callback which pushes the outcome to __results, decrements the counter, and checks whether it should proceed with the final, user-set callback (if it exists)
 			} else {
 				console.error(`No file at ${path}.`);
 			}
@@ -53,7 +50,8 @@
 			obj = {};
 			currentline=lines[i].split(",");
 			for (j = 0; j < headers.length; j++) {
-				obj[headers[j]] = currentline[j];
+				let asNum = parseInt(currentline[j]);
+				obj[headers[j]] = isNaN(asNum) ? currentline[j] : asNum;
 			}
 			result.push(obj);
 		}
@@ -63,8 +61,6 @@
 	/*----------------*/
 	// PUBLIC METHODS //
 	/*----------------*/
-
-	const nautilus = {};
 
 	//loads & assigns student/course data to private variables. Accepts optional callback to run after after load is complete.
 	nautilus.init = function (callback) {
