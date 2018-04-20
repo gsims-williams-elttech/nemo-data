@@ -134,24 +134,6 @@ Handles logic for you, e.g. aggregating scores and progress.
 		return __studentIDs;
 	};
 	
-	//returns the student's result against all LOs in product
-	nautilus.getAllResults = function (studentId) {
-		__mapLODetails(__results[studentId]);
-		return __results[studentId];
-	};
-	
-	//returns the student's results against all LOs in specified unit
-	nautilus.getUnitResults = function (studentId, unitName) {
-		__mapLODetails(__results[studentId]);
-		return __results[studentId].filter( el => el.unit_name === unitName);
-	};
-	
-	//returns the student's results against all LOs in specified unit + lesson
-	nautilus.getLessonResults = function (studentId, unitName, lessonName) {
-		__mapLODetails(__results[studentId]);
-		return __results[studentId].filter( el => el.unit_name === unitName && el.lesson_name === lessonName);
-	};
-	
 	//returns an array of all unit names in the product
 	nautilus.getUnitNames = function () {
 		const names = [];
@@ -173,6 +155,42 @@ Handles logic for you, e.g. aggregating scores and progress.
 			}
 		});
 		return names;
+	};
+	
+	//returns the student's result against all LOs in product
+	nautilus.getAllResults = function (studentId) {
+		__mapLODetails(__results[studentId]);
+		return __results[studentId];
+	};
+	
+	//returns the student's results against all LOs in specified unit
+	nautilus.getUnitResults = function (studentId, unitName) {
+		__mapLODetails(__results[studentId]);
+		return __results[studentId].filter( el => el.unit_name === unitName);
+	};
+	
+	//returns the student's results against all LOs in specified unit + lesson
+	nautilus.getLessonResults = function (studentId, unitName, lessonName) {
+		__mapLODetails(__results[studentId]);
+		return __results[studentId].filter( el => el.unit_name === unitName && el.lesson_name === lessonName);
+	};
+	
+	//returns a summary of the student's results in a specified unit
+	nautilus.getUnitSummary = function (studentId, unitName) {
+		const summary = {
+			notStarted: 0,
+			belowTarget: 0,
+			aboveTarget: 0
+		};
+		const uRes = this.getUnitResults(studentId, unitName);
+		uRes.forEach( el => {
+			if (el.status === 'inProgress') {
+				summary.notStarted += 1;
+			} else {
+				summary[el.status] += 1;
+			}
+		});
+		return summary;
 	};
 
 	/*----------------------------------------*/
