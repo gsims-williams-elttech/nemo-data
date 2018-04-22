@@ -6,6 +6,7 @@
     <title>NEMO Data Prototype</title>
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link href="styles/datatables.min.css" rel="stylesheet">
+    <link href="styles/chartist.css" rel="stylesheet">
     <link href="styles/nemo.css" rel="stylesheet">
   </head>
   <body>
@@ -34,11 +35,11 @@
 
     <div class="jumbotron jumbotron-fluid">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-12 col-lg-3">
           <img src="assets/evolve_logo.png">
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-12 col-lg-9">
           <h1 class="display-4">Evolve 1</h1>
           <p class="lead">2018 Adult English course.</p>
           <p>Quick overview and description about the product, its focus
@@ -53,75 +54,20 @@
       </div>
     </div>
 
-    <div class="container-fluid scrolling-wrapper">
-      <div class="collapse show" id="myScores">
-
-        <div class="row flex-row flex-nowrap">
-          <div class="col-2 unit-card">
-            <a class="nav-link active" id="home-tab" data-toggle="collapse" href="#u1" role="tab" aria-controls="home" aria-selected="true"><img src="assets/unit1.png"></a>
+    <div class="container-fluid">
+      <div class="row collapse show" id="myScores">
+          <div class="col-12 col-sm-6">
+                        <a class="nav-link active ct-chart" id="home-tab" data-toggle="collapse" href="#u1" role="tab" aria-controls="home" aria-selected="true"></a>
           </div>
-          <div class="col-2 unit-card">
-            <a class="nav-link active" id="home-tab" data-toggle="collapse" href="#u2" role="tab" aria-controls="home" aria-selected="true"><img src="assets/unit2.png"></a>
-          </div>
-          <div class="col-2 unit-card">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><img src="assets/unit3.png"></a>
-          </div>
-          <div class="col-2 unit-card">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><img src="assets/unit4.png"></a>
-          </div>
-          <div class="col-2 unit-card">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><img src="assets/unit5.png"></a>
-          </div>
-          <div class="col-2 unit-card">
-            <a class="nav-link active" id="home-tab" data-toggle="tab-pane" href="#home" role="tab" aria-controls="home" aria-selected="true"><img src="assets/unit5.png"></a>
-          </div>
-          <div class="col-2 unit-card">
-            <a class="nav-link active" id="home-tab" data-toggle="tab-pane" href="#home" role="tab" aria-controls="home" aria-selected="true"><img src="assets/unit5.png"></a>
-          </div>
-        </div>
       </div>
 
     </div>
 
 
     <div class="row">
+      <script id="nautilus" type="text/x-handlebars-template">
       <div class="col-12">
         <div class="collapse multi-collapse" id="u1">
-          <table class="table table-borderless" id="u1Table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">LO Title</th>
-                <th scope="col">First Score</th>
-                <th scope="col">Best Score</th>
-                <th scope="col">Attempts</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>Grammar 1</th>
-                <td>65</td>
-                <td>80</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <th>Grammar 2</th>
-                <td>45</td>
-                <td>45</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <th>Grammar 3</th>
-                <td>90</td>
-                <td>100</td>
-                <td>2</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="collapse multi-collapse" id="u2">
           <table class="table table-borderless">
             <thead class="thead-light">
               <tr>
@@ -132,39 +78,35 @@
               </tr>
             </thead>
             <tbody>
+              {{#each apidata}}
               <tr>
-                <th>Grammar 1</th>
-                <td>45</td>
-                <td>70</td>
-                <td>2</td>
+                <th>{{LO_name}}</th>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
-              <tr>
-                <th>Grammar 2</th>
-                <td>65</td>
-                <td>85</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <th>Grammar 3</th>
-                <td>80</td>
-                <td>80</td>
-                <td>1</td>
-
-              </tr>
+              {{/each}}
+  
             </tbody>
+          
+            
           </table>
         </div>
       </div>
+      </script>
     </div>
+
+
+
     <script src="lib/popper.min.js"></script>
     <script src="lib/jquery.min.js"></script>
     <script src="lib/bootstrap.bundle.min.js"></script>
     <script src="lib/datatables.min.js"></script>
     <script>$(document).ready(function() {
-    $('#u1Table').DataTable( {
-        "paging":   false,
-        "search":   false,
-        "info":     false
+        $('#unitTable').DataTable( {
+          "paging":   false,
+          "search":   false,
+          "info":     false
         } );
       } );
     </script>
@@ -173,5 +115,6 @@
     <script src="lib/chartist-plugin-fill-donut.js"></script>
     <script src="scripts/nautilus.js"></script>
     <script src="scripts/hb_chart_templates.js"></script>
+    
   </body>
 </html>

@@ -1,6 +1,56 @@
 
+// Retrieve the template data from the HTML (jQuery is used here).
+var template = $('#nautilus').html();
+
+// Compile the template data into a function
+var templateScript = Handlebars.compile(template);
+
+var data1 = [{
+   LO_id: "lo1",
+   LO_name: "Grammar 1",
+   active_time: 368,
+   attempts: 1,
+   best_score: 75,
+   first_score: 75,
+   status: "aboveTarget"
+  },
+  {
+   LO_id: "lo2",
+   LO_name: "Grammar 2",
+   active_time: 368,
+   attempts: 1,
+   best_score: 75,
+   first_score: 75,
+   status: "aboveTarget"
+  }
+];
+
+var data = [{
+    Category: "General",
+    DocumentList: [{
+        DocumentName: "Document Name 1 - General",
+        DocumentLocation: "Document Location 1 - General"
+    }, {
+        DocumentName: "Document Name 2 - General",
+        DocumentLocation: "Document Location 2 - General"
+    }]
+}, {
+    Category: "Unit Documents",
+    DocumentList: [{
+        DocumentName: "Document Name 1 - Unit Documents",
+        DocumentList: "Document Location 1 - Unit Documents"
+    }]
+}, {
+    Category: "Minutes"
+}];
+
+   var html = templateScript({apidata: data1});
+
+// Insert the HTML code into the page
+$(document.body).append(html);
 
 
+/////////////////////////////////////////////
 
 
 //Chartist chart stuff
