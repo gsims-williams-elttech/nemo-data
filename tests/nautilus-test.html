@@ -115,6 +115,12 @@
 				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 24);
 			},
 			
+			'it should include a percentageCompleted value, rounded to full number': function() {
+				const summary = nautilus.getUnitSummary('student1', 'Unit 1'),
+							expectedPercentage = 92;
+				eq(summary.percentCompleted, expectedPercentage);
+			},
+			
 			//nautilus.getAllSummary(studentId)			
 			'it should aggregate status data for all LOs in the product': function() {
 				const summary = nautilus.getAllSummary('student1');

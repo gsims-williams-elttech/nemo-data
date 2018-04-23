@@ -100,9 +100,15 @@ Handles logic for you, e.g. aggregating scores and progress.
 				summary[el.status] += 1;
 			}
 		});
+		let completed = summary.aboveTarget + summary.belowTarget;
+		summary.percentCompleted = __asPercentage(completed, completed + summary.notStarted);
 		return summary;
 	}
-
+	
+	//returns a rounded percentage based on the inputted numbers
+	function __asPercentage (subset, total) {
+		return Math.round((subset / total) * 100);
+	}
 
 	/*----------------*/
 	// PUBLIC METHODS //
