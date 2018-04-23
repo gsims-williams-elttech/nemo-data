@@ -12,7 +12,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
   /********************/
 	
 	const studentId = 'student1',
-				unitSummaryTemplate = getTemplate('unitSummaryTemplate');
+				unitSummaryTemplate = getTemplate('unitSummaryTemplate'),
+				charts = {}; //holds variables created by chartist.js
 	
 	/************************/
   /* BIND EVENT LISTENERS */
@@ -22,19 +23,24 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		
 		//we'll run nautilus.init in here, with callback which does the handlebars work and edits the DOM.
 		nautilus.init( () => {
+			const unitNames = nautilus.getUnitNames(),
+						len = unitNames.length;
 			let i = 0,
-					unitNames = nautilus.getUnitNames(),
-					len = unitNames.length,
-					context;
+					context,
+					summary;
 			for (i; i < len; i++) {
-				context = nautilus.getUnitSummary(studentId, unitNames[i]);
-				context.unitName = unitNames[i];
-				context.num = i;
+				context = {
+					unitName: unitNames[i],
+					num: i
+				};
 				document.getElementById('myScores').innerHTML += unitSummaryTemplate(context);
-				//chartist goes here (makeChart...)
-				//use 'unitchart-i' as id
+			}
+			for (i = 0; i < len; i++) {
+				summary = nautilus.getUnitSummary('student1', unitNames[i]);
+				makeChart(`#unitchart-${i}`, summary.degreeValues, summary.percentCompleted);
 			}
 		});
+		
 		configureDataTable('unitTable');
 		
 	});
@@ -57,7 +63,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	
 	//takes string, array of series values, and percent integer; makes chart on page
 	function makeChart (id, series, percent) {
-		var chart = new Chartist.Pie(id, {
+		charts[id] = new Chartist.Pie(id, {
 			series: series,
 			labels: ['', '']
 		}, {
