@@ -21,6 +21,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	document.addEventListener('DOMContentLoaded', () => {
 		
 		//we'll run nautilus.init in here, with callback which does the handlebars work and edits the DOM.
+		console.log('yup, loaded');
+		configureDataTable('unitTable');
 		
 	});
 	
@@ -32,6 +34,13 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	function getTemplate (elementId) {
     return Handlebars.compile(document.getElementById(elementId).innerHTML);
   }
+	
+	function configureDataTable (elementId) {
+		$(`#${elementId}`).DataTable({
+			"paging":   false,
+       "info":     false
+		});
+	}
 
 	
 })();
