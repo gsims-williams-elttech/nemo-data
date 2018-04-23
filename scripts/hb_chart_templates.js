@@ -1,4 +1,4 @@
-
+/*
 // Retrieve the template data from the HTML (jQuery is used here).
 var template = $('#nautilus').html();
 
@@ -29,7 +29,7 @@ var html = templateScript({apidata: data});
 
 // Insert the HTML code into the page
 $(document.body).append(html);
-
+*/
 /////////////////////////////////////////////
 
 
@@ -53,11 +53,13 @@ var chart = new Chartist.Pie('.ct-chart',
         offsetY : 10,
         offsetX: -2
       }, {
-        content: '<h3>53<span class="small">%</span></h3>'
+        content: `<h3>${53}<span class="small">%</span></h3>`
       }]
     })
   ],
 });
+
+console.log('This is chart:', chart);
 
 chart.on('draw', function(data) {
   if(data.type === 'slice' && data.index == 0) {

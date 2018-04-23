@@ -21,3 +21,16 @@
 #unitTable_filter { 
   display: none;
 }
+
+.unitChart {
+	min-height: 200px;
+	min-width: 200px;
+	border: 1px solid black;
+	text-decoration: none;
+	font-size: 12px;
+	color: #000;
+}
+
+.unitChart h1 {
+	font-size: 1.5em;
+}
