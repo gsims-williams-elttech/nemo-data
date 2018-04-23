@@ -110,9 +110,15 @@
 				eq(typeof summary.notStarted, 'number');
 			},
 			
-			'it should add together the status of each LO in the specified unit': function() {
+			'it should aggregate status data for all LOs in the Unit': function() {
 				const summary = nautilus.getUnitSummary('student1', 'Unit 1');
 				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 24);
+			},
+			
+			//nautilus.getAllSummary(studentId)			
+			'it should aggregate status data for all LOs in the product': function() {
+				const summary = nautilus.getAllSummary('student1');
+				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 288);
 			}
 
 		});

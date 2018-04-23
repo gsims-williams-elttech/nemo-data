@@ -13,7 +13,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 (function (root) {
 
 	const nautilus = {};
-	
+
 	/*-----------------------------*/
 	// PRIVATE VARIABLES & HELPERS //
 	/*-----------------------------*/
@@ -61,7 +61,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 		}
 		return result;
 	}
-	
+
 	// calculate each LO's status (above/below target) based on score
 	function __calculateStatus(res) {
 		let i = 0,
@@ -73,7 +73,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 		}
 		return res;
 	}
-	
+
 	//map course structure details onto student's LO scores
 	function __mapLODetails(results) {
 		if (results[0].LO_name === undefined) {
@@ -86,6 +86,24 @@ Handles logic for you, e.g. aggregating scores and progress.
 		}
 	}
 
+	//returns a summary of aggregated status info
+	function __summariseStatus(results) {
+		const summary = {
+			notStarted: 0,
+			belowTarget: 0,
+			aboveTarget: 0
+		};
+		results.forEach( el => {
+			if (el.status === 'inProgress') {
+				summary.notStarted += 1;
+			} else {
+				summary[el.status] += 1;
+			}
+		});
+		return summary;
+	}
+
+
 	/*----------------*/
 	// PUBLIC METHODS //
 	/*----------------*/
@@ -93,17 +111,18 @@ Handles logic for you, e.g. aggregating scores and progress.
 	//loads & assigns student/course data to private variables. Accepts optional callback to run after after load is complete.
 	nautilus.init = function (callback) {
 		let counter = 0;
-		
-		let finalCallback = function (res, i) {
+
+		let parseStudentResults = function (res, i) {
 			let parsedData = __parseCSV(res);
 			__results[__studentIDs[i]] = __calculateStatus(parsedData);
+			__mapLODetails(__results[__studentIDs[i]]);
 			counter -= 1;
 			//once all student results have loaded, run the user-defined callback if one is supplied
 			if (!counter && callback) {
 				callback();
 			}
 		};
-		
+
 		//load the course structure CSV
 		__fetchCSV('../data/structure.csv', (res) => {
 			let data = __parseCSV(res),
@@ -114,7 +133,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 				__courseStructure[data[i].LO_id] = data[i];
 			}
 		});
-		
+
 		//meanwhile, fetch student IDs from the JSON
 		__fetchCSV('../data/studentIDs.json', (res) => {
 			let parsedData = JSON.parse(res);
@@ -123,7 +142,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 			//for each student, load their results...
 			for (let i = 0; i < __studentIDs.length; i++) {
 				__fetchCSV(`../data/students/${__studentIDs[i]}.csv`, (res) => {
-					finalCallback(res, i);
+					parseStudentResults(res, i);
 				});
 			}
 		});
@@ -133,7 +152,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 	nautilus.getStudentIds = function () {
 		return __studentIDs;
 	};
-	
+
 	//returns an array of all unit names in the product
 	nautilus.getUnitNames = function () {
 		const names = [];
@@ -144,7 +163,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 		});
 		return names;
 	};
-	
+
 	//returns an array of all lesson names in the unit
 	nautilus.getLessonNames = function (unitName) {
 		const names = [],
@@ -156,41 +175,34 @@ Handles logic for you, e.g. aggregating scores and progress.
 		});
 		return names;
 	};
-	
+
 	//returns the student's result against all LOs in product
 	nautilus.getAllResults = function (studentId) {
 		__mapLODetails(__results[studentId]);
 		return __results[studentId];
 	};
-	
+
 	//returns the student's results against all LOs in specified unit
 	nautilus.getUnitResults = function (studentId, unitName) {
 		__mapLODetails(__results[studentId]);
 		return __results[studentId].filter( el => el.unit_name === unitName);
 	};
-	
+
 	//returns the student's results against all LOs in specified unit + lesson
 	nautilus.getLessonResults = function (studentId, unitName, lessonName) {
 		__mapLODetails(__results[studentId]);
 		return __results[studentId].filter( el => el.unit_name === unitName && el.lesson_name === lessonName);
 	};
 	
+	//returns a summary of the student's results across the whole product
+	nautilus.getAllSummary = function (studentId) {
+		return __summariseStatus(__results[studentId]);
+	};
+
 	//returns a summary of the student's results in a specified unit
 	nautilus.getUnitSummary = function (studentId, unitName) {
-		const summary = {
-			notStarted: 0,
-			belowTarget: 0,
-			aboveTarget: 0
-		};
-		const uRes = this.getUnitResults(studentId, unitName);
-		uRes.forEach( el => {
-			if (el.status === 'inProgress') {
-				summary.notStarted += 1;
-			} else {
-				summary[el.status] += 1;
-			}
-		});
-		return summary;
+		const unitResults = this.getUnitResults(studentId, unitName);
+		return __summariseStatus(unitResults);
 	};
 
 	/*----------------------------------------*/
