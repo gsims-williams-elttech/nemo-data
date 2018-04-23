@@ -1,116 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>NEMO Data Prototype</title>
-		<link href="styles/bootstrap.min.css" rel="stylesheet">
-		<link href="styles/datatables.min.css" rel="stylesheet">
-		<link href="styles/chartist.css" rel="stylesheet">
-		<link href="styles/nemo.css" rel="stylesheet">
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-md navbar-dark">
-			<a class="navbar-brand" href="#"><img src="assets/cup-transparent-logo.png"></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Home </a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">My Library</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="#">My Courses <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Browse</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>NEMO Data Prototype</title>
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/datatables.min.css" rel="stylesheet">
+    <link href="styles/chartist.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="styles/nemo.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <a class="navbar-brand" href="#"><img src="assets/cup-transparent-logo.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Library</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">My Courses <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Browse</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-		<div class="jumbotron jumbotron-fluid">
-			<div class="row">
-				<div class="col-md-12 col-lg-3">
-					<img src="assets/evolve_logo.png">
-				</div>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="row">
+        <div class="col-md-12 col-lg-3">
+          <img src="assets/evolve_logo.png">
+        </div>
 
-				<div class="col-md-12 col-lg-9">
-					<h1 class="display-4">Evolve 1</h1>
-					<p class="lead">2018 Adult English course.</p>
-					<p>Quick overview and description about the product, its focus
-						and why this can help you as a learner or teacher (text can
-						adapt?) …
-					</p> 
-					<p>
-						<a class="btn btn-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="myScores">Overview</a>
-						<a class="btn btn-light" data-toggle="collapse" data-target="#myScores" aria-expanded="false" aria-controls="myScores">My Scores</a>
-					</p>
-				</div>
-			</div>
-		</div>
+        <div class="col-md-12 col-lg-9">
+          <h1 class="display-4">Evolve 1</h1>
+          <p class="lead">2018 Adult English course.</p>
+          <p>Quick overview and description about the product, its focus
+            and why this can help you as a learner or teacher (text can
+            adapt?) …
+          </p> 
+          <p>
+            <a class="btn btn-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="myScores">Overview</a>
+            <a class="btn btn-light" data-toggle="collapse" data-target="#myScores" aria-expanded="false" aria-controls="myScores">My Scores</a>
+          </p>
+        </div>
+      </div>
+    </div>
 
-		<div class="container-fluid">
-			<div class="row collapse show" id="myScores"></div>
-		</div>
-
-
-		<div class="row">
-			<div class="col-12">
-				<div class="collapse multi-collapse" id="u1">
-					<table class="table table-borderless" id="unitTable">
-						<thead class="thead-light">
-							<tr>
-								<th scope="col">LO Title</th>
-								<th scope="col">First Score</th>
-								<th scope="col">Best Score</th>
-								<th scope="col">Attempts</th>
-							</tr>
-						</thead>
-						<tbody>
-							{{#each apidata}}
-							<tr>
-								<th>{{LO_name}}</th>
-								<td>{{first_score}}</td>
-								<td>{{best_score}}</td>
-								<td>{{attempts}}</td>
-							</tr>
-							{{/each}}
-
-						</tbody>
+    <div class="container-fluid">
+      <div class="row collapse show" id="myScores"></div>
+    </div>
 
 
-					</table>
-				</div>
-			</div>
-		</div>
+    <div class="row">
+      <div class="col-12">
+        <div class="collapse multi-collapse" id="u1">
+          <table class="table table-borderless" id="unitTable">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">LO Title</th>
+                <th scope="col">First Score</th>
+                <th scope="col">Best Score</th>
+                <th scope="col">Attempts</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each apidata}}
+              <tr>
+                <th>{{LO_name}}</th>
+                <td>{{first_score}}</td>
+                <td>{{best_score}}</td>
+                <td>{{attempts}}</td>
+              </tr>
+              {{/each}}
+
+            </tbody>
 
 
-		<!--- Handlebars Templates --->
+          </table>
+        </div>
+      </div>
+    </div>
 
-		<script id="unitSummaryTemplate" type="text/x-handlebars-template">
-			<a class="nav-link active" id="home-tab" data-toggle="collapse" href="#u1" role="tab" aria-controls="home" aria-selected="true">
-				<div class="col-12 col-sm-6 unitChart">
-					<div id="unitchart-{{num}}"></div>
-					<h1>{{unitName}}</h1>
-				</div>
-			</a>
-		</script>
 
-		<!--- Scripts, libraries --->
+    <!--- Handlebars Templates --->
 
-		<script src="lib/popper.min.js"></script>
-		<script src="lib/jquery.min.js"></script>
-		<script src="lib/bootstrap.bundle.min.js"></script>
-		<script src="lib/datatables.min.js"></script>
-		<script src="lib/handlebars-v4.0.11.js"></script>
-		<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-		<script src="lib/chartist-plugin-fill-donut.js"></script>
-		<script src="scripts/nautilus.js"></script>
-		<script src="scripts/main.js"></script>
-	</body>
+    <script id="unitSummaryTemplate" type="text/x-handlebars-template">
+        <div class="card col-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;"> 
+          <div class="row">
+          <div class= "unitChart col-6" id="unitchart-{{num}}"> 
+        <a class="card-img-top" id="home-tab" data-toggle="collapse" href="#u1" role="tab" aria-controls="home" aria-selected="true"></a>
+          </div>
+        <div class="col-6">
+        <h5 class="card-title">{{unitName}}</h5>
+        <br class="card-text"><i class="fas fa-star"></i> {{aboveTarget}}
+          <br class="card-text"><span class="badge badge-warning"><i class="fas fa-exclamation"></i></span> {{belowTarget}}
+        <br class="card-text"><i class="fas fa-play"></i> {{notStarted}} 
+        </div>
+        </div>
+    </script>
+
+    <!--- Scripts, libraries --->
+
+    <script src="lib/popper.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.bundle.min.js"></script>
+    <script src="lib/datatables.min.js"></script>
+    <script src="lib/handlebars-v4.0.11.js"></script>
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="lib/chartist-plugin-fill-donut.js"></script>
+    <script src="scripts/nautilus.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
 </html>

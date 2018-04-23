@@ -612,4 +612,12 @@
     top: 0;
     left: 0; }
 
+.ct-chart-donut > svg {
+  vertical-align: baseline
+  text-align: center;
+}
+
+svg {
+  text-align: center;
+}
 /*# sourceMappingURL=chartist.css.map */

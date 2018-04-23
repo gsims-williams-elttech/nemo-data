@@ -24,20 +24,26 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		//we'll run nautilus.init in here, with callback which does the handlebars work and edits the DOM.
 		nautilus.init( () => {
 			const unitNames = nautilus.getUnitNames(),
-						len = unitNames.length;
+		  len = unitNames.length;
 			let i = 0,
 					context,
-					summary;
+					summary
+          
 			for (i; i < len; i++) {
+         summary = nautilus.getUnitSummary('student1', unitNames[i]);
 				context = {
-					unitName: unitNames[i],
-					num: i
+          unitName: unitNames[i],
+					num: i,
+          aboveTarget: summary.aboveTarget,
+          belowTarget: summary.belowTarget,
+          notStarted: summary.notStarted
 				};
+
 				document.getElementById('myScores').innerHTML += unitSummaryTemplate(context);
 			}
 			for (i = 0; i < len; i++) {
-				summary = nautilus.getUnitSummary('student1', unitNames[i]);
-				makeChart(`#unitchart-${i}`, summary.degreeValues, summary.percentCompleted);
+        chartSummary = nautilus.getUnitSummary('student1', unitNames[i]);
+				makeChart(`#unitchart-${i}`, chartSummary.degreeValues, chartSummary.percentCompleted);
 			}
 		});
 		
@@ -68,7 +74,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			labels: ['', '']
 		}, {
 			donut: true,
-			donutWidth: 40,
+			donutWidth: 20,
 			startAngle: 0,
 			total: 360,
 			showLabel: false,
@@ -80,7 +86,10 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 						offsetY : 10,
 						offsetX: -2
 					}, {
-						content: `<h3>${percent}<span class="small">%</span></h3>`
+						content: `<h5>${percent}<span class="small">%</span></h5>`,
+            offsetY : 0,
+						offsetX: 0,
+            margin: 'auto',
 					}]
 				})
 			],
