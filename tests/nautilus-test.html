@@ -121,11 +121,25 @@
 				eq(summary.percentCompleted, expectedPercentage);
 			},
 			
+			'it should include three degree values for the unit, adding to 360': function() {
+				const summary = nautilus.getUnitSummary('student1', 'Unit 1');
+				assert(Array.isArray(summary.degreeValues));
+				eq(summary.degreeValues.length, 3);
+				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
+			},
+			
 			//nautilus.getAllSummary(studentId)			
 			'it should aggregate status data for all LOs in the product': function() {
 				const summary = nautilus.getAllSummary('student1');
 				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 288);
-			}
+			},
+			
+			'it should include three degree values for the product, adding to 360': function() {
+				const summary = nautilus.getAllSummary('student1');
+				assert(Array.isArray(summary.degreeValues));
+				eq(summary.degreeValues.length, 3);
+				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
+			},
 
 		});
 

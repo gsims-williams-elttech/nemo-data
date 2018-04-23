@@ -102,12 +102,24 @@ Handles logic for you, e.g. aggregating scores and progress.
 		});
 		let completed = summary.aboveTarget + summary.belowTarget;
 		summary.percentCompleted = __asPercentage(completed, completed + summary.notStarted);
+		summary.degreeValues = __asDegreeValues([summary.aboveTarget, summary.belowTarget, summary.notStarted]);
 		return summary;
 	}
 	
 	//returns a rounded percentage based on the inputted numbers
 	function __asPercentage (subset, total) {
 		return Math.round((subset / total) * 100);
+	}
+	
+	//takes array and returns corresponding array with values as fractions of 360
+	function __asDegreeValues (arr) {
+		const total = arr.reduce( (acc, val) => acc + val),
+					out = [];
+		for (let i = 0; i < arr.length; i++) {
+			let deg = (arr[i] / total) * 360;
+			out.push(deg);
+		}
+		return out;
 	}
 
 	/*----------------*/
@@ -184,19 +196,16 @@ Handles logic for you, e.g. aggregating scores and progress.
 
 	//returns the student's result against all LOs in product
 	nautilus.getAllResults = function (studentId) {
-		__mapLODetails(__results[studentId]);
 		return __results[studentId];
 	};
 
 	//returns the student's results against all LOs in specified unit
 	nautilus.getUnitResults = function (studentId, unitName) {
-		__mapLODetails(__results[studentId]);
 		return __results[studentId].filter( el => el.unit_name === unitName);
 	};
 
 	//returns the student's results against all LOs in specified unit + lesson
 	nautilus.getLessonResults = function (studentId, unitName, lessonName) {
-		__mapLODetails(__results[studentId]);
 		return __results[studentId].filter( el => el.unit_name === unitName && el.lesson_name === lessonName);
 	};
 	
