@@ -21,7 +21,7 @@
 
 			'it should return an array containing one object per LO in the entire product': function() {
 				const results = nautilus.getAllResults('student1');
-				eq(results.length, 288)
+				eq(results.length, 336)
 			},
 
 			'each LO object should contain values for LO ID, status, best score, first score, attempts, time': function() {
@@ -58,9 +58,9 @@
 				const unitOne = nautilus.getUnitResults('student1', units[0]);
 				const unitFive = nautilus.getUnitResults('student1', units[4]);
 				assert(Array.isArray(unitOne));
-				eq(unitOne.length, 24)
+				eq(unitOne.length, 28)
 				assert(Array.isArray(unitFive));
-				eq(unitFive.length, 24)
+				eq(unitFive.length, 28)
 			},
 			
 			'each LO object should contain values for LO ID, status, best score, first score, attempts, time, LO name': function() {
@@ -99,7 +99,7 @@
 							u1 = unitNames[0],
 							lessons = nautilus.getLessonNames(u1);
 				eq(lessons.length, 5);
-				eq(lessons[0], 'Lesson 1.1');
+				eq(lessons[0], 'Lesson 1');
 			},
 			
 			//nautilus.getUnitSummary(studentId, unitName)
@@ -112,12 +112,12 @@
 			
 			'it should aggregate status data for all LOs in the Unit': function() {
 				const summary = nautilus.getUnitSummary('student1', 'Unit 1');
-				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 24);
+				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 28);
 			},
 			
 			'it should include a percentageCompleted value, rounded to full number': function() {
 				const summary = nautilus.getUnitSummary('student1', 'Unit 1'),
-							expectedPercentage = 92;
+							expectedPercentage = 86;
 				eq(summary.percentCompleted, expectedPercentage);
 			},
 			
@@ -131,7 +131,7 @@
 			//nautilus.getAllSummary(studentId)			
 			'it should aggregate status data for all LOs in the product': function() {
 				const summary = nautilus.getAllSummary('student1');
-				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 288);
+				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 336);
 			},
 			
 			'it should include three degree values for the product, adding to 360': function() {
@@ -152,7 +152,7 @@
 			
 			'it should represent the average of all completed LO scores': function () {
 				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 1');
-				const expectedAverage = 74;
+				const expectedAverage = 75;
 				eq(unitAverage, expectedAverage);
 			},
 			
@@ -164,7 +164,7 @@
 			
 			'it should return the average of first scores if first_score argument is passed': function() {
 				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 1', 'first_score');
-				const expectedAverage = 66;
+				const expectedAverage = 67;
 				eq(unitAverage, expectedAverage);
 			}
 
