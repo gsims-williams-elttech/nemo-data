@@ -121,6 +121,21 @@ Handles logic for you, e.g. aggregating scores and progress.
 		}
 		return out;
 	}
+	
+	//takes an array of objects representing LOs, and calculates their average score (best/first depending on parameter)
+	function __averageScore (results, scoreType) {
+		scoreType = scoreType === undefined ? 'best_score' : scoreType;
+		let completedNum = 0;
+		let average = results.reduce( function (acc, val) {
+			if (typeof val[scoreType] === 'number') {
+				acc += val[scoreType];
+				completedNum += 1;
+			}
+			return acc;
+		}, 0);
+		average = completedNum ? Math.round(average / completedNum) : false;
+		return average;
+	}
 
 	/*----------------*/
 	// PUBLIC METHODS //
@@ -219,6 +234,18 @@ Handles logic for you, e.g. aggregating scores and progress.
 		const unitResults = this.getUnitResults(studentId, unitName);
 		return __summariseStatus(unitResults);
 	};
+	
+	//returns the average of all best/first scores in a product, or false if no completed LOs
+	nautilus.getAllAverage = function (studentId, scoreType) {
+		const results = nautilus.getAllResults(studentId);
+		return __averageScore(results, scoreType);
+	}
+	
+	//returns the average of all best/first scores in a unit, or false if no completed LOs
+	nautilus.getUnitAverage = function (studentId, unitName, scoreType) {
+		const results = nautilus.getUnitResults(studentId, unitName);
+		return __averageScore(results, scoreType);
+	}
 
 	/*----------------------------------------*/
 	// DECLARE MODULE ON GLOBAL/WINDOW OBJECT //

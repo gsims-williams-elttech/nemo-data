@@ -140,6 +140,33 @@
 				eq(summary.degreeValues.length, 3);
 				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
 			},
+			
+			//nautilus.getAllAverage(studentId)
+			//nautilus.getUnitAverage(studentId, unitName)
+			'it should return an integer between 0 and 100': function () {
+				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 1');
+				eq(typeof unitAverage, 'number');
+				assert(unitAverage <= 100);
+				assert(unitAverage >= 0);
+			},
+			
+			'it should represent the average of all completed LO scores': function () {
+				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 1');
+				const expectedAverage = 74;
+				eq(unitAverage, expectedAverage);
+			},
+			
+			'it should return false if there are no completed LOs': function () {
+				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 12');
+				eq(typeof unitAverage, 'boolean');
+				eq(unitAverage, false);
+			},
+			
+			'it should return the average of first scores if first_score argument is passed': function() {
+				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 1', 'first_score');
+				const expectedAverage = 66;
+				eq(unitAverage, expectedAverage);
+			}
 
 		});
 
