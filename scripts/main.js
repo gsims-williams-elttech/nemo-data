@@ -20,33 +20,31 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
   /************************/
 	
 	document.addEventListener('DOMContentLoaded', () => {
-		
-		//we'll run nautilus.init in here, with callback which does the handlebars work and edits the DOM.
 		nautilus.init( () => {
+			//first we get the names of units, and derive number of units,
+			//and we set up variables which we'll need in our for loop.
 			const unitNames = nautilus.getUnitNames(),
-		  len = unitNames.length;
-			let i = 0,
-					context,
-					summary
-          
+		  			len = unitNames.length;
+			let i = 0;
+      
+			//first loop. For each unit, add a div to the page.
 			for (i; i < len; i++) {
-         summary = nautilus.getUnitSummary('student1', unitNames[i]);
-				context = {
-          unitName: unitNames[i],
-					num: i,
-          aboveTarget: summary.aboveTarget,
-          belowTarget: summary.belowTarget,
-          notStarted: summary.notStarted
-				};
-
+				//start building our context object using the current unit's summary data
+        let context = nautilus.getUnitSummary('student1', unitNames[i]);
+				//add the unit name to the context object
+				context.unitName = unitNames[i];
+				context.num = i;
+				//compile Handlebars html and place it into the DOM
 				document.getElementById('myScores').innerHTML += unitSummaryTemplate(context);
 			}
+			//second loop because chartist doesn't want to behave in loop 1. Add charts to each div.
 			for (i = 0; i < len; i++) {
-        chartSummary = nautilus.getUnitSummary('student1', unitNames[i]);
-				makeChart(`#unitchart-${i}`, chartSummary.degreeValues, chartSummary.percentCompleted);
+        let summary = nautilus.getUnitSummary('student1', unitNames[i]);
+				makeChart(`#unitchart-${i}`, summary.degreeValues, summary.percentCompleted);
 			}
 		});
 		
+		//apply configurations to the data table
 		configureDataTable('unitTable');
 		
 	});
