@@ -29,9 +29,9 @@ lo27,completed,80,80,1,260
 lo28,completed,87,87,1,300
 lo29,completed,90,90,1,750
 lo30,inProgress,,,0,128
-lo31,notStarted,,,0,0
-lo32,notStarted,,,0,0
-lo33,notStarted,,,0,0
+lo31,completed,70,70,1,200
+lo32,completed,76,86,3,350
+lo33,completed,50,55,2,130
 lo34,notStarted,,,0,0
 lo35,notStarted,,,0,0
 lo36,notStarted,,,0,0
@@ -68,7 +68,7 @@ lo66,notStarted,,,0,0
 lo67,notStarted,,,0,0
 lo68,notStarted,,,0,0
 lo69,notStarted,,,0,0
-lo70,notStarted,,,0,0
+lo70,completed,33,33,1,50
 lo71,notStarted,,,0,0
 lo72,notStarted,,,0,0
 lo73,notStarted,,,0,0
