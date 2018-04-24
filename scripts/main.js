@@ -13,11 +13,9 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	
 	const studentId = 'student1',
 				unitSummaryTemplate = getTemplate('unitSummaryTemplate'),
-				tableRowTemplate = getTemplate('tableRowTemplate'),
 				charts = {}, //holds variables created by chartist.js
+				tables = {}, //holds tables created by datatables.js
 				myScores = document.getElementById('myScores');
-	
-	let unitTable;
 
 	/************************/
   /* BIND EVENT LISTENERS */
@@ -33,7 +31,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 				});
 			};
 		});
-		unitTable = configureDataTable('unitTable');
+		tables.unitTable = configureDataTable('unitTable');
 	});
 	
 	/*********************************/
@@ -77,7 +75,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 				results[i].attempts
 			]);
 		}
-		unitTable.clear().rows.add(tableRows).draw();
+		tables.unitTable.clear().rows.add(tableRows).draw();
 	}
 	
 	/********************/
@@ -91,8 +89,13 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	
 	function configureDataTable (elementId) {
 		return $(`#${elementId}`).DataTable({
-			"paging":   false,
-       "info":     false
+			paging:   false,
+      info:     false,
+			order: [],
+			columnDefs: [{
+				targets: 0,
+				orderable: false
+			}]
 		});
 	}
 	
