@@ -28,6 +28,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			for (let i = 0; i < myScores.childNodes.length; i++) {
 				myScores.childNodes[i].addEventListener('click', (e) => {
 					renderUnitTable(e);
+					styleOpenUnit(e);
 				});
 			};
 		});
@@ -76,6 +77,14 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			]);
 		}
 		tables.unitTable.clear().rows.add(tableRows).draw();
+	}
+	
+	//style the open unit	and remove style from other units
+	function styleOpenUnit (event) {			
+		Array.from(event.currentTarget.parentElement.children).forEach( (el) => {
+			el.classList.remove('unit-card-selected');
+		});
+		event.currentTarget.classList.add('unit-card-selected');
 	}
 	
 	/********************/

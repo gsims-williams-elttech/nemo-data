@@ -15,7 +15,14 @@
 }
 
 .unit-card {
-	display: inline-block;
+	box-sizing: border-box;
+	padding-right: 0;
+	margin-right: 5px;
+	max-width: 250px
+}
+
+.unit-card-selected {
+	border-width: 5px;
 }
 
 #unitTable_filter { 

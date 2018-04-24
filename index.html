@@ -82,13 +82,13 @@
     <!--- Handlebars Templates --->
 
     <script id="unitSummaryTemplate" type="text/x-handlebars-template">
-			<div class="card col-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;" data-unit="{{unitName}}">
+			<div class="card col-12 col-sm-6 col-md-4 col-lg-3 unit-card" style="width: 18rem;" data-unit="{{unitName}}">
 				<a class="unitlink" id="home-tab" data-toggle="collapse" href="#u1" role="tab" aria-controls="home" aria-selected="true">
 					<div class="row">
-						<div class= "unitChart col-6" id="unitchart-{{num}}"> 
+						<div class= "unitChart col-7" id="unitchart-{{num}}"> 
 							<div class="card-img-top"></div>
 						</div>
-						<div class="col-6 summaryStats">
+						<div class="col-5 summaryStats">
 							<h5 class="card-title">{{unitName}}</h5>
 							<br class="card-text"><i class="fas fa-star"></i>{{aboveTarget}}
 							<br class="card-text"><i class="fas fa-exclamation-triangle"></i>{{belowTarget}}
