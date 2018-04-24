@@ -34,7 +34,7 @@
 	color: #f4c63d;
 }
 
-.unitlink {
+.unitlink, .unitlink:hover {
 	text-decoration: none;
 	color: #000;
 }
