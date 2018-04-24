@@ -30,8 +30,17 @@
 	color: #5cb85c;
 }
 
-.badge-below {
+.fa-circle {
+	color: #e9ecef;
+}
+
+.fa-exclamation-triangle {
 	color: #f4c63d;
+}
+
+.summaryStats i {
+	width: 20px;
+	margin-right: 10px;
 }
 
 .unitlink, .unitlink:hover {
