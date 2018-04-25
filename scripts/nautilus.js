@@ -22,7 +22,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 	let __studentIDs = []; //array of student IDs (get from JSON file)
 	let __results = {}; //student results against each LO in course
 	let __courseStructureArray = []; //the course structure as an array
-
+  
 	// fetch CSV file via XMLHttpRequest
 	function __fetchCSV(path, callback) {
 		const request = new XMLHttpRequest();
@@ -64,11 +64,12 @@ Handles logic for you, e.g. aggregating scores and progress.
 
 	// calculate each LO's status (above/below target) based on score
 	function __calculateStatus(res) {
-		let i = 0,
+		let threshold = localStorage.getItem("threshold") ? localStorage.getItem("threshold") : 70,
+        i = 0,
 				len = res.length;
 		for (i; i < len; i++) {
 			if (res[i].status === 'completed') {
-				res[i].status = res[i].best_score >= 70 ? 'aboveTarget' : 'belowTarget';
+				res[i].status = res[i].best_score >= threshold ? 'aboveTarget' : 'belowTarget';
 			}
 		}
 		return res;
@@ -179,6 +180,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 				});
 			}
 		});
+    
 	};
 
 	//returns an array of all student IDs
