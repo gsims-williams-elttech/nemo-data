@@ -35,7 +35,7 @@
     </nav>
 
     <div class="jumbotron jumbotron-fluid">
-      <div class="row">
+      <div class="row productInfo">
         <div class="col-sm-12 col-md-3">
           <img src="assets/evolve_logo.png" class="img-fluid">
         </div>
@@ -57,28 +57,26 @@
 
     <div class="container-fluid">
       <div class="row unit-row collapse show" id="myScores"></div>
+			<div class="row">
+				<div class="col-12">
+					<div class="collapse multi-collapse" id="u1">
+						<table class="table table-borderless" id="unitTable">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">Activity Name</th>
+									<th scope="col">First Score</th>
+									<th scope="col">Best Score</th>
+									<th scope="col">Attempts</th>
+								</tr>
+							</thead>
+							<tbody id="unitTableBody"></tbody>
+						</table>
+					</div>
+      	</div>
     </div>
-
-
-    <div class="row">
-      <div class="col-12">
-        <div class="collapse multi-collapse" id="u1">
-          <table class="table table-borderless" id="unitTable">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Activity Name</th>
-                <th scope="col">First Score</th>
-                <th scope="col">Best Score</th>
-                <th scope="col">Attempts</th>
-              </tr>
-            </thead>
-            <tbody id="unitTableBody"></tbody>
-          </table>
-        </div>
-      </div>
     </div>
-
-
+		
+		
     <!--- Handlebars Templates --->
 
     <script id="unitSummaryTemplate" type="text/x-handlebars-template">

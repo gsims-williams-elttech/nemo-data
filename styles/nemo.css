@@ -8,10 +8,21 @@
 	padding-right:30px;
 }
 
+.productInfo {
+	box-sizing: border-box;
+	max-width: 100%;
+}
+
 .scrolling-wrapper {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	white-space: nowrap;
+}
+
+.unit-row {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	flex-wrap: nowrap;
 }
 
 .unit-card {
@@ -53,15 +64,4 @@
 .unitlink, .unitlink:hover {
 	text-decoration: none;
 	color: #000;
-}
-
-/* Bootstrap overrides below */
-
-.container-fluid {
-	overflow-x: scroll;
-	overflow-y: hidden;
-}
-
-.unit-row {
-	flex-wrap: nowrap;
 }
