@@ -42,11 +42,12 @@
 
         <div class="col-sm-12 col-md-9">
           <h1 class="display-4">Evolve 1</h1>
+          <div id="productSummary" class="productSummary"></div>
           <p class="lead">2018 Adult English course.</p>
           <p>Quick overview and description about the product, its focus
             and why this can help you as a learner or teacher (text can
             adapt?) …
-          </p> 
+          </p>
           <p>
             <a class="btn btn-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="myScores">Overview</a>
             <a class="btn btn-light" data-toggle="collapse" data-target="#myScores" aria-expanded="false" aria-controls="myScores">My Scores</a>
@@ -89,12 +90,21 @@
 						<div class="col-5 summaryStats">
 							<h5 class="card-title">{{unitName}}</h5>
 							<br class="card-text"><i class="fas fa-star"></i>{{aboveTarget}}
-							<br class="card-text"><i class="fas fa-exclamation-triangle"></i>{{belowTarget}}
+							<br class="card-text"><i class="fas fa-exclamation-triangle"></i>{{belowTarget}} 
 							<br class="card-text"><i class="far fa-circle"></i>{{notStarted}} 
 						</div>
 					</div>
 				</a>
 			</div>
+    </script>
+    
+    <script id="productSummaryTemplate" type="text/x-handlebars-template">
+        <div>
+          <div class="completionTitle">Completed: {{percentCompleted}}%</div>
+          <span class="productSummaryItems"><i class="fas fa-star"></i>{{aboveTarget}}</span>
+          <span class="productSummaryItems"><i class="fas fa-check-circle"></i>{{belowTarget}}</span> 
+          <span class="productSummaryItems"><i class="far fa-circle"></i>{{notStarted}}</span>
+        </div>
     </script>
 
     <!--- Scripts, libraries --->

@@ -13,7 +13,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	
 	const studentId = 'student1',
 				unitSummaryTemplate = getTemplate('unitSummaryTemplate'),
-				charts = {}, //holds variables created by chartist.js
+				productSummaryTemplate = getTemplate('productSummaryTemplate'),
+        charts = {}, //holds variables created by chartist.js
 				tables = {}, //holds tables created by datatables.js
 				myScores = document.getElementById('myScores');
 
@@ -23,6 +24,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	
 	document.addEventListener('DOMContentLoaded', () => {
 		nautilus.init( () => {
+      renderProductSummary();
 			renderUnitSummaries();
 			//add a click listener to each div inside myScores
 			for (let i = 0; i < myScores.childNodes.length; i++) {
@@ -38,6 +40,11 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/*********************************/
   /* FUNCTIONS FOR EVENT LISTENERS */
   /*********************************/
+  
+  function renderProductSummary (){
+    let context = nautilus.getAllSummary('student1');
+    document.getElementById('productSummary').innerHTML += productSummaryTemplate(context);
+  }
 	
 	function renderUnitSummaries () {
 		//first we get the names of units, and derive number of units,
