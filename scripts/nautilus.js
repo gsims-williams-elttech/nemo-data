@@ -246,6 +246,12 @@ Handles logic for you, e.g. aggregating scores and progress.
 		const results = nautilus.getUnitResults(studentId, unitName);
 		return __averageScore(results, scoreType);
 	}
+  
+  //returns the average of all best/first scores in a lesson, or false if no completed LOs
+  nautilus.getLessonAverage = function (studentId, unitName, lessonName, scoreType) {
+    const results = nautilus.getLessonResults(studentId, unitName, lessonName);
+		return __averageScore(results, scoreType);
+  }
 
 	/*----------------------------------------*/
 	// DECLARE MODULE ON GLOBAL/WINDOW OBJECT //
