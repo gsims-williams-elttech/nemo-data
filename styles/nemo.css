@@ -19,16 +19,22 @@
 	white-space: nowrap;
 }
 
+.container--nopadding {
+	width: 100%;
+	padding: 0;
+}
+
 .unit-row {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	flex-wrap: nowrap;
+	width: auto;
 }
 
 .unit-card {
 	box-sizing: border-box;
 	padding-right: 0;
-	margin-right: 5px;
+	margin-right: 2px;
 	max-width: 230px
 }
 
