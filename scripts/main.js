@@ -47,11 +47,12 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/* FUNCTIONS FOR EVENT LISTENERS */
 	/*********************************/
 
-	function renderProductSummary (){
-		let context = nautilus.getAllSummary('student1');
-		document.getElementById('productSummary').innerHTML += productSummaryTemplate(context);
-	}
-
+  function renderProductSummary (){
+    let context = nautilus.getAllSummary('student1');
+    context.active_time += nautilus.getTotalTime('student1');
+    document.getElementById('productSummary').innerHTML += productSummaryTemplate(context);
+  }
+	
 	function renderUnitSummaries () {
 		//first we get the names of units, and derive number of units,
 		//and we set up variables which we'll need in our for loop.

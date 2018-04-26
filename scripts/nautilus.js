@@ -137,6 +137,14 @@ Handles logic for you, e.g. aggregating scores and progress.
 		average = completedNum ? Math.round(average / completedNum) : false;
 		return average;
 	}
+  
+  //convert time spent in the product/unit into hours, minutes and seconds.
+  function __timeSpent (value) {
+    let hours = Math.floor(value.active_time / 3600);
+    let minutes = Math.floor((value.active_time - (hours * 3600)) / 60);
+    let timeLearning = hours +':'+ minutes;
+    return timeLearning;
+  }
 
 	/*----------------*/
 	// PUBLIC METHODS //
@@ -254,6 +262,15 @@ Handles logic for you, e.g. aggregating scores and progress.
     const results = nautilus.getLessonResults(studentId, unitName, lessonName);
 		return __averageScore(results, scoreType);
   }
+  
+  //Calculate total time spent in the product
+  nautilus.getTotalTime = function (studentId) {
+    let totalTime = __results[studentId].reduce((a, b) => ({active_time: a.active_time + b.active_time}));
+    return __timeSpent(totalTime);
+    }
+                            
+                              
+  
 
 	/*----------------------------------------*/
 	// DECLARE MODULE ON GLOBAL/WINDOW OBJECT //
