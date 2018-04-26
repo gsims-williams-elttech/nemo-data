@@ -32,7 +32,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 					renderUnitTable(e);
 					styleOpenUnit(e);
 				});
-			};
+			}
 		});
 		tables.unitTable = configureDataTable('unitTable');
 	});
@@ -146,5 +146,6 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 				})
 			],
 		});
+	}
 
 })();
