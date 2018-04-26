@@ -62,7 +62,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 		return result;
 	}
 
-	// calculate each LO's status (above/below target) based on score
+	// calculate each LO's status (above/below target) based on score, and convert blank scores to '-'
 	function __calculateStatus(res) {
 		let threshold = localStorage.getItem("threshold") ? localStorage.getItem("threshold") : 70,
         i = 0,
@@ -70,6 +70,9 @@ Handles logic for you, e.g. aggregating scores and progress.
 		for (i; i < len; i++) {
 			if (res[i].status === 'completed') {
 				res[i].status = res[i].best_score >= threshold ? 'aboveTarget' : 'belowTarget';
+			} else {
+				res[i].best_score = '-';
+				res[i].first_score = '-';
 			}
 		}
 		return res;
@@ -267,10 +270,7 @@ Handles logic for you, e.g. aggregating scores and progress.
   nautilus.getTotalTime = function (studentId) {
     let totalTime = __results[studentId].reduce((a, b) => ({active_time: a.active_time + b.active_time}));
     return __timeSpent(totalTime);
-    }
-                            
-                              
-  
+	}
 
 	/*----------------------------------------*/
 	// DECLARE MODULE ON GLOBAL/WINDOW OBJECT //
