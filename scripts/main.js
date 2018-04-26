@@ -97,8 +97,15 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			tableArea.insertAdjacentHTML('beforeend', lessonTableTemplate(context));
 			//prepare data for the table, row by row
 			for (j = 0; j < results.length; j++) {
+				//get an icon depending on status
+				let icon = 'far fa-circle';
+				if (results[j].status === 'aboveTarget') {
+					icon = 'fas fa-star';
+				} else if (results[j].status === 'belowTarget') {
+					icon = 'fas fa-check-circle';
+				}
 				tableRows.push([
-					results[j].LO_name,
+					`<i class="${icon}"></i> ${results[j].LO_name}`,
 					results[j].first_score,
 					results[j].best_score,
 					results[j].attempts
