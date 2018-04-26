@@ -6,25 +6,25 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 /*jshint esversion:6, devel: true, browser: true*/
 
 (function () {
-	
+
 	/********************/
-  /* SET UP VARIABLES */
-  /********************/
-	
+	/* SET UP VARIABLES */
+	/********************/
+
 	const studentId = 'student1',
 				unitSummaryTemplate = getTemplate('unitSummaryTemplate'),
 				productSummaryTemplate = getTemplate('productSummaryTemplate'),
-        charts = {}, //holds variables created by chartist.js
+				charts = {}, //holds variables created by chartist.js
 				tables = {}, //holds tables created by datatables.js
 				myScores = document.getElementById('myScores');
 
 	/************************/
-  /* BIND EVENT LISTENERS */
-  /************************/
-	
+	/* BIND EVENT LISTENERS */
+	/************************/
+
 	document.addEventListener('DOMContentLoaded', () => {
 		nautilus.init( () => {
-      renderProductSummary();
+			renderProductSummary();
 			renderUnitSummaries();
 			//add a click listener to each div inside myScores
 			for (let i = 0; i < myScores.childNodes.length; i++) {
@@ -36,16 +36,16 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		});
 		tables.unitTable = configureDataTable('unitTable');
 	});
-	
+
 	/*********************************/
-  /* FUNCTIONS FOR EVENT LISTENERS */
-  /*********************************/
-  
-  function renderProductSummary (){
-    let context = nautilus.getAllSummary('student1');
-    document.getElementById('productSummary').innerHTML += productSummaryTemplate(context);
-  }
-	
+	/* FUNCTIONS FOR EVENT LISTENERS */
+	/*********************************/
+
+	function renderProductSummary (){
+		let context = nautilus.getAllSummary('student1');
+		document.getElementById('productSummary').innerHTML += productSummaryTemplate(context);
+	}
+
 	function renderUnitSummaries () {
 		//first we get the names of units, and derive number of units,
 		//and we set up variables which we'll need in our for loop.
@@ -69,7 +69,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			makeChart(`#unitchart-${i}`, summary.degreeValues, summary.percentCompleted);
 		}
 	}
-	
+
 	function renderUnitTable (event) {
 		const unitName = event.currentTarget.dataset.unit,
 					results = nautilus.getUnitResults(studentId, unitName),
@@ -89,7 +89,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		//reveal the table area
 		document.getElementById('tableArea').classList.remove('d-none');
 	}
-	
+
 	//style the open unit	and remove style from other units
 	function styleOpenUnit (event) {			
 		Array.from(event.currentTarget.parentElement.children).forEach( (el) => {
@@ -97,20 +97,20 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		});
 		event.currentTarget.classList.add('unit-card-selected');
 	}
-	
+
 	/********************/
-  /* HELPER FUNCTIONS */
-  /********************/
-	
+	/* HELPER FUNCTIONS */
+	/********************/
+
 	//shortcut which generates & returns a handlebars template
 	function getTemplate (elementId) {
-    return Handlebars.compile(document.getElementById(elementId).innerHTML);
-  }
-	
+		return Handlebars.compile(document.getElementById(elementId).innerHTML);
+	}
+
 	function configureDataTable (elementId) {
 		return $(`#${elementId}`).DataTable({
 			paging:   false,
-      info:     false,
+			info:     false,
 			order: [],
 			columnDefs: [{
 				targets: 0,
@@ -118,7 +118,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			}]
 		});
 	}
-	
+
 	//takes string, array of series values, and percent integer; makes chart on page
 	function makeChart (id, series, percent) {
 		charts[id] = new Chartist.Pie(id, {
@@ -139,14 +139,12 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 						offsetX: -2
 					}, {
 						content: `<h5>${percent}<span class="small">%</span></h5>`,
-            offsetY : 0,
+						offsetY : 0,
 						offsetX: 0,
-            margin: 'auto',
+						margin: 'auto',
 					}]
 				})
 			],
 		});
-	}
 
-	
 })();
