@@ -75,6 +75,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 					results = nautilus.getUnitResults(studentId, unitName),
 					tableRows = [];
 		let i = 0;
+		//populate the table, row by row
 		for (i; i < results.length; i++) {
 			tableRows.push([
 				results[i].LO_name,
@@ -83,7 +84,10 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 				results[i].attempts
 			]);
 		}
+		//draw the new unit table
 		tables.unitTable.clear().rows.add(tableRows).draw();
+		//reveal the table area
+		document.getElementById('tableArea').classList.remove('d-none');
 	}
 	
 	//style the open unit	and remove style from other units

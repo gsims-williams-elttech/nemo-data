@@ -78,6 +78,7 @@
 .unitlink, .unitlink:hover {
 	text-decoration: none;
 	color: #000;
+	cursor: pointer;
 }
 
 .productSummary {
