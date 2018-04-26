@@ -87,6 +87,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 				results,
 				context = {};
 		tableArea.innerHTML = "";
+		//reveal the table area
+		tableArea.classList.remove('d-none');
 		//loop through each lesson in the unit
 		for (i; i < lessons.length; i++) {
 			tableRows = [];
@@ -114,9 +116,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			//configure and draw the lesson table
 			tables[context.id] = configureDataTable(context.id);
 			tables[context.id].clear().rows.add(tableRows).draw();
-		}		
-		//reveal the table area
-		tableArea.classList.remove('d-none');
+		}
 	}
 
 	//style the open unit	and remove style from other units
@@ -144,7 +144,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			order: [],
 			columnDefs: [{
 				targets: 0,
-				orderable: false
+				orderable: false,
+				width: '40%'
 			}]
 		});
 	}
