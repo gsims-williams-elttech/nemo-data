@@ -42,7 +42,7 @@
 	border-width: 5px;
 }
 
-#unitTable_filter { 
+#tableArea .dataTables_filter { 
 	display: none;
 }
 

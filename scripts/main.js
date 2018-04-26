@@ -12,6 +12,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/********************/
 
 	const studentId = 'student1',
+				lessonTableTemplate = getTemplate('lessonTableTemplate'),
 				unitSummaryTemplate = getTemplate('unitSummaryTemplate'),
 				productSummaryTemplate = getTemplate('productSummaryTemplate'),
 				charts = {}, //holds variables created by chartist.js
@@ -29,12 +30,17 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			//add a click listener to each div inside myScores
 			for (let i = 0; i < myScores.childNodes.length; i++) {
 				myScores.childNodes[i].addEventListener('click', (e) => {
-					renderUnitTable(e);
-					styleOpenUnit(e);
+					//hide or show the tableArea
+					if (event.currentTarget.classList.contains('unit-card-selected')) {
+						document.getElementById('tableArea').classList.add('d-none');
+						event.currentTarget.classList.remove('unit-card-selected');
+					} else {
+						renderUnitTables(e);
+						styleOpenUnit(e);
+					}
 				});
 			}
 		});
-		tables.unitTable = configureDataTable('unitTable');
 	});
 
 	/*********************************/
@@ -70,24 +76,39 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		}
 	}
 
-	function renderUnitTable (event) {
+	function renderUnitTables (event) {
 		const unitName = event.currentTarget.dataset.unit,
-					results = nautilus.getUnitResults(studentId, unitName),
-					tableRows = [];
-		let i = 0;
-		//populate the table, row by row
-		for (i; i < results.length; i++) {
-			tableRows.push([
-				results[i].LO_name,
-				results[i].first_score,
-				results[i].best_score,
-				results[i].attempts
-			]);
-		}
-		//draw the new unit table
-		tables.unitTable.clear().rows.add(tableRows).draw();
+					lessons = nautilus.getLessonNames(unitName),
+					tableArea = document.getElementById('tableArea');
+		let i = 0,
+				j = 0,
+				tableRows,
+				results,
+				context = {};
+		tableArea.innerHTML = "";
+		//loop through each lesson in the unit
+		for (i; i < lessons.length; i++) {
+			tableRows = [];
+			results = nautilus.getLessonResults(studentId, unitName, lessons[i]);
+			context.lessonName = lessons[i];
+			context.id = `lessonTable-${i}`;
+			//use handlebars to create empty table and insert into DOM
+			tableArea.insertAdjacentHTML('beforeend', lessonTableTemplate(context));
+			//prepare data for the table, row by row
+			for (j = 0; j < results.length; j++) {
+				tableRows.push([
+					results[j].LO_name,
+					results[j].first_score,
+					results[j].best_score,
+					results[j].attempts
+				]);
+			}
+			//configure and draw the lesson table
+			tables[context.id] = configureDataTable(context.id);
+			tables[context.id].clear().rows.add(tableRows).draw();
+		}		
 		//reveal the table area
-		document.getElementById('tableArea').classList.remove('d-none');
+		tableArea.classList.remove('d-none');
 	}
 
 	//style the open unit	and remove style from other units
@@ -110,6 +131,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	function configureDataTable (elementId) {
 		return $(`#${elementId}`).DataTable({
 			paging:   false,
+			retrieve: true,
 			info:     false,
 			order: [],
 			columnDefs: [{

@@ -60,19 +60,7 @@
       <div class="row unit-row collapse show no-gutters" id="myScores"></div>
 			<div class="row no-gutters">
 				<div class="col-12">
-					<div class="table-responsive d-none" id="tableArea">
-						<table class="table table-sm" id="unitTable">
-							<thead class="thead-light">
-								<tr>
-									<th scope="col">Activity Name</th>
-									<th scope="col">First Score</th>
-									<th scope="col">Best Score</th>
-									<th scope="col">Attempts</th>
-								</tr>
-							</thead>
-							<tbody id="unitTableBody"></tbody>
-						</table>
-					</div>
+					<div class="table-responsive d-none" id="tableArea"></div>
 				</div>
 			</div>
     </div>
@@ -104,6 +92,21 @@
           <span class="productSummaryItems"><i class="far fa-circle"></i>{{notStarted}}</span>
         </div>
     </script>
+		
+		<script id="lessonTableTemplate" type="text/x-handlebars-template">
+			<h6 class="">{{lessonName}}</h6>
+			<table class="table table-sm" id="{{id}}">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">Activity Name</th>
+						<th scope="col">First Score</th>
+						<th scope="col">Best Score</th>
+						<th scope="col">Attempts</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</script>
 
     <!--- Scripts, libraries --->
 
