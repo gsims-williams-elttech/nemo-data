@@ -144,8 +144,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			order: [],
 			columnDefs: [{
 				targets: 0,
-				orderable: false,
-				width: '40%'
+				orderable: false
+				//width: '40%'
 			}]
 		});
 	}
