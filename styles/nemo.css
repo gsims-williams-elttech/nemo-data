@@ -50,6 +50,10 @@
 	font-size: 1.5em;
 }
 
+.lessonTitle {
+	padding: 20px 0 5px 15px;
+}
+
 .fa-star {
 	color: #5cb85c;
   padding-right: 10px;

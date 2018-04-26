@@ -60,7 +60,7 @@
       <div class="row unit-row collapse show no-gutters" id="myScores"></div>
 			<div class="row no-gutters">
 				<div class="col-12">
-					<div class="table-responsive d-none" id="tableArea"></div>
+					<div class="d-none" id="tableArea"></div>
 				</div>
 			</div>
     </div>
@@ -95,18 +95,20 @@
     </script>
 		
 		<script id="lessonTableTemplate" type="text/x-handlebars-template">
-			<h6 class="">{{lessonName}}</h6>
-			<table class="table table-sm" id="{{id}}">
-				<thead class="thead-light">
-					<tr>
-						<th scope="col">Activity Name</th>
-						<th scope="col">First Score</th>
-						<th scope="col">Best Score</th>
-						<th scope="col">Attempts</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
+			<h5 class="lessonTitle">{{lessonName}}</h5>
+			<div class="table-responsive">
+				<table class="table table-sm" id="{{id}}" cellspacing="0">
+					<thead>
+						<tr>
+							<th scope="col">Activity Name</th>
+							<th scope="col">First Score</th>
+							<th scope="col">Best Score</th>
+							<th scope="col">Attempts</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
 		</script>
 
     <!--- Scripts, libraries --->
