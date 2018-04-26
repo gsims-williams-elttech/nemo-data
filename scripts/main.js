@@ -49,7 +49,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 
   function renderProductSummary (){
     let context = nautilus.getAllSummary('student1');
-    context.active_time += nautilus.getTotalTime('student1');
+    context.active_time = nautilus.getTotalTime('student1');
     document.getElementById('productSummary').innerHTML += productSummaryTemplate(context);
   }
 	
