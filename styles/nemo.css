@@ -106,5 +106,7 @@
 }
 
 .productSummaryItems {
+	display: block;
   padding-right: 10px;
+	margin: 16px 0;
 }
