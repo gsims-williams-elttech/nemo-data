@@ -54,9 +54,25 @@
 	padding: 20px 0 5px 15px;
 }
 
+.fa-layers {
+	position: relative;
+	width: 20px;
+}
+
 .fa-star {
 	color: #5cb85c;
   padding-right: 10px;
+}
+
+.far.fa-star {
+	color: #f4c63d;
+}
+
+.fa-star-half {
+	color: #f4c63d;
+	position: absolute;
+	top: 4px;
+	left: -1px;
 }
 
 .fa-circle {

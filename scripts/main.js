@@ -100,14 +100,14 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			//prepare data for the table, row by row
 			for (j = 0; j < results.length; j++) {
 				//get an icon depending on status
-				let icon = 'far fa-circle';
+				let icon = "<i class='far fa-circle'></i>";
 				if (results[j].status === 'aboveTarget') {
-					icon = 'fas fa-star';
+					icon = "<i class='fas fa-star'></i>"
 				} else if (results[j].status === 'belowTarget') {
-					icon = 'fas fa-check-circle';
+					icon = "<span class='fa-layers fa-fw'><i class='far fa-star'></i><i class='fas fa-star-half'></i></span>";
 				}
 				tableRows.push([
-					`<i class="${icon}"></i> ${results[j].LO_name}`,
+					`${icon} ${results[j].LO_name}`,
 					results[j].first_score,
 					results[j].best_score,
 					results[j].attempts
