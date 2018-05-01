@@ -83,7 +83,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 		if (results[0].LO_name === undefined) {
 			results.map( (x) => {
 				x.LO_name = __courseStructure[x.LO_id].LO_name;
-				x.lesson_name = __courseStructure[x.LO_id].lesson_name;
+				x.lesson_name = __courseStructure[x.LO_id].lesson_name || null;
 				x.unit_name = __courseStructure[x.LO_id].unit_name;
 				return x;
 			});
@@ -215,7 +215,8 @@ Handles logic for you, e.g. aggregating scores and progress.
 		const names = [],
 					los = __courseStructureArray.filter( el => el.unit_name === unitName);
 		los.forEach( el => {
-			if (!names.includes(el.lesson_name)) {
+			//only get unique and non-null lesson names
+			if (!names.includes(el.lesson_name) && el.lesson_name) {
 				names.push(el.lesson_name);
 			}
 		});
