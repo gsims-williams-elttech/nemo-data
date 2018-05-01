@@ -82,38 +82,38 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 					lessons = nautilus.getLessonNames(unitName),
 					tableArea = document.getElementById('tableArea');
 		let i = 0,
-				j = 0,
 				tableRows,
 				results,
 				context = {};
+		
+		//reveal the (emptied) table area
 		tableArea.innerHTML = "";
-		//reveal the table area
 		tableArea.classList.remove('d-none');
+		
 		//loop through each lesson in the unit
 		for (i; i < lessons.length; i++) {
-			tableRows = [];
-			results = nautilus.getLessonResults(studentId, unitName, lessons[i]);
-			context.lessonName = lessons[i];
-			context.id = `lessonTable-${i}`;
 			//use handlebars to create empty table and insert into DOM
+			context = {
+				lessonName: lessons[i],
+				id: `lessonTable-${i}`
+			};
 			tableArea.insertAdjacentHTML('beforeend', lessonTableTemplate(context));
 			//prepare data for the table, row by row
-			for (j = 0; j < results.length; j++) {
-				//get an icon depending on status
-				let icon = "<i class='far fa-circle'></i>";
-				if (results[j].status === 'aboveTarget') {
-					icon = "<i class='fas fa-star'></i>"
-				} else if (results[j].status === 'belowTarget') {
-					icon = "<span class='fa-layers fa-fw'><i class='far fa-star'></i><i class='fas fa-star-half'></i></span>";
-				}
-				tableRows.push([
-					`${icon} ${results[j].LO_name}`,
-					results[j].first_score,
-					results[j].best_score,
-					results[j].attempts
-				]);
-			}
+			results = nautilus.getLessonResults(studentId, unitName, lessons[i]);
+			tableRows = tabularise(results);
 			//configure and draw the lesson table
+			tables[context.id] = configureDataTable(context.id);
+			tables[context.id].clear().rows.add(tableRows).draw();
+		}
+		
+		//handle units without lessons
+		if (!lessons.length) {
+			context = {
+				noLessons: true,
+				id: `unitTable-${unitName}`
+			};
+			tableArea.insertAdjacentHTML('beforeend', lessonTableTemplate(context));
+			tableRows = tabularise(nautilus.getUnitResults(studentId, unitName));
 			tables[context.id] = configureDataTable(context.id);
 			tables[context.id].clear().rows.add(tableRows).draw();
 		}
@@ -177,6 +177,28 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 				})
 			],
 		});
+	}
+	
+	//takes array of LO results and prepares it into rows for rendering as table
+	function tabularise (results) {
+		let tableRows = [],
+				i = 0;
+		for (i; i < results.length; i++) {
+			//get an icon depending on status
+			let icon = "<i class='far fa-circle'></i>";
+			if (results[i].status === 'aboveTarget') {
+				icon = "<i class='fas fa-star'></i>"
+			} else if (results[i].status === 'belowTarget') {
+				icon = "<span class='fa-layers fa-fw'><i class='far fa-star'></i><i class='fas fa-star-half'></i></span>";
+			}
+			tableRows.push([
+				`${icon} ${results[i].LO_name}`,
+				results[i].first_score,
+				results[i].best_score,
+				results[i].attempts
+			]);
+		}
+		return tableRows;
 	}
 
 })();
