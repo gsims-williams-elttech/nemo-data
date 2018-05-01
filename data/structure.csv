@@ -1,340 +1,340 @@
 unit_name,lesson_name,LO_name,LO_id,nonscorable
-Unit 1,Lesson 1,Vocab catch-up,lo1,FALSE
-Unit 1,Lesson 1,Vocabulary 1,lo2,FALSE
-Unit 1,Lesson 1,Vocabulary 2,lo3,FALSE
-Unit 1,Lesson 1,Vocabulary 3,lo4,FALSE
-Unit 1,Lesson 1,Vocabulary 4,lo5,FALSE
-Unit 1,Lesson 1,Grammar catch-up,lo6,FALSE
-Unit 1,Lesson 1,Grammar activity 1,lo7,FALSE
-Unit 1,Lesson 1,Grammar activity 2,lo8,FALSE
-Unit 1,Lesson 1,Grammar activity 3,lo9,FALSE
-Unit 1,Lesson 2,Vocab catch-up,lo10,FALSE
-Unit 1,Lesson 2,Vocabulary 1,lo11,FALSE
-Unit 1,Lesson 2,Vocabulary 2,lo12,FALSE
-Unit 1,Lesson 2,Grammar catch-up,lo13,FALSE
-Unit 1,Lesson 2,Grammar activity 1,lo14,FALSE
-Unit 1,Lesson 2,Grammar activity 2,lo15,FALSE
-Unit 1,Lesson 2,Grammar activity 3,lo16,FALSE
-Unit 1,Lesson 3,Functional language activity,lo17,FALSE
-Unit 1,Lesson 3,Real world strategy,lo18,FALSE
-Unit 1,Lesson 3,Audio Roleplay,lo19,TRUE
-Unit 1,Lesson 3,Audio Roleplay,lo20,TRUE
-Unit 1,Lesson 4,Pre-reading/listening,lo21,FALSE
-Unit 1,Lesson 4,readling/listening,lo22,FALSE
-Unit 1,Lesson 4,writing practice,lo23,FALSE
-Unit 1,Lesson 4,free-writing activity,lo24,TRUE
-Unit 1,Lesson 5,grammar and vocab review,lo25,FALSE
-Unit 1,Lesson 5,useful language 1,lo26,FALSE
-Unit 1,Lesson 5,useful language 2,lo27,FALSE
-Unit 1,Lesson 5,Free speaking activity,lo28,TRUE
-Unit 2,Lesson 1,Vocab catch-up,lo29,FALSE
-Unit 2,Lesson 1,Vocabulary 1,lo30,FALSE
-Unit 2,Lesson 1,Vocabulary 2,lo31,FALSE
-Unit 2,Lesson 1,Vocabulary 3,lo32,FALSE
-Unit 2,Lesson 1,Vocabulary 4,lo33,FALSE
-Unit 2,Lesson 1,Grammar catch-up,lo34,FALSE
-Unit 2,Lesson 1,Grammar activity 1,lo35,FALSE
-Unit 2,Lesson 1,Grammar activity 2,lo36,FALSE
-Unit 2,Lesson 1,Grammar activity 3,lo37,FALSE
-Unit 2,Lesson 2,Vocab catch-up,lo38,FALSE
-Unit 2,Lesson 2,Vocabulary 1,lo39,FALSE
-Unit 2,Lesson 2,Vocabulary 2,lo40,FALSE
-Unit 2,Lesson 2,Grammar catch-up,lo41,FALSE
-Unit 2,Lesson 2,Grammar activity 1,lo42,FALSE
-Unit 2,Lesson 2,Grammar activity 2,lo43,FALSE
-Unit 2,Lesson 2,Grammar activity 3,lo44,FALSE
-Unit 2,Lesson 3,Functional language activity,lo45,FALSE
-Unit 2,Lesson 3,Real world strategy,lo46,FALSE
-Unit 2,Lesson 3,Audio Roleplay,lo47,TRUE
-Unit 2,Lesson 3,Audio Roleplay,lo48,TRUE
-Unit 2,Lesson 4,Pre-reading/listening,lo49,FALSE
-Unit 2,Lesson 4,readling/listening,lo50,FALSE
-Unit 2,Lesson 4,writing practice,lo51,FALSE
-Unit 2,Lesson 4,free-writing activity,lo52,TRUE
-Unit 2,Lesson 5,grammar and vocab review,lo53,FALSE
-Unit 2,Lesson 5,useful language 1,lo54,FALSE
-Unit 2,Lesson 5,useful language 2,lo55,FALSE
-Unit 2,Lesson 5,Free speaking activity,lo56,TRUE
-Unit 3,Lesson 1,Vocab catch-up,lo57,FALSE
-Unit 3,Lesson 1,Vocabulary 1,lo58,FALSE
-Unit 3,Lesson 1,Vocabulary 2,lo59,FALSE
-Unit 3,Lesson 1,Vocabulary 3,lo60,FALSE
-Unit 3,Lesson 1,Vocabulary 4,lo61,FALSE
-Unit 3,Lesson 1,Grammar catch-up,lo62,FALSE
-Unit 3,Lesson 1,Grammar activity 1,lo63,FALSE
-Unit 3,Lesson 1,Grammar activity 2,lo64,FALSE
-Unit 3,Lesson 1,Grammar activity 3,lo65,FALSE
-Unit 3,Lesson 2,Vocab catch-up,lo66,FALSE
-Unit 3,Lesson 2,Vocabulary 1,lo67,FALSE
-Unit 3,Lesson 2,Vocabulary 2,lo68,FALSE
-Unit 3,Lesson 2,Grammar catch-up,lo69,FALSE
-Unit 3,Lesson 2,Grammar activity 1,lo70,FALSE
-Unit 3,Lesson 2,Grammar activity 2,lo71,FALSE
-Unit 3,Lesson 2,Grammar activity 3,lo72,FALSE
-Unit 3,Lesson 3,Functional language activity,lo73,FALSE
-Unit 3,Lesson 3,Real world strategy,lo74,FALSE
-Unit 3,Lesson 3,Audio Roleplay,lo75,TRUE
-Unit 3,Lesson 3,Audio Roleplay,lo76,TRUE
-Unit 3,Lesson 4,Pre-reading/listening,lo77,FALSE
-Unit 3,Lesson 4,readling/listening,lo78,FALSE
-Unit 3,Lesson 4,writing practice,lo79,FALSE
-Unit 3,Lesson 4,free-writing activity,lo80,TRUE
-Unit 3,Lesson 5,grammar and vocab review,lo81,FALSE
-Unit 3,Lesson 5,useful language 1,lo82,FALSE
-Unit 3,Lesson 5,useful language 2,lo83,FALSE
-Unit 3,Lesson 5,Free speaking activity,lo84,TRUE
-Unit 4,Lesson 1,Vocab catch-up,lo85,FALSE
-Unit 4,Lesson 1,Vocabulary 1,lo86,FALSE
-Unit 4,Lesson 1,Vocabulary 2,lo87,FALSE
-Unit 4,Lesson 1,Vocabulary 3,lo88,FALSE
-Unit 4,Lesson 1,Vocabulary 4,lo89,FALSE
-Unit 4,Lesson 1,Grammar catch-up,lo90,FALSE
-Unit 4,Lesson 1,Grammar activity 1,lo91,FALSE
-Unit 4,Lesson 1,Grammar activity 2,lo92,FALSE
-Unit 4,Lesson 1,Grammar activity 3,lo93,FALSE
-Unit 4,Lesson 2,Vocab catch-up,lo94,FALSE
-Unit 4,Lesson 2,Vocabulary 1,lo95,FALSE
-Unit 4,Lesson 2,Vocabulary 2,lo96,FALSE
-Unit 4,Lesson 2,Grammar catch-up,lo97,FALSE
-Unit 4,Lesson 2,Grammar activity 1,lo98,FALSE
-Unit 4,Lesson 2,Grammar activity 2,lo99,FALSE
-Unit 4,Lesson 2,Grammar activity 3,lo100,FALSE
-Unit 4,Lesson 3,Functional language activity,lo101,FALSE
-Unit 4,Lesson 3,Real world strategy,lo102,FALSE
-Unit 4,Lesson 3,Audio Roleplay,lo103,TRUE
-Unit 4,Lesson 3,Audio Roleplay,lo104,TRUE
-Unit 4,Lesson 4,Pre-reading/listening,lo105,FALSE
-Unit 4,Lesson 4,readling/listening,lo106,FALSE
-Unit 4,Lesson 4,writing practice,lo107,FALSE
-Unit 4,Lesson 4,free-writing activity,lo108,TRUE
-Unit 4,Lesson 5,grammar and vocab review,lo109,FALSE
-Unit 4,Lesson 5,useful language 1,lo110,FALSE
-Unit 4,Lesson 5,useful language 2,lo111,FALSE
-Unit 4,Lesson 5,Free speaking activity,lo112,TRUE
-Unit 5,Lesson 1,Vocab catch-up,lo113,FALSE
-Unit 5,Lesson 1,Vocabulary 1,lo114,FALSE
-Unit 5,Lesson 1,Vocabulary 2,lo115,FALSE
-Unit 5,Lesson 1,Vocabulary 3,lo116,FALSE
-Unit 5,Lesson 1,Vocabulary 4,lo117,FALSE
-Unit 5,Lesson 1,Grammar catch-up,lo118,FALSE
-Unit 5,Lesson 1,Grammar activity 1,lo119,FALSE
-Unit 5,Lesson 1,Grammar activity 2,lo120,FALSE
-Unit 5,Lesson 1,Grammar activity 3,lo121,FALSE
-Unit 5,Lesson 2,Vocab catch-up,lo122,FALSE
-Unit 5,Lesson 2,Vocabulary 1,lo123,FALSE
-Unit 5,Lesson 2,Vocabulary 2,lo124,FALSE
-Unit 5,Lesson 2,Grammar catch-up,lo125,FALSE
-Unit 5,Lesson 2,Grammar activity 1,lo126,FALSE
-Unit 5,Lesson 2,Grammar activity 2,lo127,FALSE
-Unit 5,Lesson 2,Grammar activity 3,lo128,FALSE
-Unit 5,Lesson 3,Functional language activity,lo129,FALSE
-Unit 5,Lesson 3,Real world strategy,lo130,FALSE
-Unit 5,Lesson 3,Audio Roleplay,lo131,TRUE
-Unit 5,Lesson 3,Audio Roleplay,lo132,TRUE
-Unit 5,Lesson 4,Pre-reading/listening,lo133,FALSE
-Unit 5,Lesson 4,readling/listening,lo134,FALSE
-Unit 5,Lesson 4,writing practice,lo135,FALSE
-Unit 5,Lesson 4,free-writing activity,lo136,TRUE
-Unit 5,Lesson 5,grammar and vocab review,lo137,FALSE
-Unit 5,Lesson 5,useful language 1,lo138,FALSE
-Unit 5,Lesson 5,useful language 2,lo139,FALSE
-Unit 5,Lesson 5,Free speaking activity,lo140,TRUE
-Unit 6,Lesson 1,Vocab catch-up,lo141,FALSE
-Unit 6,Lesson 1,Vocabulary 1,lo142,FALSE
-Unit 6,Lesson 1,Vocabulary 2,lo143,FALSE
-Unit 6,Lesson 1,Vocabulary 3,lo144,FALSE
-Unit 6,Lesson 1,Vocabulary 4,lo145,FALSE
-Unit 6,Lesson 1,Grammar catch-up,lo146,FALSE
-Unit 6,Lesson 1,Grammar activity 1,lo147,FALSE
-Unit 6,Lesson 1,Grammar activity 2,lo148,FALSE
-Unit 6,Lesson 1,Grammar activity 3,lo149,FALSE
-Unit 6,Lesson 2,Vocab catch-up,lo150,FALSE
-Unit 6,Lesson 2,Vocabulary 1,lo151,FALSE
-Unit 6,Lesson 2,Vocabulary 2,lo152,FALSE
-Unit 6,Lesson 2,Grammar catch-up,lo153,FALSE
-Unit 6,Lesson 2,Grammar activity 1,lo154,FALSE
-Unit 6,Lesson 2,Grammar activity 2,lo155,FALSE
-Unit 6,Lesson 2,Grammar activity 3,lo156,FALSE
-Unit 6,Lesson 3,Functional language activity,lo157,FALSE
-Unit 6,Lesson 3,Real world strategy,lo158,FALSE
-Unit 6,Lesson 3,Audio Roleplay,lo159,TRUE
-Unit 6,Lesson 3,Audio Roleplay,lo160,TRUE
-Unit 6,Lesson 4,Pre-reading/listening,lo161,FALSE
-Unit 6,Lesson 4,readling/listening,lo162,FALSE
-Unit 6,Lesson 4,writing practice,lo163,FALSE
-Unit 6,Lesson 4,free-writing activity,lo164,TRUE
-Unit 6,Lesson 5,grammar and vocab review,lo165,FALSE
-Unit 6,Lesson 5,useful language 1,lo166,FALSE
-Unit 6,Lesson 5,useful language 2,lo167,FALSE
-Unit 6,Lesson 5,Free speaking activity,lo168,TRUE
-Unit 7,Lesson 1,Vocab catch-up,lo169,FALSE
-Unit 7,Lesson 1,Vocabulary 1,lo170,FALSE
-Unit 7,Lesson 1,Vocabulary 2,lo171,FALSE
-Unit 7,Lesson 1,Vocabulary 3,lo172,FALSE
-Unit 7,Lesson 1,Vocabulary 4,lo173,FALSE
-Unit 7,Lesson 1,Grammar catch-up,lo174,FALSE
-Unit 7,Lesson 1,Grammar activity 1,lo175,FALSE
-Unit 7,Lesson 1,Grammar activity 2,lo176,FALSE
-Unit 7,Lesson 1,Grammar activity 3,lo177,FALSE
-Unit 7,Lesson 2,Vocab catch-up,lo178,FALSE
-Unit 7,Lesson 2,Vocabulary 1,lo179,FALSE
-Unit 7,Lesson 2,Vocabulary 2,lo180,FALSE
-Unit 7,Lesson 2,Grammar catch-up,lo181,FALSE
-Unit 7,Lesson 2,Grammar activity 1,lo182,FALSE
-Unit 7,Lesson 2,Grammar activity 2,lo183,FALSE
-Unit 7,Lesson 2,Grammar activity 3,lo184,FALSE
-Unit 7,Lesson 3,Functional language activity,lo185,FALSE
-Unit 7,Lesson 3,Real world strategy,lo186,FALSE
-Unit 7,Lesson 3,Audio Roleplay,lo187,TRUE
-Unit 7,Lesson 3,Audio Roleplay,lo188,TRUE
-Unit 7,Lesson 4,Pre-reading/listening,lo189,FALSE
-Unit 7,Lesson 4,readling/listening,lo190,FALSE
-Unit 7,Lesson 4,writing practice,lo191,FALSE
-Unit 7,Lesson 4,free-writing activity,lo192,TRUE
-Unit 7,Lesson 5,grammar and vocab review,lo193,FALSE
-Unit 7,Lesson 5,useful language 1,lo194,FALSE
-Unit 7,Lesson 5,useful language 2,lo195,FALSE
-Unit 7,Lesson 5,Free speaking activity,lo196,TRUE
-Unit 8,Lesson 1,Vocab catch-up,lo197,FALSE
-Unit 8,Lesson 1,Vocabulary 1,lo198,FALSE
-Unit 8,Lesson 1,Vocabulary 2,lo199,FALSE
-Unit 8,Lesson 1,Vocabulary 3,lo200,FALSE
-Unit 8,Lesson 1,Vocabulary 4,lo201,FALSE
-Unit 8,Lesson 1,Grammar catch-up,lo202,FALSE
-Unit 8,Lesson 1,Grammar activity 1,lo203,FALSE
-Unit 8,Lesson 1,Grammar activity 2,lo204,FALSE
-Unit 8,Lesson 1,Grammar activity 3,lo205,FALSE
-Unit 8,Lesson 2,Vocab catch-up,lo206,FALSE
-Unit 8,Lesson 2,Vocabulary 1,lo207,FALSE
-Unit 8,Lesson 2,Vocabulary 2,lo208,FALSE
-Unit 8,Lesson 2,Grammar catch-up,lo209,FALSE
-Unit 8,Lesson 2,Grammar activity 1,lo210,FALSE
-Unit 8,Lesson 2,Grammar activity 2,lo211,FALSE
-Unit 8,Lesson 2,Grammar activity 3,lo212,FALSE
-Unit 8,Lesson 3,Functional language activity,lo213,FALSE
-Unit 8,Lesson 3,Real world strategy,lo214,FALSE
-Unit 8,Lesson 3,Audio Roleplay,lo215,TRUE
-Unit 8,Lesson 3,Audio Roleplay,lo216,TRUE
-Unit 8,Lesson 4,Pre-reading/listening,lo217,FALSE
-Unit 8,Lesson 4,readling/listening,lo218,FALSE
-Unit 8,Lesson 4,writing practice,lo219,FALSE
-Unit 8,Lesson 4,free-writing activity,lo220,TRUE
-Unit 8,Lesson 5,grammar and vocab review,lo221,FALSE
-Unit 8,Lesson 5,useful language 1,lo222,FALSE
-Unit 8,Lesson 5,useful language 2,lo223,FALSE
-Unit 8,Lesson 5,Free speaking activity,lo224,TRUE
-Unit 9,Lesson 1,Vocab catch-up,lo225,FALSE
-Unit 9,Lesson 1,Vocabulary 1,lo226,FALSE
-Unit 9,Lesson 1,Vocabulary 2,lo227,FALSE
-Unit 9,Lesson 1,Vocabulary 3,lo228,FALSE
-Unit 9,Lesson 1,Vocabulary 4,lo229,FALSE
-Unit 9,Lesson 1,Grammar catch-up,lo230,FALSE
-Unit 9,Lesson 1,Grammar activity 1,lo231,FALSE
-Unit 9,Lesson 1,Grammar activity 2,lo232,FALSE
-Unit 9,Lesson 1,Grammar activity 3,lo233,FALSE
-Unit 9,Lesson 2,Vocab catch-up,lo234,FALSE
-Unit 9,Lesson 2,Vocabulary 1,lo235,FALSE
-Unit 9,Lesson 2,Vocabulary 2,lo236,FALSE
-Unit 9,Lesson 2,Grammar catch-up,lo237,FALSE
-Unit 9,Lesson 2,Grammar activity 1,lo238,FALSE
-Unit 9,Lesson 2,Grammar activity 2,lo239,FALSE
-Unit 9,Lesson 2,Grammar activity 3,lo240,FALSE
-Unit 9,Lesson 3,Functional language activity,lo241,FALSE
-Unit 9,Lesson 3,Real world strategy,lo242,FALSE
-Unit 9,Lesson 3,Audio Roleplay,lo243,TRUE
-Unit 9,Lesson 3,Audio Roleplay,lo244,TRUE
-Unit 9,Lesson 4,Pre-reading/listening,lo245,FALSE
-Unit 9,Lesson 4,readling/listening,lo246,FALSE
-Unit 9,Lesson 4,writing practice,lo247,FALSE
-Unit 9,Lesson 4,free-writing activity,lo248,TRUE
-Unit 9,Lesson 5,grammar and vocab review,lo249,FALSE
-Unit 9,Lesson 5,useful language 1,lo250,FALSE
-Unit 9,Lesson 5,useful language 2,lo251,FALSE
-Unit 9,Lesson 5,Free speaking activity,lo252,TRUE
-Unit 10,Lesson 1,Vocab catch-up,lo253,FALSE
-Unit 10,Lesson 1,Vocabulary 1,lo254,FALSE
-Unit 10,Lesson 1,Vocabulary 2,lo255,FALSE
-Unit 10,Lesson 1,Vocabulary 3,lo256,FALSE
-Unit 10,Lesson 1,Vocabulary 4,lo257,FALSE
-Unit 10,Lesson 1,Grammar catch-up,lo258,FALSE
-Unit 10,Lesson 1,Grammar activity 1,lo259,FALSE
-Unit 10,Lesson 1,Grammar activity 2,lo260,FALSE
-Unit 10,Lesson 1,Grammar activity 3,lo261,FALSE
-Unit 10,Lesson 2,Vocab catch-up,lo262,FALSE
-Unit 10,Lesson 2,Vocabulary 1,lo263,FALSE
-Unit 10,Lesson 2,Vocabulary 2,lo264,FALSE
-Unit 10,Lesson 2,Grammar catch-up,lo265,FALSE
-Unit 10,Lesson 2,Grammar activity 1,lo266,FALSE
-Unit 10,Lesson 2,Grammar activity 2,lo267,FALSE
-Unit 10,Lesson 2,Grammar activity 3,lo268,FALSE
-Unit 10,Lesson 3,Functional language activity,lo269,FALSE
-Unit 10,Lesson 3,Real world strategy,lo270,FALSE
-Unit 10,Lesson 3,Audio Roleplay,lo271,TRUE
-Unit 10,Lesson 3,Audio Roleplay,lo272,TRUE
-Unit 10,Lesson 4,Pre-reading/listening,lo273,FALSE
-Unit 10,Lesson 4,readling/listening,lo274,FALSE
-Unit 10,Lesson 4,writing practice,lo275,FALSE
-Unit 10,Lesson 4,free-writing activity,lo276,TRUE
-Unit 10,Lesson 5,grammar and vocab review,lo277,FALSE
-Unit 10,Lesson 5,useful language 1,lo278,FALSE
-Unit 10,Lesson 5,useful language 2,lo279,FALSE
-Unit 10,Lesson 5,Free speaking activity,lo280,TRUE
-Unit 11,Lesson 1,Vocab catch-up,lo281,FALSE
-Unit 11,Lesson 1,Vocabulary 1,lo282,FALSE
-Unit 11,Lesson 1,Vocabulary 2,lo283,FALSE
-Unit 11,Lesson 1,Vocabulary 3,lo284,FALSE
-Unit 11,Lesson 1,Vocabulary 4,lo285,FALSE
-Unit 11,Lesson 1,Grammar catch-up,lo286,FALSE
-Unit 11,Lesson 1,Grammar activity 1,lo287,FALSE
-Unit 11,Lesson 1,Grammar activity 2,lo288,FALSE
-Unit 11,Lesson 1,Grammar activity 3,lo289,FALSE
-Unit 11,Lesson 2,Vocab catch-up,lo290,FALSE
-Unit 11,Lesson 2,Vocabulary 1,lo291,FALSE
-Unit 11,Lesson 2,Vocabulary 2,lo292,FALSE
-Unit 11,Lesson 2,Grammar catch-up,lo293,FALSE
-Unit 11,Lesson 2,Grammar activity 1,lo294,FALSE
-Unit 11,Lesson 2,Grammar activity 2,lo295,FALSE
-Unit 11,Lesson 2,Grammar activity 3,lo296,FALSE
-Unit 11,Lesson 3,Functional language activity,lo297,FALSE
-Unit 11,Lesson 3,Real world strategy,lo298,FALSE
-Unit 11,Lesson 3,Audio Roleplay,lo299,TRUE
-Unit 11,Lesson 3,Audio Roleplay,lo300,TRUE
-Unit 11,Lesson 4,Pre-reading/listening,lo301,FALSE
-Unit 11,Lesson 4,readling/listening,lo302,FALSE
-Unit 11,Lesson 4,writing practice,lo303,FALSE
-Unit 11,Lesson 4,free-writing activity,lo304,TRUE
-Unit 11,Lesson 5,grammar and vocab review,lo305,FALSE
-Unit 11,Lesson 5,useful language 1,lo306,FALSE
-Unit 11,Lesson 5,useful language 2,lo307,FALSE
-Unit 11,Lesson 5,Free speaking activity,lo308,TRUE
-Unit 12,Lesson 1,Vocab catch-up,lo309,FALSE
-Unit 12,Lesson 1,Vocabulary 1,lo310,FALSE
-Unit 12,Lesson 1,Vocabulary 2,lo311,FALSE
-Unit 12,Lesson 1,Vocabulary 3,lo312,FALSE
-Unit 12,Lesson 1,Vocabulary 4,lo313,FALSE
-Unit 12,Lesson 1,Grammar catch-up,lo314,FALSE
-Unit 12,Lesson 1,Grammar activity 1,lo315,FALSE
-Unit 12,Lesson 1,Grammar activity 2,lo316,FALSE
-Unit 12,Lesson 1,Grammar activity 3,lo317,FALSE
-Unit 12,Lesson 2,Vocab catch-up,lo318,FALSE
-Unit 12,Lesson 2,Vocabulary 1,lo319,FALSE
-Unit 12,Lesson 2,Vocabulary 2,lo320,FALSE
-Unit 12,Lesson 2,Grammar catch-up,lo321,FALSE
-Unit 12,Lesson 2,Grammar activity 1,lo322,FALSE
-Unit 12,Lesson 2,Grammar activity 2,lo323,FALSE
-Unit 12,Lesson 2,Grammar activity 3,lo324,FALSE
-Unit 12,Lesson 3,Functional language activity,lo325,FALSE
-Unit 12,Lesson 3,Real world strategy,lo326,FALSE
-Unit 12,Lesson 3,Audio Roleplay,lo327,TRUE
-Unit 12,Lesson 3,Audio Roleplay,lo328,TRUE
-Unit 12,Lesson 4,Pre-reading/listening,lo329,FALSE
-Unit 12,Lesson 4,readling/listening,lo330,FALSE
-Unit 12,Lesson 4,writing practice,lo331,FALSE
-Unit 12,Lesson 4,free-writing activity,lo332,TRUE
-Unit 12,Lesson 5,grammar and vocab review,lo333,FALSE
-Unit 12,Lesson 5,useful language 1,lo334,FALSE
-Unit 12,Lesson 5,useful language 2,lo335,FALSE
-Unit 12,Lesson 5,Free speaking activity,lo336,TRUE
+Unit 1,Lesson 1.1,Vocabulary catch-up,lo1,FALSE
+Unit 1,Lesson 1.1,Vocabulary 1,lo2,FALSE
+Unit 1,Lesson 1.1,Vocabulary 2,lo3,FALSE
+Unit 1,Lesson 1.1,Vocabulary 3,lo4,FALSE
+Unit 1,Lesson 1.1,Vocabulary 4,lo5,FALSE
+Unit 1,Lesson 1.1,Grammar catch-up,lo6,FALSE
+Unit 1,Lesson 1.1,Grammar activity 1,lo7,FALSE
+Unit 1,Lesson 1.1,Grammar activity 2,lo8,FALSE
+Unit 1,Lesson 1.1,Grammar activity 3,lo9,FALSE
+Unit 1,Lesson 1.2,Vocabulary catch-up,lo10,FALSE
+Unit 1,Lesson 1.2,Vocabulary 1,lo11,FALSE
+Unit 1,Lesson 1.2,Vocabulary 2,lo12,FALSE
+Unit 1,Lesson 1.2,Grammar catch-up,lo13,FALSE
+Unit 1,Lesson 1.2,Grammar activity 1,lo14,FALSE
+Unit 1,Lesson 1.2,Grammar activity 2,lo15,FALSE
+Unit 1,Lesson 1.2,Grammar activity 3,lo16,FALSE
+Unit 1,Lesson 1.3,Functional language activity,lo17,FALSE
+Unit 1,Lesson 1.3,Real world strategy,lo18,FALSE
+Unit 1,Lesson 1.3,Audio Roleplay 1,lo19,TRUE
+Unit 1,Lesson 1.3,Audio Roleplay 2,lo20,TRUE
+Unit 1,Lesson 1.4,Pre-reading,lo21,FALSE
+Unit 1,Lesson 1.4,Reading exercise,lo22,FALSE
+Unit 1,Lesson 1.4,Writing practice,lo23,FALSE
+Unit 1,Lesson 1.4,Free-writing activity,lo24,TRUE
+Unit 1,Lesson 1.5,Grammar and vocabulary review,lo25,FALSE
+Unit 1,Lesson 1.5,Useful language 1,lo26,FALSE
+Unit 1,Lesson 1.5,Useful language 2,lo27,FALSE
+Unit 1,Lesson 1.5,Free-speaking activity,lo28,TRUE
+Unit 2,Lesson 2.1,Vocabulary catch-up,lo29,FALSE
+Unit 2,Lesson 2.1,Vocabulary 1,lo30,FALSE
+Unit 2,Lesson 2.1,Vocabulary 2,lo31,FALSE
+Unit 2,Lesson 2.1,Vocabulary 3,lo32,FALSE
+Unit 2,Lesson 2.1,Vocabulary 4,lo33,FALSE
+Unit 2,Lesson 2.1,Grammar catch-up,lo34,FALSE
+Unit 2,Lesson 2.1,Grammar activity 1,lo35,FALSE
+Unit 2,Lesson 2.1,Grammar activity 2,lo36,FALSE
+Unit 2,Lesson 2.1,Grammar activity 3,lo37,FALSE
+Unit 2,Lesson 2.2,Vocabulary catch-up,lo38,FALSE
+Unit 2,Lesson 2.2,Vocabulary 1,lo39,FALSE
+Unit 2,Lesson 2.2,Vocabulary 2,lo40,FALSE
+Unit 2,Lesson 2.2,Grammar catch-up,lo41,FALSE
+Unit 2,Lesson 2.2,Grammar activity 1,lo42,FALSE
+Unit 2,Lesson 2.2,Grammar activity 2,lo43,FALSE
+Unit 2,Lesson 2.2,Grammar activity 3,lo44,FALSE
+Unit 2,Lesson 2.3,Functional language activity,lo45,FALSE
+Unit 2,Lesson 2.3,Real world strategy,lo46,FALSE
+Unit 2,Lesson 2.3,Audio Roleplay 1,lo47,TRUE
+Unit 2,Lesson 2.3,Audio Roleplay 2,lo48,TRUE
+Unit 2,Lesson 2.4,Pre-listening,lo49,FALSE
+Unit 2,Lesson 2.4,Listening exercise,lo50,FALSE
+Unit 2,Lesson 2.4,Writing Practice,lo51,FALSE
+Unit 2,Lesson 2.4,Free-writing activity,lo52,TRUE
+Unit 2,Lesson 2.5,Grammar and vocabulary review,lo53,FALSE
+Unit 2,Lesson 2.5,Useful language 1,lo54,FALSE
+Unit 2,Lesson 2.5,Useful language 2,lo55,FALSE
+Unit 2,Lesson 2.5,Free-speaking activity,lo56,TRUE
+Unit 3,Lesson 3.1,Vocabulary catch-up,lo57,FALSE
+Unit 3,Lesson 3.1,Vocabulary 1,lo58,FALSE
+Unit 3,Lesson 3.1,Vocabulary 2,lo59,FALSE
+Unit 3,Lesson 3.1,Vocabulary 3,lo60,FALSE
+Unit 3,Lesson 3.1,Vocabulary 4,lo61,FALSE
+Unit 3,Lesson 3.1,Grammar catch-up,lo62,FALSE
+Unit 3,Lesson 3.1,Grammar activity 1,lo63,FALSE
+Unit 3,Lesson 3.1,Grammar activity 2,lo64,FALSE
+Unit 3,Lesson 3.1,Grammar activity 3,lo65,FALSE
+Unit 3,Lesson 3.2,Vocabulary catch-up,lo66,FALSE
+Unit 3,Lesson 3.2,Vocabulary 1,lo67,FALSE
+Unit 3,Lesson 3.2,Vocabulary 2,lo68,FALSE
+Unit 3,Lesson 3.2,Grammar catch-up,lo69,FALSE
+Unit 3,Lesson 3.2,Grammar activity 1,lo70,FALSE
+Unit 3,Lesson 3.2,Grammar activity 2,lo71,FALSE
+Unit 3,Lesson 3.2,Grammar activity 3,lo72,FALSE
+Unit 3,Lesson 3.3,Functional language activity,lo73,FALSE
+Unit 3,Lesson 3.3,Real world strategy,lo74,FALSE
+Unit 3,Lesson 3.3,Audio Roleplay 1,lo75,TRUE
+Unit 3,Lesson 3.3,Audio Roleplay 2,lo76,TRUE
+Unit 3,Lesson 3.4,Pre-reading,lo77,FALSE
+Unit 3,Lesson 3.4,Reading exercise,lo78,FALSE
+Unit 3,Lesson 3.4,Writing practice,lo79,FALSE
+Unit 3,Lesson 3.4,Free-writing activity,lo80,TRUE
+Unit 3,Lesson 3.5,Grammar and vocabulary review,lo81,FALSE
+Unit 3,Lesson 3.5,Useful language 1,lo82,FALSE
+Unit 3,Lesson 3.5,Useful language 2,lo83,FALSE
+Unit 3,Lesson 3.5,Free-speaking activity,lo84,TRUE
+Unit 4,Lesson 4.1,Vocabulary catch-up,lo85,FALSE
+Unit 4,Lesson 4.1,Vocabulary 1,lo86,FALSE
+Unit 4,Lesson 4.1,Vocabulary 2,lo87,FALSE
+Unit 4,Lesson 4.1,Vocabulary 3,lo88,FALSE
+Unit 4,Lesson 4.1,Vocabulary 4,lo89,FALSE
+Unit 4,Lesson 4.1,Grammar catch-up,lo90,FALSE
+Unit 4,Lesson 4.1,Grammar activity 1,lo91,FALSE
+Unit 4,Lesson 4.1,Grammar activity 2,lo92,FALSE
+Unit 4,Lesson 4.1,Grammar activity 3,lo93,FALSE
+Unit 4,Lesson 4.2,Vocabulary catch-up,lo94,FALSE
+Unit 4,Lesson 4.2,Vocabulary 1,lo95,FALSE
+Unit 4,Lesson 4.2,Vocabulary 2,lo96,FALSE
+Unit 4,Lesson 4.2,Grammar catch-up,lo97,FALSE
+Unit 4,Lesson 4.2,Grammar activity 1,lo98,FALSE
+Unit 4,Lesson 4.2,Grammar activity 2,lo99,FALSE
+Unit 4,Lesson 4.2,Grammar activity 3,lo100,FALSE
+Unit 4,Lesson 4.3,Functional language activity,lo101,FALSE
+Unit 4,Lesson 4.3,Real world strategy,lo102,FALSE
+Unit 4,Lesson 4.3,Audio Roleplay 1,lo103,TRUE
+Unit 4,Lesson 4.3,Audio Roleplay 2,lo104,TRUE
+Unit 4,Lesson 4.4,Pre-listening,lo105,FALSE
+Unit 4,Lesson 4.4,Listening exercise,lo106,FALSE
+Unit 4,Lesson 4.4,Writing Practice,lo107,FALSE
+Unit 4,Lesson 4.4,Free-writing activity,lo108,TRUE
+Unit 4,Lesson 4.5,Grammar and vocabulary review,lo109,FALSE
+Unit 4,Lesson 4.5,Useful language 1,lo110,FALSE
+Unit 4,Lesson 4.5,Useful language 2,lo111,FALSE
+Unit 4,Lesson 4.5,Free-speaking activity,lo112,TRUE
+Unit 5,Lesson 5.1,Vocabulary catch-up,lo113,FALSE
+Unit 5,Lesson 5.1,Vocabulary 1,lo114,FALSE
+Unit 5,Lesson 5.1,Vocabulary 2,lo115,FALSE
+Unit 5,Lesson 5.1,Vocabulary 3,lo116,FALSE
+Unit 5,Lesson 5.1,Vocabulary 4,lo117,FALSE
+Unit 5,Lesson 5.1,Grammar catch-up,lo118,FALSE
+Unit 5,Lesson 5.1,Grammar activity 1,lo119,FALSE
+Unit 5,Lesson 5.1,Grammar activity 2,lo120,FALSE
+Unit 5,Lesson 5.1,Grammar activity 3,lo121,FALSE
+Unit 5,Lesson 5.2,Vocabulary catch-up,lo122,FALSE
+Unit 5,Lesson 5.2,Vocabulary 1,lo123,FALSE
+Unit 5,Lesson 5.2,Vocabulary 2,lo124,FALSE
+Unit 5,Lesson 5.2,Grammar catch-up,lo125,FALSE
+Unit 5,Lesson 5.2,Grammar activity 1,lo126,FALSE
+Unit 5,Lesson 5.2,Grammar activity 2,lo127,FALSE
+Unit 5,Lesson 5.2,Grammar activity 3,lo128,FALSE
+Unit 5,Lesson 5.3,Functional language activity,lo129,FALSE
+Unit 5,Lesson 5.3,Real world strategy,lo130,FALSE
+Unit 5,Lesson 5.3,Audio Roleplay 1,lo131,TRUE
+Unit 5,Lesson 5.3,Audio Roleplay 2,lo132,TRUE
+Unit 5,Lesson 5.4,Pre-reading,lo133,FALSE
+Unit 5,Lesson 5.4,Reading exercise,lo134,FALSE
+Unit 5,Lesson 5.4,Writing practice,lo135,FALSE
+Unit 5,Lesson 5.4,Free-writing activity,lo136,TRUE
+Unit 5,Lesson 5.5,Grammar and vocabulary review,lo137,FALSE
+Unit 5,Lesson 5.5,Useful language 1,lo138,FALSE
+Unit 5,Lesson 5.5,Useful language 2,lo139,FALSE
+Unit 5,Lesson 5.5,Free-speaking activity,lo140,TRUE
+Unit 6,Lesson 6.1,Vocabulary catch-up,lo141,FALSE
+Unit 6,Lesson 6.1,Vocabulary 1,lo142,FALSE
+Unit 6,Lesson 6.1,Vocabulary 2,lo143,FALSE
+Unit 6,Lesson 6.1,Vocabulary 3,lo144,FALSE
+Unit 6,Lesson 6.1,Vocabulary 4,lo145,FALSE
+Unit 6,Lesson 6.1,Grammar catch-up,lo146,FALSE
+Unit 6,Lesson 6.1,Grammar activity 1,lo147,FALSE
+Unit 6,Lesson 6.1,Grammar activity 2,lo148,FALSE
+Unit 6,Lesson 6.1,Grammar activity 3,lo149,FALSE
+Unit 6,Lesson 6.2,Vocabulary catch-up,lo150,FALSE
+Unit 6,Lesson 6.2,Vocabulary 1,lo151,FALSE
+Unit 6,Lesson 6.2,Vocabulary 2,lo152,FALSE
+Unit 6,Lesson 6.2,Grammar catch-up,lo153,FALSE
+Unit 6,Lesson 6.2,Grammar activity 1,lo154,FALSE
+Unit 6,Lesson 6.2,Grammar activity 2,lo155,FALSE
+Unit 6,Lesson 6.2,Grammar activity 3,lo156,FALSE
+Unit 6,Lesson 6.3,Functional language activity,lo157,FALSE
+Unit 6,Lesson 6.3,Real world strategy,lo158,FALSE
+Unit 6,Lesson 6.3,Audio Roleplay 1,lo159,TRUE
+Unit 6,Lesson 6.3,Audio Roleplay 2,lo160,TRUE
+Unit 6,Lesson 6.4,Pre-listening,lo161,FALSE
+Unit 6,Lesson 6.4,Listening exercise,lo162,FALSE
+Unit 6,Lesson 6.4,Writing Practice,lo163,FALSE
+Unit 6,Lesson 6.4,Free-writing activity,lo164,TRUE
+Unit 6,Lesson 6.5,Grammar and vocabulary review,lo165,FALSE
+Unit 6,Lesson 6.5,Useful language 1,lo166,FALSE
+Unit 6,Lesson 6.5,Useful language 2,lo167,FALSE
+Unit 6,Lesson 6.5,Free-speaking activity,lo168,TRUE
+Unit 7,Lesson 7.1,Vocabulary catch-up,lo169,FALSE
+Unit 7,Lesson 7.1,Vocabulary 1,lo170,FALSE
+Unit 7,Lesson 7.1,Vocabulary 2,lo171,FALSE
+Unit 7,Lesson 7.1,Vocabulary 3,lo172,FALSE
+Unit 7,Lesson 7.1,Vocabulary 4,lo173,FALSE
+Unit 7,Lesson 7.1,Grammar catch-up,lo174,FALSE
+Unit 7,Lesson 7.1,Grammar activity 1,lo175,FALSE
+Unit 7,Lesson 7.1,Grammar activity 2,lo176,FALSE
+Unit 7,Lesson 7.1,Grammar activity 3,lo177,FALSE
+Unit 7,Lesson 7.2,Vocabulary catch-up,lo178,FALSE
+Unit 7,Lesson 7.2,Vocabulary 1,lo179,FALSE
+Unit 7,Lesson 7.2,Vocabulary 2,lo180,FALSE
+Unit 7,Lesson 7.2,Grammar catch-up,lo181,FALSE
+Unit 7,Lesson 7.2,Grammar activity 1,lo182,FALSE
+Unit 7,Lesson 7.2,Grammar activity 2,lo183,FALSE
+Unit 7,Lesson 7.2,Grammar activity 3,lo184,FALSE
+Unit 7,Lesson 7.3,Functional language activity,lo185,FALSE
+Unit 7,Lesson 7.3,Real world strategy,lo186,FALSE
+Unit 7,Lesson 7.3,Audio Roleplay 1,lo187,TRUE
+Unit 7,Lesson 7.3,Audio Roleplay 2,lo188,TRUE
+Unit 7,Lesson 7.4,Pre-reading,lo189,FALSE
+Unit 7,Lesson 7.4,Reading exercise,lo190,FALSE
+Unit 7,Lesson 7.4,Writing practice,lo191,FALSE
+Unit 7,Lesson 7.4,Free-writing activity,lo192,TRUE
+Unit 7,Lesson 7.5,Grammar and vocabulary review,lo193,FALSE
+Unit 7,Lesson 7.5,Useful language 1,lo194,FALSE
+Unit 7,Lesson 7.5,Useful language 2,lo195,FALSE
+Unit 7,Lesson 7.5,Free-speaking activity,lo196,TRUE
+Unit 8,Lesson 8.1,Vocabulary catch-up,lo197,FALSE
+Unit 8,Lesson 8.1,Vocabulary 1,lo198,FALSE
+Unit 8,Lesson 8.1,Vocabulary 2,lo199,FALSE
+Unit 8,Lesson 8.1,Vocabulary 3,lo200,FALSE
+Unit 8,Lesson 8.1,Vocabulary 4,lo201,FALSE
+Unit 8,Lesson 8.1,Grammar catch-up,lo202,FALSE
+Unit 8,Lesson 8.1,Grammar activity 1,lo203,FALSE
+Unit 8,Lesson 8.1,Grammar activity 2,lo204,FALSE
+Unit 8,Lesson 8.1,Grammar activity 3,lo205,FALSE
+Unit 8,Lesson 8.2,Vocabulary catch-up,lo206,FALSE
+Unit 8,Lesson 8.2,Vocabulary 1,lo207,FALSE
+Unit 8,Lesson 8.2,Vocabulary 2,lo208,FALSE
+Unit 8,Lesson 8.2,Grammar catch-up,lo209,FALSE
+Unit 8,Lesson 8.2,Grammar activity 1,lo210,FALSE
+Unit 8,Lesson 8.2,Grammar activity 2,lo211,FALSE
+Unit 8,Lesson 8.2,Grammar activity 3,lo212,FALSE
+Unit 8,Lesson 8.3,Functional language activity,lo213,FALSE
+Unit 8,Lesson 8.3,Real world strategy,lo214,FALSE
+Unit 8,Lesson 8.3,Audio Roleplay 1,lo215,TRUE
+Unit 8,Lesson 8.3,Audio Roleplay 2,lo216,TRUE
+Unit 8,Lesson 8.4,Pre-listening,lo217,FALSE
+Unit 8,Lesson 8.4,Listening exercise,lo218,FALSE
+Unit 8,Lesson 8.4,Writing Practice,lo219,FALSE
+Unit 8,Lesson 8.4,Free-writing activity,lo220,TRUE
+Unit 8,Lesson 8.5,Grammar and vocabulary review,lo221,FALSE
+Unit 8,Lesson 8.5,Useful language 1,lo222,FALSE
+Unit 8,Lesson 8.5,Useful language 2,lo223,FALSE
+Unit 8,Lesson 8.5,Free-speaking activity,lo224,TRUE
+Unit 9,Lesson 9.1,Vocabulary catch-up,lo225,FALSE
+Unit 9,Lesson 9.1,Vocabulary 1,lo226,FALSE
+Unit 9,Lesson 9.1,Vocabulary 2,lo227,FALSE
+Unit 9,Lesson 9.1,Vocabulary 3,lo228,FALSE
+Unit 9,Lesson 9.1,Vocabulary 4,lo229,FALSE
+Unit 9,Lesson 9.1,Grammar catch-up,lo230,FALSE
+Unit 9,Lesson 9.1,Grammar activity 1,lo231,FALSE
+Unit 9,Lesson 9.1,Grammar activity 2,lo232,FALSE
+Unit 9,Lesson 9.1,Grammar activity 3,lo233,FALSE
+Unit 9,Lesson 9.2,Vocabulary catch-up,lo234,FALSE
+Unit 9,Lesson 9.2,Vocabulary 1,lo235,FALSE
+Unit 9,Lesson 9.2,Vocabulary 2,lo236,FALSE
+Unit 9,Lesson 9.2,Grammar catch-up,lo237,FALSE
+Unit 9,Lesson 9.2,Grammar activity 1,lo238,FALSE
+Unit 9,Lesson 9.2,Grammar activity 2,lo239,FALSE
+Unit 9,Lesson 9.2,Grammar activity 3,lo240,FALSE
+Unit 9,Lesson 9.3,Functional language activity,lo241,FALSE
+Unit 9,Lesson 9.3,Real world strategy,lo242,FALSE
+Unit 9,Lesson 9.3,Audio Roleplay 1,lo243,TRUE
+Unit 9,Lesson 9.3,Audio Roleplay 2,lo244,TRUE
+Unit 9,Lesson 9.4,Pre-reading,lo245,FALSE
+Unit 9,Lesson 9.4,Reading exercise,lo246,FALSE
+Unit 9,Lesson 9.4,Writing practice,lo247,FALSE
+Unit 9,Lesson 9.4,Free-writing activity,lo248,TRUE
+Unit 9,Lesson 9.5,Grammar and vocabulary review,lo249,FALSE
+Unit 9,Lesson 9.5,Useful language 1,lo250,FALSE
+Unit 9,Lesson 9.5,Useful language 2,lo251,FALSE
+Unit 9,Lesson 9.5,Free-speaking activity,lo252,TRUE
+Unit 10,Lesson 10.1,Vocabulary catch-up,lo253,FALSE
+Unit 10,Lesson 10.1,Vocabulary 1,lo254,FALSE
+Unit 10,Lesson 10.1,Vocabulary 2,lo255,FALSE
+Unit 10,Lesson 10.1,Vocabulary 3,lo256,FALSE
+Unit 10,Lesson 10.1,Vocabulary 4,lo257,FALSE
+Unit 10,Lesson 10.1,Grammar catch-up,lo258,FALSE
+Unit 10,Lesson 10.1,Grammar activity 1,lo259,FALSE
+Unit 10,Lesson 10.1,Grammar activity 2,lo260,FALSE
+Unit 10,Lesson 10.1,Grammar activity 3,lo261,FALSE
+Unit 10,Lesson 10.2,Vocabulary catch-up,lo262,FALSE
+Unit 10,Lesson 10.2,Vocabulary 1,lo263,FALSE
+Unit 10,Lesson 10.2,Vocabulary 2,lo264,FALSE
+Unit 10,Lesson 10.2,Grammar catch-up,lo265,FALSE
+Unit 10,Lesson 10.2,Grammar activity 1,lo266,FALSE
+Unit 10,Lesson 10.2,Grammar activity 2,lo267,FALSE
+Unit 10,Lesson 10.2,Grammar activity 3,lo268,FALSE
+Unit 10,Lesson 10.3,Functional language activity,lo269,FALSE
+Unit 10,Lesson 10.3,Real world strategy,lo270,FALSE
+Unit 10,Lesson 10.3,Audio Roleplay 1,lo271,TRUE
+Unit 10,Lesson 10.3,Audio Roleplay 2,lo272,TRUE
+Unit 10,Lesson 10.4,Pre-listening,lo273,FALSE
+Unit 10,Lesson 10.4,Listening exercise,lo274,FALSE
+Unit 10,Lesson 10.4,Writing Practice,lo275,FALSE
+Unit 10,Lesson 10.4,Free-writing activity,lo276,TRUE
+Unit 10,Lesson 10.5,Grammar and vocabulary review,lo277,FALSE
+Unit 10,Lesson 10.5,Useful language 1,lo278,FALSE
+Unit 10,Lesson 10.5,Useful language 2,lo279,FALSE
+Unit 10,Lesson 10.5,Free-speaking activity,lo280,TRUE
+Unit 11,Lesson 11.1,Vocabulary catch-up,lo281,FALSE
+Unit 11,Lesson 11.1,Vocabulary 1,lo282,FALSE
+Unit 11,Lesson 11.1,Vocabulary 2,lo283,FALSE
+Unit 11,Lesson 11.1,Vocabulary 3,lo284,FALSE
+Unit 11,Lesson 11.1,Vocabulary 4,lo285,FALSE
+Unit 11,Lesson 11.1,Grammar catch-up,lo286,FALSE
+Unit 11,Lesson 11.1,Grammar activity 1,lo287,FALSE
+Unit 11,Lesson 11.1,Grammar activity 2,lo288,FALSE
+Unit 11,Lesson 11.1,Grammar activity 3,lo289,FALSE
+Unit 11,Lesson 11.2,Vocabulary catch-up,lo290,FALSE
+Unit 11,Lesson 11.2,Vocabulary 1,lo291,FALSE
+Unit 11,Lesson 11.2,Vocabulary 2,lo292,FALSE
+Unit 11,Lesson 11.2,Grammar catch-up,lo293,FALSE
+Unit 11,Lesson 11.2,Grammar activity 1,lo294,FALSE
+Unit 11,Lesson 11.2,Grammar activity 2,lo295,FALSE
+Unit 11,Lesson 11.2,Grammar activity 3,lo296,FALSE
+Unit 11,Lesson 11.3,Functional language activity,lo297,FALSE
+Unit 11,Lesson 11.3,Real world strategy,lo298,FALSE
+Unit 11,Lesson 11.3,Audio Roleplay 1,lo299,TRUE
+Unit 11,Lesson 11.3,Audio Roleplay 2,lo300,TRUE
+Unit 11,Lesson 11.4,Pre-reading,lo301,FALSE
+Unit 11,Lesson 11.4,Reading exercise,lo302,FALSE
+Unit 11,Lesson 11.4,Writing practice,lo303,FALSE
+Unit 11,Lesson 11.4,Free-writing activity,lo304,TRUE
+Unit 11,Lesson 11.5,Grammar and vocabulary review,lo305,FALSE
+Unit 11,Lesson 11.5,Useful language 1,lo306,FALSE
+Unit 11,Lesson 11.5,Useful language 2,lo307,FALSE
+Unit 11,Lesson 11.5,Free-speaking activity,lo308,TRUE
+Unit 12,Lesson 12.1,Vocabulary catch-up,lo309,FALSE
+Unit 12,Lesson 12.1,Vocabulary 1,lo310,FALSE
+Unit 12,Lesson 12.1,Vocabulary 2,lo311,FALSE
+Unit 12,Lesson 12.1,Vocabulary 3,lo312,FALSE
+Unit 12,Lesson 12.1,Vocabulary 4,lo313,FALSE
+Unit 12,Lesson 12.1,Grammar catch-up,lo314,FALSE
+Unit 12,Lesson 12.1,Grammar activity 1,lo315,FALSE
+Unit 12,Lesson 12.1,Grammar activity 2,lo316,FALSE
+Unit 12,Lesson 12.1,Grammar activity 3,lo317,FALSE
+Unit 12,Lesson 12.2,Vocabulary catch-up,lo318,FALSE
+Unit 12,Lesson 12.2,Vocabulary 1,lo319,FALSE
+Unit 12,Lesson 12.2,Vocabulary 2,lo320,FALSE
+Unit 12,Lesson 12.2,Grammar catch-up,lo321,FALSE
+Unit 12,Lesson 12.2,Grammar activity 1,lo322,FALSE
+Unit 12,Lesson 12.2,Grammar activity 2,lo323,FALSE
+Unit 12,Lesson 12.2,Grammar activity 3,lo324,FALSE
+Unit 12,Lesson 12.3,Functional language activity,lo325,FALSE
+Unit 12,Lesson 12.3,Real world strategy,lo326,FALSE
+Unit 12,Lesson 12.3,Audio Roleplay 1,lo327,TRUE
+Unit 12,Lesson 12.3,Audio Roleplay 2,lo328,TRUE
+Unit 12,Lesson 12.4,Pre-listening,lo329,FALSE
+Unit 12,Lesson 12.4,Listening exercise,lo330,FALSE
+Unit 12,Lesson 12.4,Writing Practice,lo331,FALSE
+Unit 12,Lesson 12.4,Free-writing activity,lo332,TRUE
+Unit 12,Lesson 12.5,Grammar and vocabulary review,lo333,FALSE
+Unit 12,Lesson 12.5,Useful language 1,lo334,FALSE
+Unit 12,Lesson 12.5,Useful language 2,lo335,FALSE
+Unit 12,Lesson 12.5,Free-speaking activity,lo336,TRUE
 Games,,Spell or Slime,lo337,TRUE
 Games,,Guess the Word,lo338,TRUE
 Games,,Word Challenge!,lo339,TRUE
