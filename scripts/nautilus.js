@@ -4,10 +4,6 @@ Gets and parses data from CSV files in the 'data' directory.
 Handles logic for you, e.g. aggregating scores and progress.
 -----------------------------------------------------------------------*/
 
-// TODO: set up tiny-test.js and blank test html page
-// TODO: cache the parsed CSV data to save time
-
-
 /*jshint esversion:6, devel: true, browser: true*/
 
 (function (root) {
@@ -69,8 +65,16 @@ Handles logic for you, e.g. aggregating scores and progress.
 				len = res.length;
 		for (i; i < len; i++) {
 			if (res[i].status === 'completed') {
-				res[i].status = res[i].best_score >= threshold ? 'aboveTarget' : 'belowTarget';
+				if (res[i].nonscorable) {
+					res[i].status = 'aboveTarget';
+					res[i].attempts = 'viewed';
+					res[i].best_score = 'n/a';
+					res[i].first_score = 'n/a';
+				} else {
+					res[i].status = res[i].best_score >= threshold ? 'aboveTarget' : 'belowTarget';
+				}
 			} else {
+				res[i].attempts = 0;
 				res[i].best_score = '-';
 				res[i].first_score = '-';
 			}
@@ -85,6 +89,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 				x.LO_name = __courseStructure[x.LO_id].LO_name;
 				x.lesson_name = __courseStructure[x.LO_id].lesson_name || null;
 				x.unit_name = __courseStructure[x.LO_id].unit_name;
+				x.nonscorable = __courseStructure[x.LO_id].nonscorable === 'TRUE' ? true : false;
 				return x;
 			});
 		}
@@ -159,8 +164,8 @@ Handles logic for you, e.g. aggregating scores and progress.
 
 		let parseStudentResults = function (res, i) {
 			let parsedData = __parseCSV(res);
+			__mapLODetails(parsedData);
 			__results[__studentIDs[i]] = __calculateStatus(parsedData);
-			__mapLODetails(__results[__studentIDs[i]]);
 			counter -= 1;
 			//once all student results have loaded, run the user-defined callback if one is supplied
 			if (!counter && callback) {
