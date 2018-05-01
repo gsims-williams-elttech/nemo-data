@@ -16,6 +16,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 
 	const __courseStructure = {}; //structure of Evolve with unit, level, LO names etc. LO ids as keys
 	let __studentIDs = []; //array of student IDs (get from JSON file)
+	let __studentDetails = {}; //metadata about each student, e.g. lastname
 	let __results = {}; //student results against each LO in course
 	let __courseStructureArray = []; //the course structure as an array
   
@@ -187,7 +188,11 @@ Handles logic for you, e.g. aggregating scores and progress.
 		//meanwhile, fetch student IDs from the JSON
 		__fetchCSV('../data/studentIDs.json', (res) => {
 			let parsedData = JSON.parse(res);
-			__studentIDs = parsedData.studentIDs.ids;
+			__studentIDs = parsedData.studentIDs.map( obj => {
+				obj.lastlogin = new Date(parseInt(obj.lastlogin)); //timestamp -> Date object
+				__studentDetails[obj.id] = obj;
+				return obj.id;
+			});
 			counter = __studentIDs.length;
 			//for each student, load their results...
 			for (let i = 0; i < __studentIDs.length; i++) {
@@ -202,6 +207,11 @@ Handles logic for you, e.g. aggregating scores and progress.
 	//returns an array of all student IDs
 	nautilus.getStudentIds = function () {
 		return __studentIDs;
+	};
+	
+	//returns any metadata associated with a student ID
+	nautilus.getStudentDetails = function (studentID) {
+		return __studentDetails[studentID];
 	};
 
 	//returns an array of all unit names in the product
@@ -258,25 +268,25 @@ Handles logic for you, e.g. aggregating scores and progress.
 	nautilus.getAllAverage = function (studentId, scoreType) {
 		const results = nautilus.getAllResults(studentId);
 		return __averageScore(results, scoreType);
-	}
+	};
 	
 	//returns the average of all best/first scores in a unit, or false if no completed LOs
 	nautilus.getUnitAverage = function (studentId, unitName, scoreType) {
 		const results = nautilus.getUnitResults(studentId, unitName);
 		return __averageScore(results, scoreType);
-	}
+	};
   
   //returns the average of all best/first scores in a lesson, or false if no completed LOs
   nautilus.getLessonAverage = function (studentId, unitName, lessonName, scoreType) {
     const results = nautilus.getLessonResults(studentId, unitName, lessonName);
 		return __averageScore(results, scoreType);
-  }
+  };
   
   //Calculate total time spent in the product
   nautilus.getTotalTime = function (studentId) {
     let totalTime = __results[studentId].reduce((a, b) => ({active_time: a.active_time + b.active_time}));
     return __timeSpent(totalTime);
-	}
+	};
 
 	/*----------------------------------------*/
 	// DECLARE MODULE ON GLOBAL/WINDOW OBJECT //
