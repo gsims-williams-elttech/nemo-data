@@ -15,7 +15,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 	/*-----------------------------*/
 
 	const __courseStructure = {}; //structure of Evolve with unit, level, LO names etc. LO ids as keys
-	let __studentIDs = []; //array of student IDs (get from JSON file)
+	let __studentIDs = []; //array of student IDs (get from JSON 'student manifest' file)
 	let __studentDetails = {}; //metadata about each student, e.g. lastname
 	let __results = {}; //student results against each LO in course
 	let __courseStructureArray = []; //the course structure as an array
@@ -186,10 +186,10 @@ Handles logic for you, e.g. aggregating scores and progress.
 		});
 
 		//meanwhile, fetch student IDs from the JSON
-		__fetchCSV('../data/studentIDs.json', (res) => {
+		__fetchCSV('../data/studentManifest.json', (res) => {
 			let parsedData = JSON.parse(res);
-			__studentIDs = parsedData.studentIDs.map( obj => {
-				obj.lastlogin = new Date(parseInt(obj.lastlogin)); //timestamp -> Date object
+			__studentIDs = parsedData.studentManifest.map( obj => {
+				obj.lastInteraction = new Date(parseInt(obj.lastInteraction)); //timestamp -> Date object
 				__studentDetails[obj.id] = obj;
 				return obj.id;
 			});
@@ -205,7 +205,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 	};
 
 	//returns an array of all student IDs
-	nautilus.getStudentIds = function () {
+	nautilus.getStudentIDs = function () {
 		return __studentIDs;
 	};
 	

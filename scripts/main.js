@@ -11,13 +11,18 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/* SET UP VARIABLES */
 	/********************/
 
-	const studentId = 'student1',
+	const studentID = 'student1',
 				lessonTableTemplate = getTemplate('lessonTableTemplate'),
 				unitSummaryTemplate = getTemplate('unitSummaryTemplate'),
 				productSummaryTemplate = getTemplate('productSummaryTemplate'),
 				charts = {}, //holds variables created by chartist.js
 				tables = {}, //holds tables created by datatables.js
 				myScores = document.getElementById('myScores');
+	
+	/***************************/
+	/* SET UP AND INIT ROUTING */
+	/***************************/
+	
 
 	/************************/
 	/* BIND EVENT LISTENERS */
@@ -48,8 +53,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/*********************************/
 
   function renderProductSummary (){
-    let context = nautilus.getAllSummary('student1');
-    context.active_time = nautilus.getTotalTime('student1');
+    let context = nautilus.getAllSummary(studentID);
+    context.active_time = nautilus.getTotalTime(studentID);
     document.getElementById('productSummary').innerHTML += productSummaryTemplate(context);
   }
 	
@@ -63,7 +68,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		//first loop. For each unit, add a div to the page.
 		for (i; i < len; i++) {
 			//start building our context object using the current unit's summary data
-			let context = nautilus.getUnitSummary('student1', unitNames[i]);
+			let context = nautilus.getUnitSummary(studentID, unitNames[i]);
 			//add the unit name to the context object
 			context.unitName = unitNames[i];
 			context.num = i;
@@ -72,7 +77,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		}
 		//second loop because chartist doesn't want to behave in loop 1. Add charts to each div.
 		for (i = 0; i < len; i++) {
-			let summary = nautilus.getUnitSummary('student1', unitNames[i]);
+			let summary = nautilus.getUnitSummary(studentID, unitNames[i]);
 			makeChart(`#unitchart-${i}`, summary.degreeValues, summary.percentCompleted);
 		}
 	}
@@ -99,7 +104,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			};
 			tableArea.insertAdjacentHTML('beforeend', lessonTableTemplate(context));
 			//prepare data for the table, row by row
-			results = nautilus.getLessonResults(studentId, unitName, lessons[i]);
+			results = nautilus.getLessonResults(studentID, unitName, lessons[i]);
 			tableRows = tabularise(results);
 			//configure and draw the lesson table
 			tables[context.id] = configureDataTable(context.id);
@@ -113,7 +118,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 				id: `unitTable-${unitName}`
 			};
 			tableArea.insertAdjacentHTML('beforeend', lessonTableTemplate(context));
-			tableRows = tabularise(nautilus.getUnitResults(studentId, unitName));
+			tableRows = tabularise(nautilus.getUnitResults(studentID, unitName));
 			tables[context.id] = configureDataTable(context.id);
 			tables[context.id].clear().rows.add(tableRows).draw();
 		}

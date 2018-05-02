@@ -1,0 +1,16 @@
+{
+	"studentManifest": [
+		{
+			"id": "student1",
+		 	"firstName": "Brendan",
+		 	"lastName": "Wightman",
+		 	"lastInteraction": 1514810602
+		},
+		{
+			"id": "student2",
+		 	"firstName": "Tom",
+		 	"lastName": "Buckham",
+		 	"lastInteraction": 1525259754
+		}
+	]
+}
