@@ -11,18 +11,26 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/* SET UP VARIABLES */
 	/********************/
 
-	const studentID = 'student1',
-				lessonTableTemplate = getTemplate('lessonTableTemplate'),
+	const lessonTableTemplate = getTemplate('lessonTableTemplate'),
 				unitSummaryTemplate = getTemplate('unitSummaryTemplate'),
 				productSummaryTemplate = getTemplate('productSummaryTemplate'),
 				charts = {}, //holds variables created by chartist.js
 				tables = {}, //holds tables created by datatables.js
 				myScores = document.getElementById('myScores');
+	let studentID = 'student1'; //will be set later using router
 	
 	/***************************/
 	/* SET UP AND INIT ROUTING */
 	/***************************/
 	
+	const routes = {
+        '/:id': function(id) {
+					//swap studentID variable to match hash
+          studentID = id;
+        }
+      };
+  const router = Router(routes);
+	router.init(['/student1']); //by default, redirect to student1
 
 	/************************/
 	/* BIND EVENT LISTENERS */
