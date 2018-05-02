@@ -1,0 +1,11 @@
+{
+	"productManifest": [
+		{
+			"id": "evolve1op",
+		 	"name": "Evolve 1 Online Practice",
+			"productFamily": "Evolve 1",
+			"icon": "evolve_logo.png",
+			"description": "This is Evolve, the best product ever for English learners. Evolve!!!"
+		}
+	]
+}

@@ -14,11 +14,13 @@ Handles logic for you, e.g. aggregating scores and progress.
 	// PRIVATE VARIABLES & HELPERS //
 	/*-----------------------------*/
 
-	const __courseStructure = {}; //structure of Evolve with unit, level, LO names etc. LO ids as keys
+	const __productStructure = {}; //structure of each product with unit, level, LO names etc. LO ids as keys
+	let __productStructureArray = {}; //the course structures as arrays, for ease of access to unit names
 	let __studentIDs = []; //array of student IDs (get from JSON 'student manifest' file)
+	let __productIDs = [];
 	let __studentDetails = {}; //metadata about each student, e.g. lastname
-	let __results = {}; //student results against each LO in course
-	let __courseStructureArray = []; //the course structure as an array
+	let __productDetails = {}; //metadata about each product, e.g. icon
+	let __results = {}; //student results against each LO in each product
   
 	// fetch CSV file via XMLHttpRequest
 	function __fetchCSV(path, callback) {
@@ -84,13 +86,13 @@ Handles logic for you, e.g. aggregating scores and progress.
 	}
 
 	//map course structure details onto student's LO scores
-	function __mapLODetails(results) {
+	function __mapLODetails(results, productID) {
 		if (results[0].LO_name === undefined) {
 			results.map( (x) => {
-				x.LO_name = __courseStructure[x.LO_id].LO_name;
-				x.lesson_name = __courseStructure[x.LO_id].lesson_name || null;
-				x.unit_name = __courseStructure[x.LO_id].unit_name;
-				x.nonscorable = __courseStructure[x.LO_id].nonscorable === 'TRUE' ? true : false;
+				x.LO_name = __productStructure[productID][x.LO_id].LO_name;
+				x.lesson_name = __productStructure[productID][x.LO_id].lesson_name || null;
+				x.unit_name = __productStructure[productID][x.LO_id].unit_name;
+				x.nonscorable = __productStructure[productID][x.LO_id].nonscorable === 'TRUE' ? true : false;
 				return x;
 			});
 		}
@@ -161,31 +163,50 @@ Handles logic for you, e.g. aggregating scores and progress.
 
 	//loads & assigns student/course data to private variables. Accepts optional callback to run after after load is complete.
 	nautilus.init = function (callback) {
-		let counter = 0;
-
-		let parseStudentResults = function (res, i) {
-			let parsedData = __parseCSV(res);
-			__mapLODetails(parsedData);
-			__results[__studentIDs[i]] = __calculateStatus(parsedData);
-			counter -= 1;
-			//once all student results have loaded, run the user-defined callback if one is supplied
-			if (!counter && callback) {
-				callback();
+		let resultsCounter = 0;
+		
+		//loads and stores the structure of an individual product, then calls parseStudentResults for it (step 3)
+		const parseProductStructure = function (res, productID) {
+			let data = __parseCSV(res),
+					len = data.length,
+					i = 0;
+			__productStructureArray[productID] = data;
+			__productStructure[productID] = {};
+			__results[productID] = {};
+			for (i; i < len; i++) {
+				__productStructure[productID][data[i].LO_id] = data[i];
+			}
+			//As each product gets loaded, load the corresponding student results
+			for (i = 0; i < __studentIDs.length; i++) {
+				let studentID = __studentIDs[i];
+				try {
+					__fetchCSV(`../data/results/${productID}/${studentID}.csv`, (res) => {
+						parseStudentResults(res, productID, studentID);
+						//once all product structures and student results have loaded, run the user-defined callback if one is supplied
+						if (!resultsCounter && callback) {
+							callback();
+						}
+					});
+				} catch (e) {
+					//decrement regardless of whether student has results against product or not
+					resultsCounter -= 1;
+					if (!resultsCounter && callback) {
+						callback();
+					}
+				}
 			}
 		};
-
-		//load the course structure CSV
-		__fetchCSV('../data/structure.csv', (res) => {
-			let data = __parseCSV(res),
-					i = 0,
-					len = data.length;
-			__courseStructureArray = data;
-			for (i; i < len; i++) {
-				__courseStructure[data[i].LO_id] = data[i];
-			}
-		});
-
-		//meanwhile, fetch student IDs from the JSON
+		
+		//TODO: store results against specific product
+		//loads, maps and stores an individual student's results (step 3.5)
+		const parseStudentResults = function (res, productID, studentID) {
+			let parsedData = __parseCSV(res);
+			__mapLODetails(parsedData, productID);
+			__results[productID][studentID] = __calculateStatus(parsedData);
+			resultsCounter -= 1;
+		};
+		
+		//fetch student IDs from the student manifest (step 1)
 		__fetchCSV('../data/studentManifest.json', (res) => {
 			let parsedData = JSON.parse(res);
 			__studentIDs = parsedData.studentManifest.map( obj => {
@@ -193,13 +214,25 @@ Handles logic for you, e.g. aggregating scores and progress.
 				__studentDetails[obj.id] = obj;
 				return obj.id;
 			});
-			counter = __studentIDs.length;
-			//for each student, load their results...
-			for (let i = 0; i < __studentIDs.length; i++) {
-				__fetchCSV(`../data/students/${__studentIDs[i]}.csv`, (res) => {
-					parseStudentResults(res, i);
+			//then, fetch product IDs from product manifest (step 2)
+			__fetchCSV('../data/productManifest.json', (res) => {
+				let parsedData = JSON.parse(res),
+						i = 0;
+				//store product IDs and product metadata
+				__productIDs = parsedData.productManifest.map( obj => {
+					__productDetails[obj.id] = obj;
+					return obj.id;
 				});
-			}
+				//this keeps track of how many student results are left to load (across all products)
+				resultsCounter = __studentIDs.length * __productIDs.length;
+				//For each product, load the course structure CSV
+				for (i; i < __productIDs.length; i++) {
+					let productID = __productIDs[i];
+					__fetchCSV(`../data/structures/${productID}.csv`, (res) => {
+						parseProductStructure(res, productID);
+					});
+				}
+			});
 		});
     
 	};
@@ -209,15 +242,20 @@ Handles logic for you, e.g. aggregating scores and progress.
 		return __studentIDs;
 	};
 	
+	//returns an array of all product IDs
+	nautilus.getProductIDs = function () {
+		return __productIDs;
+	};
+	
 	//returns any metadata associated with a student ID
 	nautilus.getStudentDetails = function (studentID) {
 		return __studentDetails[studentID];
 	};
 
 	//returns an array of all unit names in the product
-	nautilus.getUnitNames = function () {
+	nautilus.getUnitNames = function (productId) {
 		const names = [];
-		__courseStructureArray.forEach( el => {
+		__productStructureArray[productId].forEach( el => {
 			if (!names.includes(el.unit_name)) {
 				names.push(el.unit_name);
 			}
@@ -228,7 +266,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 	//returns an array of all lesson names in the unit
 	nautilus.getLessonNames = function (unitName) {
 		const names = [],
-					los = __courseStructureArray.filter( el => el.unit_name === unitName);
+					los = __productStructureArray.filter( el => el.unit_name === unitName);
 		los.forEach( el => {
 			//only get unique and non-null lesson names
 			if (!names.includes(el.lesson_name) && el.lesson_name) {
@@ -239,23 +277,23 @@ Handles logic for you, e.g. aggregating scores and progress.
 	};
 
 	//returns the student's result against all LOs in product
-	nautilus.getAllResults = function (studentId) {
-		return __results[studentId];
+	nautilus.getAllResults = function (studentId, productId) {
+		return __results[productId][studentId];
 	};
 
 	//returns the student's results against all LOs in specified unit
-	nautilus.getUnitResults = function (studentId, unitName) {
-		return __results[studentId].filter( el => el.unit_name === unitName);
+	nautilus.getUnitResults = function (studentId, productId, unitName) {
+		return __results[productId][studentId].filter( el => el.unit_name === unitName);
 	};
 
 	//returns the student's results against all LOs in specified unit + lesson
-	nautilus.getLessonResults = function (studentId, unitName, lessonName) {
-		return __results[studentId].filter( el => el.unit_name === unitName && el.lesson_name === lessonName);
+	nautilus.getLessonResults = function (studentId, productId, unitName, lessonName) {
+		return __results[productId][studentId].filter( el => el.unit_name === unitName && el.lesson_name === lessonName);
 	};
 	
 	//returns a summary of the student's results across the whole product
-	nautilus.getAllSummary = function (studentId) {
-		return __summariseStatus(__results[studentId]);
+	nautilus.getAllSummary = function (studentId, productId) {
+		return __summariseStatus(__results[productId][studentId]);
 	};
 
 	//returns a summary of the student's results in a specified unit
@@ -284,7 +322,7 @@ Handles logic for you, e.g. aggregating scores and progress.
   
   //Calculate total time spent in the product
   nautilus.getTotalTime = function (studentId) {
-    let totalTime = __results[studentId].reduce((a, b) => ({active_time: a.active_time + b.active_time}));
+    let totalTime = __results[productId][studentId].reduce((a, b) => ({active_time: a.active_time + b.active_time}));
     return __timeSpent(totalTime);
 	};
 
