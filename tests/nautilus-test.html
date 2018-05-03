@@ -71,8 +71,8 @@
 			},
 			
 			'getUnitResults: each LO object should contain values for LO ID, status, best score, first score, attempts, time, LO name': function() {
-				const units = nautilus.getUnitNames();
-				const unitOne = nautilus.getUnitResults('student1', units[0]);
+				const units = nautilus.getUnitNames('evolve1op');
+				const unitOne = nautilus.getUnitResults('student1', 'evolve1op', units[0]);
 				const lo = unitOne[0];
 				eq(typeof lo.LO_id, 'string');
 				eq(typeof lo.status, 'string');
@@ -84,8 +84,8 @@
 			},
 
 			'getUnitResults: it should not return any LOs which are not in the specified unit': function() {
-				const units = nautilus.getUnitNames();
-				const unitTwelve = nautilus.getUnitResults('student1', units[11]);
+				const units = nautilus.getUnitNames('evolve1op');
+				const unitTwelve = nautilus.getUnitResults('student1', 'evolve1op', units[11]);
 				let i = 0,
 						len = unitTwelve.length;
 				for (i; i < len; i++) {
@@ -93,43 +93,43 @@
 				}
 			},
 			
-			// nautilus.getUnitNames()
+			// nautilus.getUnitNames(productId)
 			'getUnitNames: it should return an array with the names of each unit in the product': function() {
-				const unitNames = nautilus.getUnitNames();
+				const unitNames = nautilus.getUnitNames('evolve1op');
 				eq(unitNames.length, 13);
 				eq(unitNames[3], 'Unit 4');
 			},
 			
 			// nautilus.getLessonNames(unitName)
 			'getLessonNames: it should return an array with the names of each lesson in the specified unit': function() {
-				const unitNames = nautilus.getUnitNames(),
+				const unitNames = nautilus.getUnitNames('evolve1op'),
 							u1 = unitNames[0],
-							lessons = nautilus.getLessonNames(u1);
+							lessons = nautilus.getLessonNames('evolve1op', u1);
 				eq(lessons.length, 5);
 				eq(lessons[0], 'Lesson 1.1');
 			},
 			
 			//nautilus.getUnitSummary(studentId, unitName)
 			'getUnitSummary: it should return an object with properties aboveTarget, belowTarget and notStarted': function() {
-				const summary = nautilus.getUnitSummary('student1', 'Unit 1');
+				const summary = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1');
 				eq(typeof summary.aboveTarget, 'number');
 				eq(typeof summary.belowTarget, 'number');
 				eq(typeof summary.notStarted, 'number');
 			},
 			
 			'getUnitSummary: it should aggregate status data for all LOs in the Unit': function() {
-				const summary = nautilus.getUnitSummary('student1', 'Unit 1');
+				const summary = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1');
 				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 28);
 			},
 			
 			'getUnitSummary: it should include a percentageCompleted value, rounded to full number': function() {
-				const summary = nautilus.getUnitSummary('student1', 'Unit 1'),
+				const summary = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1'),
 							expectedPercentage = 86;
 				eq(summary.percentCompleted, expectedPercentage);
 			},
 			
 			'getUnitSummary: it should include three degree values for the unit, adding to 360': function() {
-				const summary = nautilus.getUnitSummary('student1', 'Unit 1');
+				const summary = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1');
 				assert(Array.isArray(summary.degreeValues));
 				eq(summary.degreeValues.length, 3);
 				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
@@ -137,43 +137,51 @@
 			
 			//nautilus.getAllSummary(studentId)			
 			'getAllSummary: it should aggregate status data for all LOs in the product': function() {
-				const summary = nautilus.getAllSummary('student1');
+				const summary = nautilus.getAllSummary('student1', 'evolve1op');
 				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 343);
 			},
 			
 			'getAllSummary: it should include three degree values for the product, adding to 360': function() {
-				const summary = nautilus.getAllSummary('student1');
+				const summary = nautilus.getAllSummary('student1', 'evolve1op');
 				assert(Array.isArray(summary.degreeValues));
 				eq(summary.degreeValues.length, 3);
 				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
 			},
 			
-			//nautilus.getAllAverage(studentId)
+			//nautilus.getAllAverage(studentId, productId)
 			//nautilus.getUnitAverage(studentId, unitName)
 			'getUnitAverage: it should return an integer between 0 and 100': function () {
-				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 1');
+				const unitAverage = nautilus.getUnitAverage('student1', 'evolve1op', 'Unit 1');
 				eq(typeof unitAverage, 'number');
 				assert(unitAverage <= 100);
 				assert(unitAverage >= 0);
 			},
 			
 			'getUnitAverage: it should represent the average of all completed LO scores': function () {
-				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 1');
+				const unitAverage = nautilus.getUnitAverage('student1', 'evolve1op', 'Unit 1');
 				const expectedAverage = 75;
 				eq(unitAverage, expectedAverage);
 			},
 			
 			'getUnitAverage: it should return false if there are no completed LOs': function () {
-				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 12');
+				const unitAverage = nautilus.getUnitAverage('student1', 'evolve1op', 'Unit 12');
 				eq(typeof unitAverage, 'boolean');
 				eq(unitAverage, false);
 			},
 			
 			'getUnitAverage: it should return the average of first scores if first_score argument is passed': function() {
-				const unitAverage = nautilus.getUnitAverage('student1', 'Unit 1', 'first_score');
+				const unitAverage = nautilus.getUnitAverage('student1', 'evolve1op', 'Unit 1', 'first_score');
 				const expectedAverage = 66;
 				eq(unitAverage, expectedAverage);
+			},
+			
+			//nautilus.getTotalTime(studentId, productId)
+			'getTotalTime: it should return a string formatted hh:mm:ss': function() {
+				const time = nautilus.getTotalTime('student1', 'evolve1op');
+				eq(typeof time, 'string');
+				eq(time.length, 8);
 			}
+			
 
 		});
 

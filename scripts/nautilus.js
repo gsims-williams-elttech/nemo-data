@@ -150,10 +150,13 @@ Handles logic for you, e.g. aggregating scores and progress.
 	}
   
   //convert time spent in the product/unit into hours, minutes and seconds.
-  function __timeSpent (value) {
-    let hours = Math.floor(value.active_time / 3600);
-    let minutes = Math.floor((value.active_time - (hours * 3600)) / 60);
-    let timeLearning = hours +':'+ minutes;
+  function __timeSpent (active_time) {
+    let hours = Math.floor(active_time / 3600);
+    let minutes = Math.floor((active_time - (hours * 3600)) / 60);
+		let seconds = Math.floor((active_time - (hours * 3600) - (minutes * 60)) / 60);
+    let timeLearning = hours +':'+ minutes + ':' + seconds;
+		//pad out with extra 0s if necessary
+		timeLearning = timeLearning.replace(/(:.$)|(^.:)/gi, (match, g1, g2) => g1 ? ':0' + g1[1] : '0' + g2).replace(/:([0-9]:)/gi, (match, g1) => ':0' + g1);
     return timeLearning;
   }
 
@@ -264,9 +267,9 @@ Handles logic for you, e.g. aggregating scores and progress.
 	};
 
 	//returns an array of all lesson names in the unit
-	nautilus.getLessonNames = function (unitName) {
+	nautilus.getLessonNames = function (productId, unitName) {
 		const names = [],
-					los = __productStructureArray.filter( el => el.unit_name === unitName);
+					los = __productStructureArray[productId].filter( el => el.unit_name === unitName);
 		los.forEach( el => {
 			//only get unique and non-null lesson names
 			if (!names.includes(el.lesson_name) && el.lesson_name) {
@@ -297,20 +300,20 @@ Handles logic for you, e.g. aggregating scores and progress.
 	};
 
 	//returns a summary of the student's results in a specified unit
-	nautilus.getUnitSummary = function (studentId, unitName) {
-		const unitResults = this.getUnitResults(studentId, unitName);
+	nautilus.getUnitSummary = function (studentId, productId, unitName) {
+		const unitResults = this.getUnitResults(studentId, productId, unitName);
 		return __summariseStatus(unitResults);
 	};
 	
 	//returns the average of all best/first scores in a product, or false if no completed LOs
-	nautilus.getAllAverage = function (studentId, scoreType) {
-		const results = nautilus.getAllResults(studentId);
+	nautilus.getAllAverage = function (studentId, productId, scoreType) {
+		const results = nautilus.getAllResults(studentId, productId);
 		return __averageScore(results, scoreType);
 	};
 	
 	//returns the average of all best/first scores in a unit, or false if no completed LOs
-	nautilus.getUnitAverage = function (studentId, unitName, scoreType) {
-		const results = nautilus.getUnitResults(studentId, unitName);
+	nautilus.getUnitAverage = function (studentId, productId, unitName, scoreType) {
+		const results = nautilus.getUnitResults(studentId, productId, unitName);
 		return __averageScore(results, scoreType);
 	};
   
@@ -321,9 +324,9 @@ Handles logic for you, e.g. aggregating scores and progress.
   };
   
   //Calculate total time spent in the product
-  nautilus.getTotalTime = function (studentId) {
+  nautilus.getTotalTime = function (studentId, productId) {
     let totalTime = __results[productId][studentId].reduce((a, b) => ({active_time: a.active_time + b.active_time}));
-    return __timeSpent(totalTime);
+    return __timeSpent(totalTime.active_time);
 	};
 
 	/*----------------------------------------*/
