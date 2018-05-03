@@ -203,7 +203,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			if (results[i].status === 'aboveTarget') {
 				icon = "<i class='fas fa-star'></i>"
 			} else if (results[i].status === 'belowTarget') {
-				icon = "<span class='fa-layers fa-fw'><i class='far fa-star'></i><i class='fas fa-star-half'></i></span>";
+				icon = "<span class='belowTarget'><i class='far fa-star'></i><i class='fas fa-star-half'></i></span>";
 			}
 			tableRows.push([
 				`${icon} ${results[i].LO_name}`,
