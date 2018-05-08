@@ -71,8 +71,8 @@
 .fa-star-half {
 	color: #f4c63d;
 	position: absolute;
-	top: 1px;
-	left: -1px;
+	top: 0.2em;
+	left: 0em;
 }
 
 .fa-circle {
