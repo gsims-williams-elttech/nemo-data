@@ -225,7 +225,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			}
 			results[i].status = results[i].status === 'inProgress' ? 'notStarted' : results[i].status;
 			tableRows.push([
-				`${icon} ${results[i].LO_name}`,
+				`${icon} <span class="tableLO">${results[i].LO_name}</span> <i class="fas fa-external-link-alt" title="launch activity"></i>`,
 				results[i].first_score,
 				results[i].best_score,
 				results[i].attempts,
