@@ -39,24 +39,28 @@
         <div class="col-sm-12 col-md-3">
           <img src="assets/evolve_logo.png" class="img-fluid">
         </div>
-
         <div class="col-sm-12 col-md-9">
           <h1 class="display-4">Evolve 1</h1>
 					<p class="lead">2018 Adult English course.</p>
           <div id="productSummary" class="productSummary"></div>
-          <p>
-            <a class="btn btn-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="myScores">Overview</a>
-            <a class="btn btn-light" data-toggle="collapse" data-target="#myScores" aria-expanded="false" aria-controls="myScores">My Scores</a>
-          </p>
         </div>
       </div>
     </div>
 
     <div class="container-fluid container--nopadding">
       <div class="row unit-row collapse show no-gutters" id="myScores"></div>
-			<div class="row no-gutters">
-				<div class="col-12">
-					<div class="d-none col-12" id="tableArea"></div>
+			<div class="d-none col no-gutters" id="tableAreaFull">
+				<div class="col-12 d-flex flex-column">
+					<div class="form-group row align-self-end tableFilter">
+						<label for="exampleFormControlSelect1" class="col-form-label">Filter activities:</label>
+						<select class="form-control" id="exampleFormControlSelect1">
+							<option default>show all</option>
+							<option>not completed</option>
+							<option>completed - on target</option>
+							<option>completed - below target</option>
+						</select>
+					</div>
+					<div class="col-12" id="tableArea"></div>
 				</div>
 			</div>
     </div>
@@ -73,11 +77,7 @@
 					<div class="col-5 summaryStats">
 						<h5 class="card-title">{{unitName}}</h5>
 						<br class="card-text"><i class="fas fa-star"></i>{{aboveTarget}}
-						<br class="card-text">
-							<span class="belowTarget">
-								<i class="far fa-star"></i>
-								<i class="fas fa-star-half"></i>
-							</span>{{belowTarget}} 
+						<br class="card-text"><span class="belowTarget"><i class="far fa-star"></i><i class="fas fa-star-half"></i></span>{{belowTarget}} 
 						<br class="card-text"><i class="far fa-circle"></i>{{notStarted}} 
 					</div>
 				</div>
@@ -85,22 +85,19 @@
     </script>
     
     <script id="productSummaryTemplate" type="text/x-handlebars-template">
-        <div>
-          <div class="completionTitle">Completed: {{percentCompleted}}%</div>
-					<span class="productSummaryItems">
-						<i class="fas fa-star"></i>{{aboveTarget}} on target
-          <br>
-					<span class="belowTarget">
-								<i class="far fa-star"></i>
-								<i class="fas fa-star-half"></i>
-							</span>{{belowTarget}} below target
-          <br>
-						<i class="far fa-circle"></i>{{notStarted}} not completed
-					</span>
-					<div>
-						<span>Learning time: {{active_time}}</span>
-					</div>
-        </div>
+			<div>
+				<div class="completionTitle">Completed: {{percentCompleted}}%</div>
+				<span class="productSummaryItems">
+					<i class="fas fa-star"></i>{{aboveTarget}} activities on target
+				<br>
+				<span class="belowTarget"><i class="far fa-star"></i><i class="fas fa-star-half"></i></span>{{belowTarget}} activities below target
+				<br>
+					<i class="far fa-circle"></i>{{notStarted}} not completed
+				</span>
+				<div>
+					<span>Learning time: {{active_time}}</span>
+				</div>
+			</div>
     </script>
 		
 		<script id="lessonTableTemplate" type="text/x-handlebars-template">

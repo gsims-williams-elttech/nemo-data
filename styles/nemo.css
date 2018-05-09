@@ -110,3 +110,18 @@
   padding-right: 10px;
 	margin: 16px 0;
 }
+
+.tableFilter {
+	width: 340px;
+	margin: 20px 10px 0 0;
+}
+
+.tableFilter label {
+	padding-right: 5px;
+	width: 35%;
+}
+
+.tableFilter select {
+	width: 65%;
+	padding-left: 0.3rem;
+}

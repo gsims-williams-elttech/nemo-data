@@ -44,9 +44,9 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			//add a click listener to each div inside myScores
 			for (let i = 0; i < myScores.childNodes.length; i++) {
 				myScores.childNodes[i].addEventListener('click', (e) => {
-					//hide or show the tableArea
+					//hide or show the tableAreaFull
 					if (event.currentTarget.classList.contains('unit-card-selected')) {
-						document.getElementById('tableArea').classList.add('d-none');
+						document.getElementById('tableAreaFull').classList.add('d-none');
 						event.currentTarget.classList.remove('unit-card-selected');
 					} else {
 						renderUnitTables(e);
@@ -94,7 +94,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	function renderUnitTables (event) {
 		const unitName = event.currentTarget.dataset.unit,
 					lessons = nautilus.getLessonNames(productID, unitName),
-					tableArea = document.getElementById('tableArea');
+					tableArea = document.getElementById('tableArea'),
+					tableAreaFull = document.getElementById('tableAreaFull');
 		let i = 0,
 				tableRows,
 				results,
@@ -102,7 +103,7 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		
 		//reveal the (emptied) table area
 		tableArea.innerHTML = "";
-		tableArea.classList.remove('d-none');
+		tableAreaFull.classList.remove('d-none');
 		
 		//loop through each lesson in the unit
 		for (i; i < lessons.length; i++) {
