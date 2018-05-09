@@ -16,7 +16,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 				productSummaryTemplate = getTemplate('productSummaryTemplate'),
 				charts = {}, //holds variables created by chartist.js
 				tables = {}, //holds tables created by datatables.js
-				myScores = document.getElementById('myScores');
+				myScores = document.getElementById('myScores'),
+				filterActivities = document.getElementById('filterActivities');
 	let studentID = 'student1',//will be set later using router
 			productID = 'evolve1op';
 			
@@ -56,10 +57,23 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			}
 		});
 	});
+	
+	filterActivities.addEventListener('change', (e) => {
+		let filterVal = e.target.options[e.target.selectedIndex].value;
+		filterTables(filterVal);
+	});
 
 	/*********************************/
 	/* FUNCTIONS FOR EVENT LISTENERS */
 	/*********************************/
+	
+	function filterTables (filterVal) {
+		Object.keys(tables).map(function(key, index) {
+			if (key.includes('lessonTable-') || key.includes('unitTable-')) {
+				tables[key].columns(4).search(filterVal).draw()
+			}
+		});
+	}
 
   function renderProductSummary (){
     let context = nautilus.getAllSummary(studentID, productID);
@@ -95,7 +109,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		const unitName = event.currentTarget.dataset.unit,
 					lessons = nautilus.getLessonNames(productID, unitName),
 					tableArea = document.getElementById('tableArea'),
-					tableAreaFull = document.getElementById('tableAreaFull');
+					tableAreaFull = document.getElementById('tableAreaFull'),
+					filterVal = filterActivities.options[filterActivities.selectedIndex].value;
 		let i = 0,
 				tableRows,
 				results,
@@ -132,6 +147,9 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			tables[context.id] = configureDataTable(context.id);
 			tables[context.id].clear().rows.add(tableRows).draw();
 		}
+		
+		//apply filters if currently selected
+		filterTables(filterVal);
 	}
 
 	//style the open unit	and remove style from other units
@@ -157,11 +175,10 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			retrieve: true,
 			info:     false,
 			order: [],
-			columnDefs: [{
-				targets: 0,
-				orderable: false
-				//width: '40%'
-			}]
+			columnDefs: [
+				{targets: 0, orderable: false}, 
+				{targets: 4, visible: false}
+			]
 		});
 	}
 
@@ -206,11 +223,13 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 			} else if (results[i].status === 'belowTarget') {
 				icon = "<span class='belowTarget'><i class='far fa-star'></i><i class='fas fa-star-half'></i></span>";
 			}
+			results[i].status = results[i].status === 'inProgress' ? 'notStarted' : results[i].status;
 			tableRows.push([
 				`${icon} ${results[i].LO_name}`,
 				results[i].first_score,
 				results[i].best_score,
-				results[i].attempts
+				results[i].attempts,
+				results[i].status
 			]);
 		}
 		return tableRows;

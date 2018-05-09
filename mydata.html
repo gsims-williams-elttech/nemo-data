@@ -52,12 +52,12 @@
 			<div class="d-none col no-gutters" id="tableAreaFull">
 				<div class="col-12 d-flex flex-column">
 					<div class="form-group row align-self-end tableFilter">
-						<label for="exampleFormControlSelect1" class="col-form-label">Filter activities:</label>
-						<select class="form-control" id="exampleFormControlSelect1">
-							<option default>show all</option>
-							<option>not completed</option>
-							<option>completed - on target</option>
-							<option>completed - below target</option>
+						<label for="filterActivities" class="col-form-label">Filter activities:</label>
+						<select class="form-control" id="filterActivities">
+							<option default value="">show all</option>
+							<option value="notStarted">not completed</option>
+							<option value="belowTarget">completed - below target</option>
+							<option value="aboveTarget">completed - on target</option>
 						</select>
 					</div>
 					<div class="col-12" id="tableArea"></div>
