@@ -102,8 +102,8 @@
 		
 		<script id="lessonTableTemplate" type="text/x-handlebars-template">
 			{{#unless noLessons}}<h5 class="lessonTitle">{{lessonName}}</h5>{{/unless}}
-			<div class="table-responsive">
-				<table class="table table-sm" id="{{id}}" cellspacing="0">
+			<div>
+				<table class="table table-sm" id="{{id}}" cellspacing="0" style="width: 100%">
 					<thead>
 						<tr>
 							<th scope="col">Activity Name</th>
@@ -112,7 +112,7 @@
 							<th scope="col">Attempts</th>
 						</tr>
 					</thead>
-					<tbody></tbody>
+					<tbody class="table--nowrap"></tbody>
 				</table>
 			</div>
 		</script>

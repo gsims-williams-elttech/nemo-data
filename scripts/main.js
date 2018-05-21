@@ -171,12 +171,16 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 
 	function configureDataTable (elementId) {
 		return $(`#${elementId}`).DataTable({
+			responsive: true,
 			paging:   false,
 			retrieve: true,
 			info:     false,
 			order: [],
 			columnDefs: [
-				{targets: 0, orderable: false}, 
+				{targets: 0, orderable: false, responsivePriority: 1}, 
+				{targets: 1, responsivePriority: 4},
+				{targets: 2, responsivePriority: 2},
+				{targets: 3, responsivePriority: 3},
 				{targets: 4, visible: false}
 			]
 		});

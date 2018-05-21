@@ -42,6 +42,14 @@
 	border-width: 5px;
 }
 
+#tableAreaFull {
+	padding: 0 5px;
+}
+
+#tableArea {
+	padding: 0;
+}
+
 #tableArea .dataTables_filter { 
 	display: none;
 }
@@ -135,4 +143,8 @@
 .tableFilter select {
 	width: 65%;
 	padding-left: 0.3rem;
+}
+
+.table--nowrap tr:first-of-type td {
+	 min-width: 200px;
 }
