@@ -3,6 +3,7 @@ Thumbs.db
 ehthumbs.db
 *.lnk
 *.stackdump
+.vscode/
 [Dd]esktop.ini
 $RECYCLE.BIN/
 
