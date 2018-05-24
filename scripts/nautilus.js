@@ -249,6 +249,11 @@ Handles logic for you, e.g. aggregating scores and progress.
 	nautilus.getProductIDs = function () {
 		return __productIDs;
 	};
+
+	//returns any metadata associated with all students
+	nautilus.getAllStudentDetails = function () {
+		return __studentDetails;
+	};	
 	
 	//returns any metadata associated with a student ID
 	nautilus.getStudentDetails = function (studentID) {

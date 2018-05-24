@@ -11,6 +11,7 @@
   <link href="styles/chartist.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/bootstrap-multiselect.css" type="text/css" />
   <link href="styles/nemo.css" rel="stylesheet">
 </head>
 
@@ -42,7 +43,165 @@
       </ul>
     </div>
   </nav>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-sm-3 col-md-2">
+            <label for="ClassSel">Group:</label>
+          </div>
+          <div class="col-sm-7 col-md-4">
+            <select class="form-control" id="ClassSel">
+              <option>Class 01A - Autumn</option>
+              <option>Class 02B - Autumn</option>
+            </select>
+          </div>
+          <div class="col-sm-3 col-md-2">
+            <label for="ClassSel">Product:</label>
+          </div>
+          <div class="col-sm-7 col-md-4">
+            <select class="form-control" id="ClassSel">
+              <option>Evolve Practice Plus</option>
+              <option>EAP - Business</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row padded-row">
+      <div class="col-12 col-sm-3 col-md-2">
+        View:
+      </div>
+      <div class="col-12 col-sm-7 col-md-4">
+        <select id="dataViewer" multiple="multiple">
+          <option id="Unit1" value="Unit 1" selected>Unit 1</option>
+          <option id="Unit2" value="Unit 2" selected>Unit 2</option>
+          <option id="Unit3" value="Unit 3" selected>Unit 3</option>
+          <option id="Unit4" value="Unit 4" selected>Unit 4</option>
+          <option id="Unit5" value="Unit 5" selected>Unit 5</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
+  </div>
+  </div>
+
+  <div class="container container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <table id="studentSummary" class="table">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>
+                <i class='fas fa-star'></i>
+              </th>
+              <th>
+                <span class="belowTarget"><i class="far fa-star"></i><i class="fas fa-star-half"></i></span>
+              </th>
+              <th>
+                <i class='far fa-circle'></i>
+              </th>
+              <th>Last login
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Brendan Wightman</td>
+              <td>
+                <i class='fas fa-star'></i> 2
+              </td>
+              <td>
+                <span class="belowTarget"><i class="far fa-star"></i><i class="fas fa-star-half"></i></span> 42
+              </td>
+              <td>
+                <i class='far fa-circle'></i> 12
+              </td>
+              <td>
+                18/5/2018 - 22:00pm
+              </td>
+            </tr>
+            <td>Gwen Sims'W</td>
+            <td>
+              <i class='fas fa-star'></i> 42
+            </td>
+            <td>
+              <span class="belowTarget"><i class="far fa-star"></i><i class="fas fa-star-half"></i></span> 12
+            </td>
+            <td>
+              <i class='far fa-circle'></i> 12
+            </td>
+            <td>
+              18/5/2018 - 22:00pm
+            </td>
+          </tr>
+          <td>Tom Buckham</td>
+          <td>
+            <i class='fas fa-star'></i> 38
+          </td>
+          <td>
+            <span class="belowTarget"><i class="far fa-star"></i><i class="fas fa-star-half"></i></span> 10
+          </td>
+          <td>
+            <i class='far fa-circle'></i> 18
+          </td>
+          <td>
+            18/5/2018 - 22:00pm
+          </td>
+        </tr>
+        <td>Gosia Adamczyk</td>
+        <td>
+          <i class='fas fa-star'></i> 20
+        </td>
+        <td>
+          <span class="belowTarget"><i class="far fa-star"></i><i class="fas fa-star-half"></i></span> 12
+        </td>
+        <td>
+          <i class='far fa-circle'></i> 42
+        </td>
+        <td>
+          18/5/2018 - 22:00pm
+        </td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://rawgit.com/flatiron/director/master/build/director.min.js">
+  </script>
+  <script src="lib/popper.min.js"></script>
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/bootstrap.bundle.min.js"></script>
+  <script src="lib/datatables.min.js"></script>
+  <script src="lib/handlebars-v4.0.11.js"></script>
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script src="lib/chartist-plugin-fill-donut.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-multiselect.js"></script>
+  <script src="scripts/nautilus.js"></script>
+  <script src="scripts/main.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#dataViewer').multiselect({
+        includeSelectAllOption: true,
+        selectAllName: 'All Units'
+      });
+    });
+    $(document).ready(function () {
+      $('#studentSummary').DataTable({
+        responsive: true,
+        paging: false,
+        retrieve: true,
+        info: false,
+        order: [],
+      });
+    });
+
+  </script>
 </body>
+
 
 </html>
