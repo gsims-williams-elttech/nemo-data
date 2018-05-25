@@ -1,0 +1,19 @@
+.unitTile {
+	padding: 5px;
+}
+
+.unitTile__chart {
+	height: 100px;
+	overflow: hidden;
+}
+
+.unitTile__percent {
+	font-size: 0.7em;
+	text-align: center;
+}
+
+.unitTile__button {
+	position: absolute;
+	right: 5px;
+	top: 7px;
+}
