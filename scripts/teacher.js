@@ -10,20 +10,23 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/********************/
 	/* SET UP VARIABLES */
 	/********************/
-  const studentDetails = nautilus.getAllStudentDetails();
+	
 
 
-
-  	/************************/
+  /************************/
 	/* BIND EVENT LISTENERS */
 	/************************/
 
-
-  	/********************/
-	/* HELPER FUNCTIONS */
-	/********************/
-
-
+	document.addEventListener('DOMContentLoaded', () => {
+		nautilus.init( () => {
+			//any code that requires nautilus data should go inside this callback
+		});
+	};
+														
+	/****************************************/
+	/* HELPER FUNCTIONS FOR EVENT LISTENERS */
+	/****************************************/
 	
+
 
 })();

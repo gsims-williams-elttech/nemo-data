@@ -7,23 +7,10 @@
 	/********************/
 
 	const charts = {},
-				unitTileTemplate = getTemplate('unitTileTemplate');
+				unitTileTemplate = helpers.getTemplate('unitTileTemplate');
 	
-	let studentID, //router will set this variable depending on the URL
+	let studentID = helpers.getVariableFromURL('student1'), //setup router
 			productID = 'evolve1op'; 
-	
-	/***************************/
-	/* SET UP AND INIT ROUTING */
-	/***************************/
-	
-	const routes = {
-        '/:id': function(id) {
-					//swap studentID variable to match hash
-          studentID = id;
-        }
-      };
-  const router = Router(routes);
-	router.init(['/student1']); //by default, redirect to student1
 	
 	/************************/
 	/* BIND EVENT LISTENERS */
@@ -62,36 +49,10 @@
 				let percentAbove = (summary.aboveTarget / sum) * 100;
 				let percentBelow = (summary.belowTarget / sum) * 100;
 				let percentNot = (summary.notStarted / sum) * 100;
-				makeChart(`#unitchart-${i}`, [percentAbove, percentBelow, percentNot], summary.percentCompleted);
+				charts[`#unitchart-${i}`] = helpers.makeChart(`#unitchart-${i}`, [percentAbove, percentBelow, percentNot]);
 			}
 		});
 	});
-	
-	/********************/
-	/* HELPER FUNCTIONS */
-	/********************/
-	
-	//takes string, array of series values, and percent integer; makes chart on page
-	function makeChart (id, series, percent) {
-		charts[id] = new Chartist.Pie(id, {
-			series: series,
-			labels: ['', '']
-		}, {
-			fullWidth: true,
-			width: '100%',
-			height: '200px',
-			donut: true,
-			donutWidth: 40,
-			startAngle: 270,
-  		total: 200,
-			showLabel: false
-		});
-	}
-	
-	//shortcut which generates & returns a handlebars template
-	function getTemplate (elementId) {
-		return Handlebars.compile(document.getElementById(elementId).innerHTML);
-	}
 	
 
 })();	
