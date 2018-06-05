@@ -112,9 +112,21 @@ Handles logic for you, e.g. aggregating scores and progress.
 				summary[el.status] += 1;
 			}
 		});
-		let completed = summary.aboveTarget + summary.belowTarget;
-		summary.percentCompleted = __asPercentage(completed, completed + summary.notStarted);
+		const completed = summary.aboveTarget + summary.belowTarget;
+		const total = completed + summary.notStarted;
+		
+		//calculate percentage values
+		summary.percentNotCompleted = __asPercentage(summary.notStarted, total);
+		summary.percentAbove = __asPercentage(summary.aboveTarget, total);
+		summary.percentBelow = __asPercentage(summary.belowTarget, total);
+		summary.percentCompleted = summary.percentAbove + summary.percentBelow;
+		
+		//fudge to ensure they add to 100%
+		summary.percentNotCompleted += (100 - (summary.percentAbove + summary.percentBelow + summary.percentNotCompleted));
+		
+		//degree values for pie/donut charts
 		summary.degreeValues = __asDegreeValues([summary.aboveTarget, summary.belowTarget, summary.notStarted]);
+		
 		return summary;
 	}
 	

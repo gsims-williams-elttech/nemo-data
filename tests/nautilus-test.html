@@ -93,6 +93,33 @@
 				}
 			},
 			
+			'methods which return summaries should also return percentage of Los above / below / not completed': function() {
+				const allSummary = nautilus.getAllSummary('student1', 'evolve1op');
+				const units = nautilus.getUnitNames('evolve1op');
+				const unitSummary = nautilus.getUnitSummary('student1', 'evolve1op', units[0]);
+				//const lessons = nautilus.getLessonNames('evolve1op', units[0]);
+				//const lessonSummary = nautilus.getLessonSummary('student1', 'evolve1op', units[0], lessons[0]);
+				
+				function checkIfValid(text, percent) {
+					assert(typeof percent === 'number' && percent >= 0 && percent <= 100);
+					console.log(text, percent);
+				};
+				
+				checkIfValid("percentAbove", allSummary.percentAbove);
+				checkIfValid("percentBelow", allSummary.percentBelow);
+				checkIfValid("percentNC", allSummary.percentNotCompleted);
+				eq(allSummary.percentAbove + allSummary.percentBelow + allSummary.percentNotCompleted, 100);
+				
+				checkIfValid("percentAbove", unitSummary.percentAbove);
+				checkIfValid("percentBelow", unitSummary.percentBelow);
+				checkIfValid("percentNC", unitSummary.percentNotCompleted);
+				eq(unitSummary.percentAbove + unitSummary.percentBelow + unitSummary.percentNotCompleted, 100);
+				
+//				checkIfValid(lessonSummary.percentAbove);
+//				checkIfValid(lessonSummary.percentBelow);
+//				checkIfValid(lessonSummary.percentNotCompleted);
+			},
+			
 			// nautilus.getUnitNames(productId)
 			'getUnitNames: it should return an array with the names of each unit in the product': function() {
 				const unitNames = nautilus.getUnitNames('evolve1op');
@@ -122,9 +149,9 @@
 				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 28);
 			},
 			
-			'getUnitSummary: it should include a percentageCompleted value, rounded to full number': function() {
+			'getUnitSummary: it should include a percentCompleted value, rounded to full number': function() {
 				const summary = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1'),
-							expectedPercentage = 86;
+							expectedPercentage = 85;
 				eq(summary.percentCompleted, expectedPercentage);
 			},
 			
