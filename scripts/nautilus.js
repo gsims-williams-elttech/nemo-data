@@ -257,9 +257,20 @@ Handles logic for you, e.g. aggregating scores and progress.
 		return __studentIDs;
 	};
 	
-	//returns an array of all product IDs
-	nautilus.getProductIDs = function () {
-		return __productIDs;
+	//returns an array of all product IDs (optional: associated with specified student)
+	nautilus.getProductIDs = function (studentID) {
+		if (studentID) {
+			let hasIDs = [];
+			//check each product's results record for the student's ID
+			__productIDs.forEach( (id) => {
+				if (__results[id][studentID]) {
+					hasIDs.push(id);
+				}
+			});
+			return hasIDs;
+		} else {
+			return __productIDs;
+		}
 	};
 
 	//returns any metadata associated with all students

@@ -14,10 +14,23 @@
 			},
 			
 			//nautilus.getProductIDs()
-			'getProductIDs: it should return an array of all available student IDs': function() {
+			'getProductIDs: it should return an array of all available product IDs': function() {
 				const products = nautilus.getProductIDs();
 				assert(Array.isArray(products));
 				eq(products[0], 'evolve1op');
+			},
+			
+			'getProductIDs: if passed a student ID as argument, it should return an array of product IDs to which that student has access': function() {
+				const products = nautilus.getProductIDs('student1');
+				assert(Array.isArray(products));
+				eq(products.length, 1);
+				eq(products[0], 'evolve1op');
+			},
+			
+			'getProductIDs: if the student has no products, it should return an empty array': function() {
+				const products = nautilus.getProductIDs('studentFake');
+				assert(Array.isArray(products));
+				eq(products.length, 0);
 			},
 
 			// nautilus.getAllResults(productId, studentId)
