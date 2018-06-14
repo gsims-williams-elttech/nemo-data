@@ -147,8 +147,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 	}
 	
 	//takes an array of objects representing LOs, and calculates their average score (best/first depending on parameter)
-	function __averageScore (results, scoreType) {
-		scoreType = scoreType === undefined ? 'best_score' : scoreType;
+	function __averageScore (results, scoreType='best_score') {
 		let completedNum = 0;
 		let average = results.reduce( function (acc, val) {
 			if (typeof val[scoreType] === 'number') {
@@ -334,7 +333,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 	};
 	
 	//returns the average of all best/first scores in a product, or false if no completed LOs
-	nautilus.getAllAverage = function (studentId, productId, scoreType) {
+	nautilus.getAllAverage = function (studentId, productId, scoreType='best_score') {
 		const results = nautilus.getAllResults(studentId, productId);
 		return __averageScore(results, scoreType);
 	};
