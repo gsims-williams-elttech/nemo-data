@@ -161,10 +161,13 @@ Handles logic for you, e.g. aggregating scores and progress.
 	}
   
   //convert time spent in the product/unit into hours, minutes and seconds.
-  function __timeSpent (active_time) {
+  function __timeSpent (active_time, format) {
     let hours = Math.floor(active_time / 3600);
     let minutes = Math.floor((active_time - (hours * 3600)) / 60);
 		let seconds = Math.floor((active_time - (hours * 3600) - (minutes * 60)) / 60);
+		if (format === 'prose') {
+			return `${hours} hr ${minutes} min`;
+		}
     let timeLearning = hours +':'+ minutes + ':' + seconds;
 		//pad out with extra 0s if necessary
 		timeLearning = timeLearning.replace(/(:.$)|(^.:)/gi, (match, g1, g2) => g1 ? ':0' + g1[1] : '0' + g2).replace(/:([0-9]:)/gi, (match, g1) => ':0' + g1);
@@ -224,7 +227,7 @@ Handles logic for you, e.g. aggregating scores and progress.
 		__fetchCSV('../data/studentManifest.json', (res) => {
 			let parsedData = JSON.parse(res);
 			__studentIDs = parsedData.studentManifest.map( obj => {
-				obj.lastInteraction = new Date(parseInt(obj.lastInteraction)); //timestamp -> Date object
+				obj.lastInteraction = new Date(obj.lastInteraction * 1000); //timestamp -> Date object
 				__studentDetails[obj.id] = obj;
 				return obj.id;
 			});
@@ -351,9 +354,9 @@ Handles logic for you, e.g. aggregating scores and progress.
   };
   
   //Calculate total time spent in the product
-  nautilus.getTotalTime = function (studentId, productId) {
+  nautilus.getTotalTime = function (studentId, productId, timeformat='numerical') {
     let totalTime = __results[productId][studentId].reduce((a, b) => ({active_time: a.active_time + b.active_time}));
-    return __timeSpent(totalTime.active_time);
+    return __timeSpent(totalTime.active_time, timeformat);
 	};
 
 	/*----------------------------------------*/
