@@ -48,6 +48,8 @@ Creates a module called 'helpers'. To use its methods in other scripts, call lik
 	helpers.tabularise = function (rowVals, cols = ['LO_name', 'first_score', 'best_score', 'attempts', 'status']) {
 		let tableRows = [],
 				i = 0;
+		
+		//todo - make this reusable, use the col values
 		for (i; i < rowVals.length; i++) {
 			//get an icon depending on status
 			let icon = this.getStatusIcon(rowVals[i].status);
