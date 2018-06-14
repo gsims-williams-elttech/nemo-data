@@ -11,6 +11,8 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/* SET UP VARIABLES */
 	/********************/
 	
+	const productID = 'evolve1op';
+	const unitSelector = document.getElementById('unitSelector');
 
 
   /************************/
@@ -21,12 +23,17 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 		//any code requiring nautilus data should go inside the callback
 		nautilus.init( () => {
 			
+			const units = nautilus.getUnitNames(productID);
+			const students = nautilus.getStudentIDs();
+			
 			//populate the unit selector dropdown
+			units.forEach( unit => {
+				unitSelector.insertAdjacentHTML('beforeend', `<option value="${unit}" selected>${unit}</option>`);
+			});
 			
 			//apply multiselect settings
 			$('#unitSelector').multiselect({
-        includeSelectAllOption: true,
-        selectAllName: 'All Units'
+        includeSelectAllOption: true
       });
 			
 			//initialise the datatable (use helpers.configureDataTable)
