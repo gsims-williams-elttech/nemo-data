@@ -86,37 +86,10 @@
   <script src="../lib/bootstrap.bundle.min.js"></script>
   <script src="../lib/datatables.min.js"></script>
   <script src="../lib/handlebars-v4.0.11.js"></script>
-  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-  <script src="../lib/chartist-plugin-fill-donut.js"></script>
   <script src="../lib/bootstrap-multiselect.js"></script>
   <script src="../scripts/nautilus.js"></script>
   <script src="../scripts/helpers.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('#unitSelector').multiselect({
-        includeSelectAllOption: true,
-        selectAllName: 'All Units'
-      });
-    });
-    $(document).ready(function () {
-      $('#studentSummary').DataTable({
-        paging: false,
-        retrieve: true,
-        info: false,
-        columnDefs: [{
-          targets: [0],
-          orderData: [0, 1]
-        }, {
-          targets: [1],
-          orderData: [1, 0]
-        }, {
-          targets: [2],
-          orderData: [4, 0]
-        }]
-      });
-    });
-
-  </script>
+	<script src="../scripts/allStudents.js"></script>
 </body>
 
 

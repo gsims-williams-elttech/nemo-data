@@ -18,10 +18,25 @@ Whole thing is wrapped in an anonymous self-executing function to avoid pollutin
 	/************************/
 
 	document.addEventListener('DOMContentLoaded', () => {
+		//any code requiring nautilus data should go inside the callback
 		nautilus.init( () => {
-			//any code that requires nautilus data should go inside this callback
+			
+			//populate the unit selector dropdown
+			
+			//apply multiselect settings
+			$('#unitSelector').multiselect({
+        includeSelectAllOption: true,
+        selectAllName: 'All Units'
+      });
+			
+			//initialise the datatable (use helpers.configureDataTable)
+			helpers.configureDataTable('studentSummary', [
+				{targets: 0, orderData: [ 0, 1 ]}
+			]);
+
+			//fill the datatable with info for all units (use helpers.tabularise)
 		});
-	};
+	});
 														
 	/****************************************/
 	/* HELPER FUNCTIONS FOR EVENT LISTENERS */
