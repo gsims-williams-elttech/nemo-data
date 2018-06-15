@@ -188,29 +188,27 @@
 				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
 			},
 			
-			//nautilus.getAllAverage(studentId, productId)
-			//nautilus.getUnitAverage(studentId, unitName)
-			'getUnitAverage: it should return an integer between 0 and 100': function () {
-				const unitAverage = nautilus.getUnitAverage('student1', 'evolve1op', 'Unit 1');
+			'getUnitSummary: it should include an average of best scores for the unit as an integer between 0 and 100': function () {
+				const unitAverage = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1').averageBestScore;
 				eq(typeof unitAverage, 'number');
 				assert(unitAverage <= 100);
 				assert(unitAverage >= 0);
 			},
 			
-			'getUnitAverage: it should represent the average of all completed LO scores': function () {
-				const unitAverage = nautilus.getUnitAverage('student1', 'evolve1op', 'Unit 1');
+			'getUnitSummary: averageBestScore should represent the average of all completed LO best scores': function () {
+				const unitAverage = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1').averageBestScore;
 				const expectedAverage = 75;
 				eq(unitAverage, expectedAverage);
 			},
 			
-			'getUnitAverage: it should return false if there are no completed LOs': function () {
-				const unitAverage = nautilus.getUnitAverage('student1', 'evolve1op', 'Unit 12');
+			'getUnitSummary: averageBestScore should have value false if there are no completed LOs': function () {
+				const unitAverage = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 12').averageBestScore;
 				eq(typeof unitAverage, 'boolean');
 				eq(unitAverage, false);
 			},
 			
-			'getUnitAverage: it should return the average of first scores if first_score argument is passed': function() {
-				const unitAverage = nautilus.getUnitAverage('student1', 'evolve1op', 'Unit 1', 'first_score');
+			'getUnitSummary: averageFirstScore should represent the average of first scores': function() {
+				const unitAverage = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1').averageFirstScore;
 				const expectedAverage = 66;
 				eq(unitAverage, expectedAverage);
 			},

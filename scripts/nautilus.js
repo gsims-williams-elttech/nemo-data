@@ -326,32 +326,21 @@ Handles logic for you, e.g. aggregating scores and progress.
 	
 	//returns a summary of the student's results across the whole product
 	nautilus.getAllSummary = function (studentId, productId) {
-		return __summariseStatus(__results[productId][studentId]);
+		const results = __results[productId][studentId];
+		const summary = __summariseStatus(results);
+		summary.averageBestScore = __averageScore(results, 'best_score');
+		summary.averageFirstScore = __averageScore(results, 'first_score');
+		return summary;
 	};
 
-	//returns a summary of the student's results in a specified unit
+	//returns a summary of the student's results in a specified unit(s)
 	nautilus.getUnitSummary = function (studentId, productId, unitName) {
 		const unitResults = this.getUnitResults(studentId, productId, unitName);
-		return __summariseStatus(unitResults);
+		const summary = __summariseStatus(unitResults);
+		summary.averageBestScore = __averageScore(unitResults, 'best_score');
+		summary.averageFirstScore = __averageScore(unitResults, 'first_score');
+		return summary;
 	};
-	
-	//returns the average of all best/first scores in a product, or false if no completed LOs
-	nautilus.getAllAverage = function (studentId, productId, scoreType='best_score') {
-		const results = nautilus.getAllResults(studentId, productId);
-		return __averageScore(results, scoreType);
-	};
-	
-	//returns the average of all best/first scores in a unit, or false if no completed LOs
-	nautilus.getUnitAverage = function (studentId, productId, unitName, scoreType) {
-		const results = nautilus.getUnitResults(studentId, productId, unitName);
-		return __averageScore(results, scoreType);
-	};
-  
-  //returns the average of all best/first scores in a lesson, or false if no completed LOs
-  nautilus.getLessonAverage = function (studentId, unitName, lessonName, scoreType) {
-    const results = nautilus.getLessonResults(studentId, unitName, lessonName);
-		return __averageScore(results, scoreType);
-  };
   
   //Calculate total time spent in the product
   nautilus.getTotalTime = function (studentId, productId, timeformat='numerical') {
