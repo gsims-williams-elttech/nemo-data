@@ -334,11 +334,17 @@ Handles logic for you, e.g. aggregating scores and progress.
 	};
 
 	//returns a summary of the student's results in a specified unit(s)
-	nautilus.getUnitSummary = function (studentId, productId, unitName) {
-		const unitResults = this.getUnitResults(studentId, productId, unitName);
-		const summary = __summariseStatus(unitResults);
-		summary.averageBestScore = __averageScore(unitResults, 'best_score');
-		summary.averageFirstScore = __averageScore(unitResults, 'first_score');
+	nautilus.getUnitSummary = function (studentId, productId, unitNames) {
+		unitNames = typeof unitNames === 'string' ? [unitNames] : unitNames;
+		
+		const results = unitNames
+			.map( unit => this.getUnitResults(studentId, productId, unit))
+			.reduce( (acc, unit) => [...acc, ...unit], []);
+		
+		const summary = __summariseStatus(results);
+		summary.averageBestScore = __averageScore(results, 'best_score');
+		summary.averageFirstScore = __averageScore(results, 'first_score');
+		
 		return summary;
 	};
   

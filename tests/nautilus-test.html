@@ -175,19 +175,6 @@
 				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
 			},
 			
-			//nautilus.getAllSummary(studentId)			
-			'getAllSummary: it should aggregate status data for all LOs in the product': function() {
-				const summary = nautilus.getAllSummary('student1', 'evolve1op');
-				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 343);
-			},
-			
-			'getAllSummary: it should include three degree values for the product, adding to 360': function() {
-				const summary = nautilus.getAllSummary('student1', 'evolve1op');
-				assert(Array.isArray(summary.degreeValues));
-				eq(summary.degreeValues.length, 3);
-				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
-			},
-			
 			'getUnitSummary: it should include an average of best scores for the unit as an integer between 0 and 100': function () {
 				const unitAverage = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1').averageBestScore;
 				eq(typeof unitAverage, 'number');
@@ -211,6 +198,27 @@
 				const unitAverage = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1').averageFirstScore;
 				const expectedAverage = 66;
 				eq(unitAverage, expectedAverage);
+			},
+			
+			'getUnitSummary: it should be possible to pass in an array of unit names and get an aggregated summary for all of them': function() {
+				const bothUnits = nautilus.getUnitSummary('student1', 'evolve1op', ['Unit 1', 'Unit 2']);
+				const unit1 = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 1');
+				const unit2 = nautilus.getUnitSummary('student1', 'evolve1op', 'Unit 2');
+				
+				eq(bothUnits.aboveTarget, unit1.aboveTarget + unit2.aboveTarget);
+			},
+			
+			//nautilus.getAllSummary(studentId)			
+			'getAllSummary: it should aggregate status data for all LOs in the product': function() {
+				const summary = nautilus.getAllSummary('student1', 'evolve1op');
+				eq(summary.aboveTarget + summary.belowTarget + summary.notStarted, 343);
+			},
+			
+			'getAllSummary: it should include three degree values for the product, adding to 360': function() {
+				const summary = nautilus.getAllSummary('student1', 'evolve1op');
+				assert(Array.isArray(summary.degreeValues));
+				eq(summary.degreeValues.length, 3);
+				eq(summary.degreeValues.reduce( (acc, val) => acc + val), 360);
 			},
 			
 			//nautilus.getTotalTime(studentId, productId)
